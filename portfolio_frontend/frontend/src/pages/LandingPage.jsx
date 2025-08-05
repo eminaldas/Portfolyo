@@ -1,15 +1,20 @@
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import About from './About';
+import Skills from './Skills';
+import Projects from './Projects';
+import Experiences from './Experiences';
 
 function LandingPage() {
   return (
-    <main className="h-screen">
-      <Parallax pages={3} style={{ top: '0', left: '0' }}>
-        <ParallaxLayer offset={0} speed={0.2} style={{ backgroundColor: '#0f172a' }} >
+    <main className="w-full">
+   
+            <div className='flex flex-col items-center overflow-auto scroll-smooth'>         
+            <About/>
+            <Skills/>
+            <Projects/>
+            <Experiences  />
+            </div>
 
-        </ParallaxLayer>
-
-
-      </Parallax>
     </main>
   );
 }
