@@ -1,15 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
- font-family: "Fredoka", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root{
+  --main-bg:#f4e9cb;
+  --color-secondary:#bfb79b!important;
+  --color-secondary-100:#5a5a59;
+}
+html{
+   scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+  background-color: #111820;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--color-200);
+}
+::-webkit-scrollbar-track{
+  background-color: var(--color-700);
+}
+:root {
+  --color-50:  #DDE6EC;
+  --color-100: #C6D4DF;
+  --color-200: #A7BBCF;
+  --color-300: #86A2BF;
+  --color-400: #6D8EAF;
+  --color-500: #577BA0; 
+  --color-600: #4C6E8E;
+  --color-700: #405D72; 
+  --color-800: #2E4252;
+  --color-900: #1F2C38;
+  --color-950: #111820;
+}
 
+.app-positon{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+ 
+}

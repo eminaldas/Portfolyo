@@ -1,19 +1,24 @@
 import Navbar from './assets/components/Navbar'
 import './App.css'
 import LandingPage from './pages/LandingPage';
+import SocialMedia from './assets/components/SocialMedia';
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-brand relative overflow-hidden">
-    
-      <div className="absolute inset-0 z-0 bg-brand"></div>
+    <div className=''>
+    <div 
+    className='w-screen h-screen bg-[var(--color-50)] fixed bg-radial from-white from-40% to-[var(--color-50)] dark:from-[var(--color-800)] dark:to-[var(--color-900)] ' >
+      
+    </div>
+    <div className='w-full min-h-screen overflow-auto scroll-smooth flex flex-col items-center justify-start'>
 
-      <div className="relative z-10">
-        <Navbar />
-        <div className="max-w-xl mx-auto px-4 text-white pt-8">
+            <Navbar />      
+
+      <div  className=" w-full max-w-7xl   h-fit px-10 scroll-smooth">       
           <LandingPage/>
         </div>
-      </div>
+      <SocialMedia/>
+    </div>
     </div>
   );
 }

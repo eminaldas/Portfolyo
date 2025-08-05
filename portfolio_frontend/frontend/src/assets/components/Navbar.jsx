@@ -4,17 +4,21 @@ import React from 'react';
 
 function Navbar() {
   return (
-    <nav className="fixed w-full top-0 z-50 p-3">
-      <div className="bg-zinc-600/30 backdrop-blur-md max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl">
-        <div className="flex justify-between h-16 items-center">
+    <nav className="fixed  w-full top-0 z-50">
+      <div className="bg-white/0 backdrop-blur-xs w-full mx-auto px-4 sm:px-6 lg:px-8  border-b-2 border-[var(--color-50)] dark:border-[var(--color-800)]">
+        <div className="flex justify-around h-16 items-center">
           {/* Logo */}
-          <div className="text-2xl font-bold text-white">MyPortfolio</div>
+          <div className="text-2xl font-bold text-[var(--color-800)] dark:text-[var(--color-200)]">MyPortfolio</div>
 
           {/* Menu Items */}
-          <div className="hidden md:flex space-x-6 text-gray-600 font-medium">
-            <a href="#about" className="text-emerald-50 hover:text-emerald-100 transition">Hakkımda</a>
-            <a href="#projects" className="text-emerald-50 hover:text-emerald-100 transition">Projeler</a>
-            <a href="#contact" className="text-emerald-50 hover:text-emerald-100 transition">İletişim</a>
+          <div className="hidden md:flex space-x-6  font-normal">
+            <a href="#about" 
+            className="text-[var(--color-800)] hover:text-[var(--color-600)] font-normal transition
+            dark:text-[var(--color-200)] dark:hover:text-[var(--color-300)]">Hakkımda</a>
+            <a href="#projects" className="text-[var(--color-600)] hover:text-[var(--color-600)] font-normal transition
+            dark:text-[var(--color-300)] dark:hover:text-[var(--color-400)]">Projeler</a>
+            <a href="#contact" className="text-[var(--color-600)] hover:text-[var(--color-600)] font-normal transition
+            dark:text-[var(--color-300)] dark:hover:text-[var(--color-400)]">İletişim</a>
           </div>
         </div>
       </div>
