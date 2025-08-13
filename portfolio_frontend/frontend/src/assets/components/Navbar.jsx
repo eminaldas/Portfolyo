@@ -4,8 +4,8 @@ import React from 'react';
 
 function Navbar() {
   return (
-    <nav className="fixed  w-full top-0 z-50">
-      <div className="bg-white/0 backdrop-blur-xs w-full mx-auto px-4 sm:px-6 lg:px-8  border-b-2 border-[var(--color-50)] dark:border-[var(--color-800)]">
+    <nav className="fixed  w-full top-0 z-50 animation-navbar">
+      <div className="bg-white/50 backdrop-blur-sm w-full mx-auto px-4 sm:px-6 lg:px-8  border-b-2 border-[var(--color-50)] dark:border-[var(--color-800)]">
         <div className="flex justify-around h-16 items-center">
           {/* Logo */}
           <div className="text-2xl font-bold text-[var(--color-800)] dark:text-[var(--color-200)]">MyPortfolio</div>

@@ -3,6 +3,7 @@ import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
 import Experiences from './Experiences';
+import ContactSection from './Contact';
 
 function LandingPage() {
   return (
@@ -13,6 +14,7 @@ function LandingPage() {
             <Skills/>
             <Projects/>
             <Experiences  />
+            <ContactSection/>
             </div>
 
     </main>

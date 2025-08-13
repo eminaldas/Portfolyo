@@ -8,7 +8,7 @@ function About() {
   return (
     <section
       id="about"
-      className=" px-4  gap-10 flex flex-col items-center justify-center max-w-5xl min-h-screen z-1"
+      className="animation-about px-4  gap-10 flex flex-col items-center justify-center max-w-5xl min-h-screen z-1"
     >
       {/* Başlık */}
       <h1 className="mb-6">

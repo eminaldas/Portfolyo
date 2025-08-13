@@ -13,12 +13,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-:root{
-  --main-bg:#f4e9cb;
-  --color-secondary:#bfb79b!important;
-  --color-secondary-100:#5a5a59;
-}
 html{
    scroll-behavior: smooth;
 }
@@ -45,10 +39,49 @@ html{
   --color-950: #111820;
 }
 
-.app-positon{
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%,-50%);
- 
+.animation-navbar {
+  animation: navbar 0.3s ease-out forwards;
+}
+
+@keyframes navbar {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.animation-about{
+  animation: about 0.7s ease-in-out forwards;
+}
+
+@keyframes about {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.animation-social{
+  animation: social 0.3s ease-in forwards;
+}
+
+@keyframes social {
+  0% {
+    transform: translateX(-130px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
