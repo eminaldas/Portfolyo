@@ -1,14 +1,7 @@
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
-
-
 function SocialMedia(){
     return(
         <div className="fixed bottom-0 left-6 transform -translate-y-5 z-20">
-<div class="flex items-center gap-4">
+<div  class="animation-social flex items-center gap-4">
   <div class="social-button">
     <button class="relative w-12 h-12 rounded-full group cursor-pointer">
       <div
