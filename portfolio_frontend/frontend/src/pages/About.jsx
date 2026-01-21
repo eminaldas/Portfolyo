@@ -11,19 +11,26 @@ function About() {
       className="animation-about px-4  gap-10 flex flex-col items-center justify-center max-w-5xl min-h-screen z-1"
     >
       {/* Başlık */}
-      <h1 className="mb-6">
+      <h1  className="text-4xl selection:text-[var(--color-100)] selection:bg-[var(--color-900)] sm:text-[18px] md:text-5xl font-bold text-[var(--color-900)]
+          dark:text-[var(--color-200)]">
+        I'M MUHAMMED EMIN ALDAŞ
+      </h1>
+     <h3 className="mb-6">
         <TextType
-          className="text-4xl selection:text-[var(--color-100)] selection:bg-[var(--color-900)] sm:text-[18px] md:text-5xl font-bold text-[var(--color-900)]
-          dark:text-[var(--color-200)]"
+          className="a-title text-xl selection:text-[var(--color-r-200)] selection:bg-[var(--color-r-600)] sm:text-[18px] md:text-3xl font-bold text-[var(--color-r-600)]
+          dark:text-[var(--color-r-300)]"
           textColors={[""]}
-          text={["I'M MUHAMMED EMIN ALDAŞ"]}
+         text={[
+  "Frontend Developer",
+  "Full Stack Developer",
+  "Software Engineer"
+]}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor={true}
           cursorCharacter="|"
         />
-      </h1>
-
+      </h3>
       {/* Açıklama */}
       <p className="text-base sm:text-[16px] text-center text-[var(--color-800)] selection:text-[var(--color-50)] selection:bg-[var(--color-900)] leading-relaxed
       dark:text-[var(--color-50)]">

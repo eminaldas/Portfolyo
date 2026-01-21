@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
 
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -38,7 +39,23 @@ html{
   --color-900: #1F2C38;
   --color-950: #111820;
 }
+:root {
+  --color-r-50:  #FFF7ED;
+  --color-r-100: #FFEDD5;
+  --color-r-200: #FED7AA;
+  --color-r-300: #FDBA74;
+  --color-r-400: #FB923C;
+  --color-r-500: #F97316; /* Turuncu ana */
+  --color-r-600: #EC4899; /* Pembe accent */
+  --color-r-700: #BE185D;
+  --color-r-800: #9D174D;
+  --color-r-900: #831843;
+  --color-r-950: #500724;
+}
+.a-title{
+    font-family: "Jersey 10", sans-serif;
 
+}
 .animation-navbar {
   animation: navbar 0.3s ease-out forwards;
 }
