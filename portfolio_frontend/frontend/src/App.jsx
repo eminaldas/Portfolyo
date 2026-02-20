@@ -14,7 +14,7 @@ function App() {
 
             <Navbar />      
 
-      <div  className=" w-full max-w-7xl   h-fit px-10 scroll-smooth">       
+      <div  className=" w-full max-w-7xl   h-fit px-4 sm:px-6 lg:px-8 scroll-smooth">       
           <LandingPage/>
         </div>
       <SocialMedia/>
