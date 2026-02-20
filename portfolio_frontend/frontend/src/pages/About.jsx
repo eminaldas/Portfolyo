@@ -33,7 +33,7 @@ function About() {
       </h3>
       {/* Açıklama */}
       <p className="text-base sm:text-[16px] text-center text-[var(--color-800)] selection:text-[var(--color-50)] selection:bg-[var(--color-900)] leading-relaxed
-      dark:text-[var(--color-50)]">
+      dark:text-gray-300">
         I was born in Viranşehir, Şanlıurfa and I’m currently 20 years old. I’m a final-year
         Software Engineering student at Beykoz University.
         <br /><br />
@@ -48,36 +48,36 @@ function About() {
       <div className="flex justify-center items-center p-10 gap-10">
         <button>
          
-<div class="relative inline-flex items-center justify-center gap-4 group">
+<div className="relative inline-flex items-center justify-center gap-4 group">
   <div
-    class="absolute inset-0 duration-1000 opacity-60 transitiona-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 dark:from-[var(--color-50)] dark:via-[var(--color-300)] dark:to-[var(--color-500)] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"
+    className="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 dark:from-[var(--color-50)] dark:via-[var(--color-300)] dark:to-[var(--color-500)] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"
   ></div>
   <a
     role="button"
-    class="group relative inline-flex items-center justify-center text-base rounded-xl bg-gray-900 px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30 dark:text-[var(--color-700)]  dark:bg-[var(--color-100)] dark:hover:bg-[var(--color-200)]"
+    className="group relative inline-flex items-center justify-center text-base rounded-xl bg-gray-900 px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30 dark:text-[var(--color-700)]  dark:bg-[var(--color-100)] dark:hover:bg-[var(--color-200)]"
     title="payment"
-    href="#"
+    href="#projects"
     >View Projects<svg
       aria-hidden="true"
       viewBox="0 0 10 10"
       height="10"
       width="10"
       fill="none"
-      class="mt-0.5 ml-2 -mr-1 stroke-white stroke-2"
+      className="mt-0.5 ml-2 -mr-1 stroke-white stroke-2"
     >
       <path
         d="M0 5h7"
-        class="transition opacity-0 group-hover:opacity-100"
+        className="transition opacity-0 group-hover:opacity-100"
       ></path>
       <path
         d="M1 1l4 4-4 4"
-        class="transition group-hover:translate-x-[3px]"
+        className="transition group-hover:translate-x-[3px]"
       ></path>
     </svg>
   </a>
 </div>
         </button>
-<a class="bg-[var(--color-50)]/30 hover:bg-[var(--color-200)] text-[var(--color-500)] font-bold py-3 px-6 rounded-sm  cursor-pointer  hover:text-white transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce
+<a className="bg-[var(--color-50)]/30 hover:bg-[var(--color-200)] text-[var(--color-500)] font-bold py-3 px-6 rounded-sm  cursor-pointer  hover:text-white transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce
 dark:bg-[var(--color-700)]/30 dark:hover:bg-[var(--color-700)] dark:text-[var(--color-100)]" href="#contact">
   Contact
 </a>

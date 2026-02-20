@@ -16,7 +16,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="relative mx-auto max-w-4xl px-4 py-16">
       <header className="mb-8 text-center">
-        <h2 className="text-3xl font-bold tracking-tight">İletişime Geçelim</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">İletişime Geçelim</h2>
         <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
           E‑posta veya sosyal hesaplar üzerinden ulaşabilirsin.
         </p>

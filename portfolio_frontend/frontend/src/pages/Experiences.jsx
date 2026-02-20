@@ -9,7 +9,7 @@ export default function Experiences() {
       role: "IT Audit & Development Assistant",
       company: "Aras Kargo",
       location: "İstanbul, Türkiye",
-      dates: "Mar 2025 – Current",
+      dates: "Mar 2025 – Sep 2025",
       bullets: [
         "IT denetim ekibine süreç koordinasyonu ve operasyonel denetimlerde destek verdim.",
         "İç sistemlerde denetim bulgusu, süreç ve raporlama akışlarını iyileştiren çözümler geliştirdim.",
@@ -71,15 +71,7 @@ export default function Experiences() {
                 }`}
               >
                 {/* Node (dot) */}
-                <span
-                  aria-hidden
-                  className="absolute left-1/2 top-3 z-10 -ml-3 flex h-6 w-6 items-center justify-center rounded-full bg-white text-gray-700 shadow ring-8 ring-gray-200/50 dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800/60"
-                >
-                  {/* briefcase icon */}
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor">
-                    <path d="M9 7V6a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v1h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3Zm2 0h2V6a1 1 0 1 0-2 0v1Z" />
-                  </svg>
-                </span>
+        
 
                 {/* Connector to spine (lg+) */}
                 <span
@@ -93,19 +85,19 @@ export default function Experiences() {
                 <div
                   className={`relative rounded-xl border p-5 backdrop-blur-sm shadow-sm ${
                     isRight ? "lg:ml-10" : "lg:mr-10"
-                  } border-gray-200/60 bg-white/80 text-gray-800 dark:border-zinc-700/60 dark:bg-zinc-900/60 dark:text-gray-100`}
+                  } border-gray-200/60 bg-white/80 text-gray-800 dark:border-white/10 dark:bg-zinc-900/60 dark:text-gray-100`}
                 >
                   <div className="mb-1 text-xs font-medium tracking-wide text-gray-600 dark:text-gray-400">
                     {item.company} • {item.location}
                   </div>
-                  <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                     {item.role}
                   </h3>
                   <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">
                     {item.dates}
                   </div>
 
-                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800 dark:text-gray-300">
                     {item.bullets.map((b, i) => (
                       <li key={i} className="flex gap-2">
                         <span

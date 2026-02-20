@@ -63,7 +63,7 @@ function Skills() {
         {groupedSkills.map((group, groupIdx) => (
           <div
             key={groupIdx}
-            className="w-full flex justify-center gap-[200px]"
+            className="w-full flex justify-center gap-8 sm:gap-20 md:gap-32 lg:gap-[200px]"
           >
             {group.map((skill, idx) => (
               <div
@@ -71,9 +71,9 @@ function Skills() {
                 className=" hover:scale-105 transition"
               >
 <div className="relative group cursor-pointer w-fit">
- <img src={skill.src} alt="" className="h-28 w-auto cursor-pointer"  />  
+ <img src={skill.src} alt="" className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto cursor-pointer drop-shadow-md dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"  />  
 
-  <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition bg-stone-800 text-white text-xs rounded px-3 py-1 whitespace-nowrap z-10">
+  <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition bg-stone-800 dark:bg-stone-100 text-white dark:text-stone-900 text-xs rounded px-3 py-1 whitespace-nowrap z-10 shadow-lg font-semibold">
     {skill.name}
   </div>
 </div>
