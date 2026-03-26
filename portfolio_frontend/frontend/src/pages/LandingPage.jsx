@@ -1,41 +1,22 @@
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
-import About from './About';
-import Skills from './Skills';
-import Projects from './Projects';
-import Experiences from './Experiences';
-import ContactSection from './Contact';
-import RevealOnScroll from '../assets/components/RevealOnScroll';
+import React from 'react';
+import HeroSection from '../assets/components/HeroSection';
+import BentoStats from '../assets/components/BentoStats';
+import AboutSection from '../assets/components/AboutSection';
+import CareerSection from '../assets/components/CareerSection';
+import FeaturedWork from '../assets/components/FeaturedWork';
+import ContactSection from '../assets/components/ContactSection';
 
-function LandingPage() {
+const LandingPage = () => {
   return (
-    <main className="w-full">
-   
-            <div className='flex flex-col items-center overflow-auto scroll-smooth gap-y-10 pb-20'>         
-            
-            <RevealOnScroll>
-              <About/>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-              <Skills/>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-              <Projects/>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-              <Experiences  />
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-              <ContactSection/>
-            </RevealOnScroll>
-
-            </div>
-
-    </main>
+    <>
+      <HeroSection />
+      <BentoStats />
+      <AboutSection />
+      <CareerSection />
+      <FeaturedWork />
+      <ContactSection />
+    </>
   );
-}
+};
 
 export default LandingPage;

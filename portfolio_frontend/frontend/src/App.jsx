@@ -1,25 +1,23 @@
-import Navbar from './assets/components/Navbar'
-import './App.css'
+import React from 'react';
+import Navbar from './assets/components/Navbar';
+import Footer from './assets/components/Footer';
 import LandingPage from './pages/LandingPage';
-import SocialMedia from './assets/components/SocialMedia';
+import SocialSidebar from './assets/components/SocialSidebar';
+import { LanguageProvider } from './context/LanguageContext';
+import './App.css';
 
 function App() {
   return (
-    <div className=''>
-    <div 
-    className='w-screen h-screen bg-[var(--color-50)] fixed bg-radial from-white from-40% to-[var(--color-50)] dark:from-[var(--color-800)] dark:to-[var(--color-900)] ' >
-      
-    </div>
-    <div className='w-full min-h-screen overflow-auto scroll-smooth flex flex-col items-center justify-start'>
-
-            <Navbar />      
-
-      <div  className=" w-full max-w-7xl   h-fit px-4 sm:px-6 lg:px-8 scroll-smooth">       
-          <LandingPage/>
-        </div>
-      <SocialMedia/>
-    </div>
-    </div>
+    <LanguageProvider>
+      <div className="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+        <Navbar />      
+        <SocialSidebar />
+        <main className="relative">
+          <LandingPage />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 
