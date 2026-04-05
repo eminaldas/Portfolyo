@@ -40,7 +40,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="lg:col-span-4 relative hidden lg:block"
         >
-          <div className="rounded-2xl overflow-hidden bg-[#0c1326]/80 backdrop-blur-xl border border-outline-variant/30 shadow-[0_20px_40px_rgba(204,151,255,0.1)] relative p-6 font-mono text-sm leading-relaxed text-secondary-fixed-dim">
+          <div className="rounded-2xl overflow-hidden bg-surface-container/80 backdrop-blur-xl border border-outline-variant/30 shadow-[0_20px_40px_rgba(204,151,255,0.1)] relative p-6 font-mono text-sm leading-relaxed text-on-surface dark:text-secondary-fixed-dim">
             <div className="flex gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-error-dim"></div>
               <div className="w-3 h-3 rounded-full bg-secondary"></div>

@@ -15,7 +15,7 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="relative order-2 lg:order-1"
         >
-          <div className="bg-surface-container-highest rounded-2xl p-8 font-mono text-sm leading-relaxed text-secondary-fixed-dim shadow-2xl overflow-hidden border border-outline-variant/20">
+          <div className="bg-surface-container-highest rounded-2xl p-8 font-mono text-sm leading-relaxed text-on-surface dark:text-secondary-fixed-dim shadow-2xl overflow-hidden border border-outline-variant/20">
             <div className="flex gap-2 mb-6">
               <div className="w-3 h-3 rounded-full bg-error-dim"></div>
               <div className="w-3 h-3 rounded-full bg-secondary"></div>
