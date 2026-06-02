@@ -34,10 +34,13 @@ const CareerSection = () => {
               <div className="absolute -left-3 top-2 w-6 h-6 border-2 border-on-surface bg-surface-container-high flex items-center justify-center">
                 <div className="w-2 h-2 bg-on-surface" />
               </div>
-              <span className="font-mono text-[11px] uppercase tracking-[.15em] text-on-surface-variant/50">{item.date}</span>
-              <h3 className="font-headline font-bold text-3xl mt-2 text-on-surface">{item.role}</h3>
-              <h4 className="font-body text-xl text-on-surface-variant mt-1">Aras Kargo</h4>
-              <p className="font-body text-on-surface-variant mt-4 max-w-2xl leading-relaxed">{item.desc}</p>
+              {/* Deneyim kartı — sıcak bej tonu, About code block'tan farklı */}
+              <div className="p-6 border border-on-surface/8 mt-3" style={{ background: '#1c1a13' }}>
+                <span className="font-mono text-[11px] uppercase tracking-[.15em] text-on-surface-variant/50">{item.date}</span>
+                <h3 className="font-headline font-bold text-3xl mt-2 text-on-surface">{item.role}</h3>
+                <h4 className="font-body text-xl text-on-surface-variant/70 mt-1">Aras Kargo</h4>
+                <p className="font-body text-on-surface-variant mt-4 max-w-2xl leading-relaxed">{item.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -15,7 +15,8 @@ const AboutSection = () => {
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative order-2 lg:order-1"
         >
-          <div className="bg-surface-container-highest p-8 font-mono text-sm leading-relaxed text-on-surface shadow-2xl overflow-hidden border border-outline-variant/20">
+          {/* About code block — koyu, soğuk ton (#1e1e2a mavi-gri) */}
+          <div className="p-8 font-mono text-sm leading-relaxed text-on-surface shadow-2xl overflow-hidden border border-on-surface/10" style={{ background: '#13131f' }}>
             <div className="flex gap-2 mb-6">
               <div className="w-3 h-3 bg-error-dim" />
               <div className="w-3 h-3 bg-secondary" />
