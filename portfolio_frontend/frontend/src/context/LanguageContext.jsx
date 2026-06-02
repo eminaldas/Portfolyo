@@ -125,13 +125,13 @@ const translations = {
       label: '— Vizyon',
       lines: [
         { text: 'IT Denetiminden Yapay Zekaya —', muted: false, serif: false },
-        { text: 'Crafted, Not Built.',            muted: true,  serif: true  },
+        { text: 'İnşa Değil, Zanaatkarlık.',     muted: true,  serif: true  },
         { text: 'temiz kod,',                     muted: false, serif: false },
-        { text: 'Build. Ship. Repeat.',           muted: true,  serif: true  },
+        { text: 'Yap. Gönder. Tekrarla.',         muted: true,  serif: true  },
         { text: 'üretimde çalışan sistemler,',    muted: false, serif: false },
-        { text: 'AI-Driven, Human-Coded.',        muted: true,  serif: true  },
+        { text: 'YZ Destekli, İnsan Kodlaması.',  muted: true,  serif: true  },
         { text: 'amaçlı mühendislik.',            muted: false, serif: false },
-        { text: 'Systems That Scale.',            muted: true,  serif: true  },
+        { text: 'Büyüyen Sistemler.',             muted: true,  serif: true  },
       ],
     },
     bento: {
