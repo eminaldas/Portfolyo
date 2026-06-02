@@ -150,22 +150,27 @@ const HeroSection = () => {
 
         {/* ⑥ Stats — aşağıdan, delay 1.55 */}
         <motion.div
-          className="flex items-center gap-10 mt-16 pt-8 border-t border-on-surface/[0.08]"
+          className="flex items-end gap-10 mt-16 pt-8 border-t border-on-surface/[0.08]"
           {...mk(hide(0, 30), vis ? show(0, 0) : hide(0, 30), 1.55, 0.75)}
         >
           {[
-            { value: '1+',          label: 'Yıl Deneyim',  serif: true  },
-            { value: 'nehaber.dev', label: 'Production',   serif: false },
-          ].map(stat => (
-            <div key={stat.label} className="flex flex-col gap-1">
-              <span style={stat.serif
-                ? { fontFamily: "'Cormorant', Georgia, serif", fontStyle: 'italic', fontWeight: 200, fontSize: 'clamp(28px, 3vw, 40px)', color: '#dcd8c0', lineHeight: 1, letterSpacing: '-0.02em' }
-                : { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 900, fontSize: 'clamp(22px, 2.5vw, 30px)', color: '#dcd8c0', lineHeight: 1, letterSpacing: '-1px' }}>
-                {stat.value}
-              </span>
-              <span className="font-mono text-[9px] tracking-[.22em] uppercase text-on-surface-variant/38">{stat.label}</span>
-            </div>
-          ))}
+            { value: '1+',          label: 'Yıl Deneyim',  serif: true,  target: false },
+            { value: 'nehaber.dev', label: 'Production',   serif: false, target: true, href: 'https://nehaber.dev' },
+          ].map(stat => {
+            const inner = (
+              <div key={stat.label} className={`flex flex-col gap-1${stat.target ? ' cursor-target' : ''}`}>
+                <span style={stat.serif
+                  ? { fontFamily: "'Cormorant', Georgia, serif", fontStyle: 'italic', fontWeight: 200, fontSize: 'clamp(28px, 3vw, 40px)', color: '#dcd8c0', lineHeight: 1, letterSpacing: '-0.02em' }
+                  : { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 900, fontSize: 'clamp(22px, 2.5vw, 30px)', color: '#dcd8c0', lineHeight: 1, letterSpacing: '-1px' }}>
+                  {stat.value}
+                </span>
+                <span className="font-mono text-[9px] tracking-[.22em] uppercase text-on-surface-variant/38">{stat.label}</span>
+              </div>
+            );
+            return stat.href
+              ? <a key={stat.label} href={stat.href} target="_blank" rel="noreferrer" className="hover:opacity-75 transition-opacity">{inner}</a>
+              : inner;
+          })}
         </motion.div>
       </div>
 

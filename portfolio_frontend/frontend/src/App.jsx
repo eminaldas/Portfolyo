@@ -6,6 +6,7 @@ import Preloader from './assets/components/Preloader';
 import GridCanvas from './assets/components/GridCanvas';
 import TargetCursor from './components/reactBits/TargetCursor';
 import MouseCoords from './assets/components/MouseCoords';
+import LiveClock from './assets/components/LiveClock';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { BuildProvider } from './context/BuildContext';
@@ -35,6 +36,7 @@ function App() {
           <GridCanvas />
           <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
           <MouseCoords />
+          <LiveClock />
           <div className="bg-background text-on-background font-body selection:bg-primary/20 selection:text-on-primary">
             <Navbar />
             <SocialSidebar />
