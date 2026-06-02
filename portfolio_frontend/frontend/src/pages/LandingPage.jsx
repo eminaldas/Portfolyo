@@ -12,11 +12,11 @@ const LandingPage = () => (
   <>
     <HeroSection />
     <ManifestoSection />
+    <FeaturedWork />
     <SkillsSection />
     <BentoStats />
     <AboutSection />
     <CareerSection />
-    <FeaturedWork />
     <ContactSection />
   </>
 );

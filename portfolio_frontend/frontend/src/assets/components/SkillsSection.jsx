@@ -59,20 +59,20 @@ const SkillsSection = () => {
               className="group relative flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 border border-outline-variant/10 px-7 py-5 overflow-hidden transition-colors duration-300 hover:border-outline/25"
             >
               <div className="absolute inset-0 w-0 group-hover:w-full bg-on-surface/[0.025] transition-all duration-500 ease-out pointer-events-none" />
-              <span className="font-mono text-[10px] tracking-[.2em] uppercase text-on-surface-variant/35 sm:w-40 flex-shrink-0 relative z-10">
+              <span className="font-mono text-[11px] tracking-[.15em] uppercase text-on-surface/60 sm:w-40 flex-shrink-0 relative z-10 font-bold">
                 {row.category[language] ?? row.category.en}
               </span>
               <div className="flex flex-wrap gap-2 flex-1 relative z-10">
                 {row.items.map(item => (
                   <span
                     key={item}
-                    className="font-mono text-[11px] tracking-[.1em] uppercase border border-outline-variant/20 px-3 py-1.5 text-on-surface-variant transition-all duration-200 hover:border-outline/50 hover:text-on-surface cursor-default"
+                    className="font-mono text-[11px] tracking-[.1em] uppercase border border-on-surface/20 px-3 py-1.5 text-on-surface/70 transition-all duration-200 hover:border-on-surface/50 hover:text-on-surface hover:bg-on-surface/5 cursor-default"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-              <span className="font-mono text-[10px] text-on-surface-variant/20 sm:ml-auto sm:pl-5 flex-shrink-0 relative z-10">
+              <span className="font-mono text-[10px] tracking-[.15em] uppercase text-on-surface/35 sm:ml-auto sm:pl-5 flex-shrink-0 relative z-10">
                 {row.level}
               </span>
             </motion.div>

@@ -34,7 +34,7 @@ const translations = {
     },
     bento: {
       eduLabel: "Education",
-      eduTitle: "Software Eng.",
+      eduTitle: "Software Engineering",
       eduDesc: "Studying Software Engineering at Beykoz University (GPA: 3.08/4.00), building analytical thinking and problem-solving skills.",
       workLabel: "Work Experience",
       workRole: "IT AUDIT ASSISTANT",
@@ -128,7 +128,7 @@ const translations = {
     },
     bento: {
       eduLabel: "Eğitim",
-      eduTitle: "Yazılım Müh.",
+      eduTitle: "Yazılım Mühendisliği",
       eduDesc: "Beykoz Üniversitesi'nde Yazılım Mühendisliği okuyor (Ort. 3.08/4.00), analitik yaklaşım ve problem çözme becerilerimi geliştiriyorum.",
       workLabel: "İş Deneyimi",
       workRole: "BT DENETİM ASİSTANI",

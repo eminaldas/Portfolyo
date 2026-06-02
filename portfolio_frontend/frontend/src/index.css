@@ -159,6 +159,14 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(rgba(220,216,192,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220,216,192,0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   background-color: var(--color-surface-container);
@@ -172,6 +180,7 @@ html {
 }
 
 .grain-texture {
-  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM9xU6Ykgphps4wON9gJkyZsKmd-GU2qsMU0SroBy77ro7SVKPC59yOdimMwMOSdwUkeuD41_y5OV3fOsi62kinJ0FbbUzyHH7Zl7dAJi_CV5qwn_7Cu6wwSPyl5q018_NVMuChexQGinUigkWnAyjcQ52nmUMbVn8MCRWiXf-IASCACEn0iFUzN2VlDUyL_hijwD_8VGhOJTWzTNh2JOcI2LSWJx2DQ6SyfiybhtO4HT6HWudX41rjIt5199O3dljWeVI19mFzSc0");
-  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.04;
 }

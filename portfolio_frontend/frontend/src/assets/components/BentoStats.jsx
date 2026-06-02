@@ -30,7 +30,7 @@ const BentoStats = () => {
           >
             <div>
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.eduLabel}</span>
-              <h3 className="font-headline font-bold text-5xl mt-4">{t.bento.eduTitle}</h3>
+              <h3 className="font-headline font-bold text-3xl md:text-4xl mt-4 leading-tight tracking-[-1px]">{t.bento.eduTitle}</h3>
               <p className="font-body text-on-surface-variant mt-4 text-lg max-w-xs">{t.bento.eduDesc}</p>
             </div>
             <div className="flex gap-2 mt-8">
