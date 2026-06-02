@@ -63,22 +63,15 @@ const BentoStats = () => {
 
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 bg-surface-container p-8 flex items-center justify-between border border-outline-variant/10"
+            className="md:col-span-2 bg-surface-container p-6 flex flex-col justify-between border border-outline-variant/10 overflow-hidden"
           >
-            <div className="flex flex-col">
-              <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.techLabel}</span>
-              <h3 className="font-headline font-bold text-3xl md:text-4xl mt-2">{t.bento.techTitle}</h3>
-            </div>
-            <div className="flex -space-x-3">
-              {['data_object', 'javascript', 'dns'].map((icon, i) => (
-                <div key={i} className="w-11 h-11 border-2 border-surface-container bg-surface-container-high flex items-center justify-center" style={{ zIndex: 40 - i * 10 }}>
-                  <span className="material-symbols-outlined text-sm text-on-surface-variant">{icon}</span>
-                </div>
-              ))}
-              <div className="w-11 h-11 border-2 border-surface-container bg-surface-container flex items-center justify-center z-10 text-on-surface font-mono font-bold text-xs">
-                +8
-              </div>
-            </div>
+            <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40 mb-3">GitHub Streak</span>
+            <img
+              src="https://streak-stats.demolab.com/?user=eminaldas&theme=transparent&hide_border=true&ring=dcd8c0&fire=dcd8c0&currStreakLabel=dcd8c0&sideLabels=9a9880&dates=9a9880&sideNums=dcd8c0&stroke=dcd8c020&background=00000000"
+              alt="GitHub Streak"
+              className="w-full object-contain"
+              style={{ filter: 'contrast(0.9) brightness(1.05)' }}
+            />
           </motion.div>
         </motion.div>
       </div>

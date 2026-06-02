@@ -6,7 +6,36 @@ const WORDS = [
   'pgvector', 'flask', 'javascript', 'bert', 'git',
 ];
 
-const FloatingWordsCanvas = () => {
+function drawArrow(ctx, x1, y1, x2, y2, opacity) {
+  const angle = Math.atan2(y2 - y1, x2 - x1);
+  const headLen = 6;
+
+  ctx.strokeStyle = `rgba(220,216,192,${opacity})`;
+  ctx.fillStyle = `rgba(220,216,192,${opacity})`;
+  ctx.lineWidth = 0.7;
+
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+
+  // arrowhead
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(
+    x2 - headLen * Math.cos(angle - Math.PI / 7),
+    y2 - headLen * Math.sin(angle - Math.PI / 7),
+  );
+  ctx.lineTo(
+    x2 - headLen * Math.cos(angle + Math.PI / 7),
+    y2 - headLen * Math.sin(angle + Math.PI / 7),
+  );
+  ctx.closePath();
+  ctx.fill();
+}
+
+// anchorsRef: ref to array of {x, y} positions (relative to canvas) from HeroSection
+const FloatingWordsCanvas = ({ anchorsRef }) => {
   const canvasRef = useRef(null);
   const stateRef = useRef({ anim: null, particles: [], mouse: { x: -9999, y: -9999 } });
 
@@ -36,6 +65,7 @@ const FloatingWordsCanvas = () => {
       const { mouse, particles } = state;
       ctx.clearRect(0, 0, W, H);
 
+      // connecting lines between close particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -52,6 +82,25 @@ const FloatingWordsCanvas = () => {
         }
       }
 
+      // arrows from letter anchors to nearest particles
+      const anchors = anchorsRef?.current ?? [];
+      const used = new Set();
+      anchors.forEach(anchor => {
+        let nearest = null;
+        let minDist = Infinity;
+        particles.forEach((p, idx) => {
+          if (used.has(idx)) return;
+          const d = Math.sqrt((p.x - anchor.x) ** 2 + (p.y - anchor.y) ** 2);
+          if (d < minDist && d > 30) { minDist = d; nearest = idx; }
+        });
+        if (nearest !== null && minDist < 280) {
+          used.add(nearest);
+          const p = particles[nearest];
+          drawArrow(ctx, anchor.x, anchor.y, p.x, p.y, 0.28);
+        }
+      });
+
+      // particles
       particles.forEach(p => {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
@@ -87,7 +136,7 @@ const FloatingWordsCanvas = () => {
       cancelAnimationFrame(state.anim);
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [anchorsRef]);
 
   const onMouseMove = e => {
     const r = canvasRef.current.getBoundingClientRect();

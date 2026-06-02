@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import FloatingWordsCanvas from './FloatingWordsCanvas';
 
 const STAGGER = 0.18;
 
-const slideUp = delay => ({
-  initial: { y: '105%', opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1], delay },
+// clip-path reveal — no overflow-hidden needed so letters aren't cropped
+const revealClip = delay => ({
+  initial: { clipPath: 'inset(0 0 100% 0)', opacity: 0 },
+  animate: { clipPath: 'inset(0 0 0% 0)', opacity: 1 },
+  transition: { duration: 1.05, ease: [0.16, 1, 0.3, 1], delay },
 });
 
 const fadeUp = delay => ({
@@ -20,20 +21,57 @@ const fadeUp = delay => ({
 const HeroSection = () => {
   const { t } = useLanguage();
 
+  // Refs for specific letter anchors (M, Ş, i)
+  const mRef   = useRef(null);
+  const sRef   = useRef(null);
+  const iRef   = useRef(null);
+  const heroRef = useRef(null);
+  const anchorsRef = useRef([]);
+
+  useEffect(() => {
+    const measure = () => {
+      if (!heroRef.current) return;
+      const heroRect = heroRef.current.getBoundingClientRect();
+      const pts = [];
+      [
+        { ref: mRef,   offsetX: -12, offsetY: -14 },  // above-left of M
+        { ref: iRef,   offsetX:  12, offsetY: -16 },  // above-right of İ dot area
+        { ref: sRef,   offsetX:  18, offsetY:   8 },  // right of Ş cedilla area
+      ].forEach(({ ref, offsetX, offsetY }) => {
+        if (!ref.current) return;
+        const r = ref.current.getBoundingClientRect();
+        pts.push({
+          x: r.left - heroRect.left + r.width / 2 + offsetX,
+          y: r.top  - heroRect.top  + r.height / 2 + offsetY,
+        });
+      });
+      anchorsRef.current = pts;
+    };
+
+    // measure after animations complete (~1.5s)
+    const t1 = setTimeout(measure, 1500);
+    window.addEventListener('resize', measure);
+    return () => { clearTimeout(t1); window.removeEventListener('resize', measure); };
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-      {/* animated grid background overlay — slightly brightens the CSS grid in hero */}
+    <section
+      ref={heroRef}
+      id="home"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+    >
+      {/* subtle radial glow over grid */}
       <motion.div
         className="absolute inset-0 pointer-events-none z-[0]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 0.5 }}
+        transition={{ duration: 2.5, delay: 0.5 }}
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(220,216,192,0.04) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 70% 55% at 40% 50%, rgba(220,216,192,0.05) 0%, transparent 70%)',
         }}
       />
 
-      <FloatingWordsCanvas />
+      <FloatingWordsCanvas anchorsRef={anchorsRef} />
       <div className="absolute inset-0 grain-texture pointer-events-none z-[1]" />
 
       <div className="relative z-[2] max-w-7xl mx-auto px-8 w-full py-32">
@@ -46,40 +84,33 @@ const HeroSection = () => {
           {t.hero.location}
         </motion.span>
 
-        {/* Name line 1 */}
-        <div className="overflow-hidden mb-1">
-          <motion.h1
-            className="font-headline font-black leading-[0.88] tracking-[-4px] uppercase text-on-surface"
-            style={{ fontSize: 'clamp(60px, 9.5vw, 108px)' }}
-            {...slideUp(0.3)}
-          >
-            {t.hero.titleTop}
-          </motion.h1>
-        </div>
-
-        {/* Name line 2 — stroke outline */}
-        <div className="overflow-hidden mb-12">
-          <motion.h1
-            className="font-headline font-black leading-[0.88] tracking-[-4px] uppercase"
-            style={{
-              fontSize: 'clamp(60px, 9.5vw, 108px)',
-              WebkitTextStroke: '1.5px rgba(220,216,192,0.55)',
-              color: 'transparent',
-            }}
-            {...slideUp(0.3 + STAGGER)}
-          >
-            {t.hero.titleBottom}
-          </motion.h1>
-        </div>
-
-        {/* Role tag line */}
-        <motion.div
-          className="flex items-center gap-3 mb-6"
-          {...fadeUp(0.3 + STAGGER * 2)}
+        {/* Name line 1 — clipPath reveal, no overflow-hidden so letters aren't cropped */}
+        <motion.h1
+          className="font-headline font-black leading-none tracking-[-4px] uppercase text-on-surface mb-0"
+          style={{ fontSize: 'clamp(60px, 9.5vw, 110px)' }}
+          {...revealClip(0.3)}
         >
+          <span ref={mRef}>M</span>UHAMMED
+        </motion.h1>
+
+        {/* Name line 2 — stroke outline, Ş and İ refs for arrows */}
+        <motion.h1
+          className="font-headline font-black leading-none tracking-[-4px] uppercase mb-12"
+          style={{
+            fontSize: 'clamp(60px, 9.5vw, 110px)',
+            WebkitTextStroke: '1.5px rgba(220,216,192,0.55)',
+            color: 'transparent',
+          }}
+          {...revealClip(0.3 + STAGGER)}
+        >
+          EM<span ref={iRef}>İ</span>N ALDAŞ<span ref={sRef} style={{ position: 'relative' }} />
+        </motion.h1>
+
+        {/* Role tag */}
+        <motion.div className="flex items-center gap-3 mb-6" {...fadeUp(0.3 + STAGGER * 2)}>
           <div className="w-6 h-[1px] bg-on-surface/30" />
           <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/50">
-            Full-Stack Engineer
+            Full-Stack Engineer · İstanbul
           </span>
         </motion.div>
 
@@ -92,10 +123,7 @@ const HeroSection = () => {
         </motion.p>
 
         {/* CTA buttons */}
-        <motion.div
-          className="flex flex-wrap gap-3"
-          {...fadeUp(0.3 + STAGGER * 4)}
-        >
+        <motion.div className="flex flex-wrap gap-3" {...fadeUp(0.3 + STAGGER * 4)}>
           <a
             href="https://github.com/eminaldas"
             target="_blank"
@@ -112,14 +140,14 @@ const HeroSection = () => {
           </a>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats — only truthful ones */}
         <motion.div
-          className="flex items-center gap-10 mt-16 pt-8 border-t border-on-surface/8"
+          className="flex items-center gap-10 mt-16 pt-8 border-t border-on-surface/[0.08]"
           {...fadeUp(0.3 + STAGGER * 5)}
         >
           {[
-            { value: '2+', label: 'Yıl Deneyim' },
-            { value: '4+', label: 'Canlı Proje' },
+            { value: '1+', label: 'Yıl Deneyim' },
+            { value: '2026', label: 'Mezuniyet' },
             { value: 'nehaber.dev', label: 'Production' },
           ].map(stat => (
             <div key={stat.label} className="flex flex-col gap-1">
@@ -138,7 +166,7 @@ const HeroSection = () => {
         <span className="font-mono text-[10px] tracking-[.2em] uppercase text-on-surface-variant/30">scroll</span>
       </div>
 
-      {/* Right side — vertical label */}
+      {/* Vertical label right */}
       <motion.div
         className="absolute right-8 top-1/2 -translate-y-1/2 z-[2] hidden lg:flex flex-col items-center gap-4"
         {...fadeUp(0.3 + STAGGER * 6)}
