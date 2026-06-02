@@ -90,11 +90,29 @@ const HeroSection = () => {
 
         {/* ② İsim 2 — sağdan, delay 0.22 */}
         <motion.h1
-          className="font-headline font-black leading-none tracking-[-4px] uppercase mb-10"
-          style={{ fontSize: 'clamp(60px, 9.5vw, 110px)', WebkitTextStroke: '1.5px rgba(220,216,192,0.55)', color: 'transparent' }}
+          className="leading-none mb-10 flex flex-wrap items-baseline gap-x-4"
+          style={{ fontSize: 'clamp(60px, 9.5vw, 110px)' }}
           {...mk(hide(180, 0), vis ? show(0, 0) : hide(180, 0), 0.22)}
         >
-          EM<span ref={iRef}>İ</span>N ALDAŞ<span ref={sRef} style={{ position: 'relative' }} />
+          {/* EMİN — stroke outline, Space Grotesk */}
+          <span
+            className="font-headline font-black tracking-[-4px] uppercase"
+            style={{ WebkitTextStroke: '1.5px rgba(220,216,192,0.55)', color: 'transparent' }}
+          >
+            EM<span ref={iRef}>İ</span>N
+          </span>
+          {/* ALDAŞ — Cormorant italic, solid cream */}
+          <span
+            style={{
+              fontFamily: "'Cormorant', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 300,
+              color: '#dcd8c0',
+              letterSpacing: '-1px',
+            }}
+          >
+            Aldaş<span ref={sRef} style={{ position: 'relative' }} />
+          </span>
         </motion.h1>
 
         {/* ③ Açıklama — sağdan, delay 0.5 */}
@@ -138,7 +156,6 @@ const HeroSection = () => {
         >
           {[
             { value: '1+',          label: 'Yıl Deneyim',  serif: true  },
-            { value: '2026',        label: 'Mezuniyet',    serif: false },
             { value: 'nehaber.dev', label: 'Production',   serif: false },
           ].map(stat => (
             <div key={stat.label} className="flex flex-col gap-1">

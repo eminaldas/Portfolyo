@@ -39,7 +39,7 @@ const FeaturedWork = () => {
             <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/35 mb-3 block">
               {t.works.label}
             </span>
-            <h2 className="font-headline font-black uppercase tracking-[-2px]"
+            <h2 className="cursor-target font-headline font-black uppercase tracking-[-2px]"
               style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
               {t.works.title}
             </h2>
@@ -75,7 +75,7 @@ const FeaturedWork = () => {
                     </h3>
                     <div className="flex items-center gap-2 flex-shrink-0">
                       {proj.live && (
-                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-[.15em] uppercase text-on-surface">
+                        <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-[.15em] uppercase" style={{ color: '#dcd8c0' }}>
                           <span className="w-1.5 h-1.5 rounded-full bg-on-surface animate-pulse" />
                           {proj.live}
                         </span>
@@ -94,7 +94,7 @@ const FeaturedWork = () => {
                       </span>
                     ))}
                   </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{t.works[proj.descKey]}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(220,216,192,0.65)' }}>{t.works[proj.descKey]}</p>
                 </div>
 
                 <div className="px-4 sm:px-5 py-7 border-l border-outline-variant/10 flex flex-col items-end justify-between min-w-[56px]">

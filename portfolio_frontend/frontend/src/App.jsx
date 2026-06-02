@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import Navbar from './assets/components/Navbar';
-import Footer from './assets/components/Footer';
 import LandingPage from './pages/LandingPage';
 import SocialSidebar from './assets/components/SocialSidebar';
 import Preloader from './assets/components/Preloader';
@@ -40,7 +39,6 @@ function App() {
             <main className="relative">
               <LandingPage />
             </main>
-            <Footer />
           </div>
         </BuildProvider>
       </LanguageProvider>

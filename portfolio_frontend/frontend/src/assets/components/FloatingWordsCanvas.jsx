@@ -16,16 +16,30 @@ const LEVELS = [
 
 function drawArrow(ctx, x1, y1, x2, y2, opacity) {
   const angle = Math.atan2(y2 - y1, x2 - x1);
-  const headLen = 6;
-  ctx.strokeStyle = `rgba(220,216,192,${opacity})`;
-  ctx.fillStyle   = `rgba(220,216,192,${opacity})`;
-  ctx.lineWidth   = 0.7;
+  const headLen = 9;
+  const col = `rgba(220,216,192,${opacity})`;
+
+  // Line with dash pattern — daha zarif
+  ctx.save();
+  ctx.setLineDash([4, 6]);
+  ctx.strokeStyle = col;
+  ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  ctx.restore();
+
+  // Solid arrowhead
+  ctx.fillStyle = col;
   ctx.beginPath();
   ctx.moveTo(x2, y2);
-  ctx.lineTo(x2 - headLen * Math.cos(angle - Math.PI / 7), y2 - headLen * Math.sin(angle - Math.PI / 7));
-  ctx.lineTo(x2 - headLen * Math.cos(angle + Math.PI / 7), y2 - headLen * Math.sin(angle + Math.PI / 7));
+  ctx.lineTo(x2 - headLen * Math.cos(angle - Math.PI / 6), y2 - headLen * Math.sin(angle - Math.PI / 6));
+  ctx.lineTo(x2 - headLen * Math.cos(angle + Math.PI / 6), y2 - headLen * Math.sin(angle + Math.PI / 6));
   ctx.closePath(); ctx.fill();
+
+  // Small circle at origin
+  ctx.beginPath();
+  ctx.arc(x1, y1, 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = col;
+  ctx.fill();
 }
 
 const FloatingWordsCanvas = ({ anchorsRef }) => {
@@ -103,7 +117,7 @@ const FloatingWordsCanvas = ({ anchorsRef }) => {
         if (nearest !== null && minDist < 300) {
           used.add(nearest);
           const p = particles[nearest];
-          drawArrow(ctx, anchor.x, anchor.y, p.x, p.y, 0.25);
+          drawArrow(ctx, anchor.x, anchor.y, p.x, p.y, 0.50);
         }
       });
 

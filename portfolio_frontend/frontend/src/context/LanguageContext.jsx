@@ -71,7 +71,7 @@ const translations = {
     },
     works: {
       label: "My Work",
-      title: "SELECTED PROJECTS",
+      title: "PROJECTS",
       desc: "A selection of my recent personal and academic projects.",
       view: "VIEW",
       p1Title: "NeHaber — Fake News Detection",
@@ -82,8 +82,8 @@ const translations = {
     },
     contact: {
       label: "Let's Connect",
-      title1: "Got a project ",
-      title2: "in mind?",
+      title1: "Let's build ",
+      title2: "together.",
       desc: "I am currently open for full-time junior tech roles, part-time jobs, and freelance web-development opportunities.",
       formName: "Full Name",
       formEmail: "Email Address",
@@ -169,7 +169,7 @@ const translations = {
     },
     works: {
       label: "Çalışmalarım",
-      title: "SEÇKİN PROJELER",
+      title: "PROJELER",
       desc: "Yakın zamandaki kişisel ve akademik projelerimden bir seçki.",
       view: "İNCELE",
       p1Title: "NeHaber — Sahte Haber Tespiti",
@@ -180,8 +180,8 @@ const translations = {
     },
     contact: {
       label: "Bağlantı Kuralım",
-      title1: "Aklında bir proje ",
-      title2: "mi var?",
+      title1: "Gel beraber ",
+      title2: "çalışalım.",
       desc: "Şu anda tam zamanlı junior pozisyonlar, yarı zamanlı roller ve bağımsız geliştirici (freelance) seçeneklerine açığım.",
       formName: "Ad Soyad",
       formEmail: "E-posta Adresi",
