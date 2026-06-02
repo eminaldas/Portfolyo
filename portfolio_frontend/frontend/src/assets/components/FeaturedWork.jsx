@@ -2,87 +2,113 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
+const PROJECTS = [
+  {
+    num: '001',
+    titleKey: 'p1Title',
+    descKey: 'p1Desc',
+    tags: ['Python', 'FastAPI', 'BERTurk', 'Docker', 'Celery', 'Redis', 'pgvector'],
+    year: '2026',
+    live: 'nehaber.dev',
+    liveHref: 'https://nehaber.dev',
+    github: 'https://github.com/eminaldas/Fake-News-Detection-System',
+    badge: false,
+  },
+  {
+    num: '002',
+    titleKey: 'p2Title',
+    descKey: 'p2Desc',
+    tags: ['Angular', 'TypeScript', 'REST API'],
+    year: '2025',
+    live: null,
+    liveHref: null,
+    github: 'https://github.com/ErdemKoray/Beavask',
+    badge: true,
+  },
+];
+
 const FeaturedWork = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="works" className="py-40 bg-surface-container-low overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="font-label text-primary tracking-[0.3em] uppercase mb-4 block text-sm">{t.works.label}</span>
-            <h2 className="font-headline font-black text-6xl tracking-tighter">{t.works.title}</h2>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="max-w-xs text-on-surface-variant font-body"
-          >
+    <section id="works" className="py-24 bg-surface-container-low border-b border-outline-variant/10">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+          <div>
+            <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/35 mb-3 block">
+              {t.works.label}
+            </span>
+            <h2
+              className="font-headline font-black uppercase tracking-[-2px]"
+              style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+            >
+              {t.works.title}
+            </h2>
+          </div>
+          <p className="sm:max-w-[180px] text-on-surface-variant text-sm sm:text-right leading-relaxed">
             {t.works.desc}
-          </motion.p>
+          </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Project Card 1 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="group relative"
-          >
-            <div className="aspect-video rounded-3xl overflow-hidden bg-surface-container mb-8 relative border border-outline-variant/10 shadow-2xl">
-               <img src="/images/proje-nlp.png" alt="NeHaber NLP System" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <a href="https://github.com/eminaldas/Fake-News-Detection-System" target="_blank" rel="noreferrer" className="bg-on-primary text-primary w-16 h-16 rounded-full flex items-center justify-center font-bold shadow-xl">{t.works.view}</a>
+
+        <div className="flex flex-col gap-[2px]">
+          {PROJECTS.map((proj, i) => (
+            <motion.a
+              key={proj.num}
+              href={proj.github}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group flex items-stretch border border-outline-variant/10 hover:border-outline/25 transition-colors duration-300 relative overflow-hidden"
+            >
+              <div className="absolute left-0 top-0 w-[3px] h-0 group-hover:h-full bg-primary transition-all duration-500 ease-out" />
+
+              <div className="font-mono text-[11px] text-on-surface-variant/25 px-5 py-7 border-r border-outline-variant/10 flex items-start min-w-[60px]">
+                {proj.num}
               </div>
-               <div className="absolute top-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-3 py-1 bg-background/80 backdrop-blur-md rounded-full text-[10px] font-label uppercase tracking-widest text-on-surface">Python</span>
-                <span className="px-3 py-1 bg-background/80 backdrop-blur-md rounded-full text-[10px] font-label uppercase tracking-widest text-on-surface">FastAPI</span>
+
+              <div className="flex-1 px-8 py-7">
+                <div className="flex flex-wrap items-start justify-between mb-3 gap-3">
+                  <h3 className="font-headline font-black text-xl uppercase tracking-tight group-hover:text-on-surface transition-colors">
+                    {t.works[proj.titleKey]}
+                  </h3>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    {proj.live && (
+                      <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-[.15em] uppercase text-on-surface">
+                        <span className="w-1.5 h-1.5 rounded-full bg-on-surface animate-pulse" />
+                        {proj.live}
+                      </span>
+                    )}
+                    {proj.badge && (
+                      <span className="font-mono text-[9px] tracking-[.15em] uppercase border border-outline/30 px-2 py-0.5 text-on-surface-variant/60">
+                        {t.works.award}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {proj.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[9px] tracking-[.12em] uppercase border border-outline-variant/15 px-2 py-1 text-on-surface-variant/45"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-on-surface-variant leading-relaxed">{t.works[proj.descKey]}</p>
               </div>
-            </div>
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-headline font-bold text-2xl group-hover:text-primary transition-colors">NeHaber - NLP System</h3>
-                <p className="text-on-surface-variant mt-2">{t.works.p1Desc}</p>
+
+              <div className="px-5 py-7 border-l border-outline-variant/10 flex flex-col items-end justify-between min-w-[70px]">
+                <span className="font-mono text-[11px] text-on-surface-variant/25">{proj.year}</span>
+                <span className="text-on-surface-variant/25 group-hover:text-on-surface group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-lg">
+                  ↗
+                </span>
               </div>
-              <span className="font-label text-xs border border-outline-variant px-3 py-1 rounded-full">2026</span>
-            </div>
-          </motion.div>
-          
-          {/* Project Card 2 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="group relative md:mt-24"
-          >
-            <div className="aspect-video rounded-3xl overflow-hidden bg-surface-container mb-8 relative border border-outline-variant/10 shadow-2xl">
-               <img src="/images/Beavaskweb - Google Chrome 9.06.2025 12_07_38.png" alt="Beavask Task Manager" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-               <div className="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <a href="https://github.com/ErdemKoray/Beavask" target="_blank" rel="noreferrer" className="bg-on-secondary text-secondary w-16 h-16 rounded-full flex items-center justify-center font-bold shadow-xl">{t.works.view}</a>
-              </div>
-               <div className="absolute top-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-3 py-1 bg-background/80 backdrop-blur-md rounded-full text-[10px] font-label uppercase tracking-widest text-on-surface">Angular</span>
-                <span className="px-3 py-1 bg-background/80 backdrop-blur-md rounded-full text-[10px] font-label uppercase tracking-widest text-on-surface">REST API</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-headline font-bold text-2xl group-hover:text-secondary transition-colors">Beavask - Task Manager</h3>
-                <p className="text-on-surface-variant mt-2">{t.works.p2Desc}</p>
-              </div>
-              <span className="font-label text-xs border border-outline-variant px-3 py-1 rounded-full">2025</span>
-            </div>
-          </motion.div>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>
