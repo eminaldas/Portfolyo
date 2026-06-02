@@ -175,8 +175,3 @@ html {
   background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM9xU6Ykgphps4wON9gJkyZsKmd-GU2qsMU0SroBy77ro7SVKPC59yOdimMwMOSdwUkeuD41_y5OV3fOsi62kinJ0FbbUzyHH7Zl7dAJi_CV5qwn_7Cu6wwSPyl5q018_NVMuChexQGinUigkWnAyjcQ52nmUMbVn8MCRWiXf-IASCACEn0iFUzN2VlDUyL_hijwD_8VGhOJTWzTNh2JOcI2LSWJx2DQ6SyfiybhtO4HT6HWudX41rjIt5199O3dljWeVI19mFzSc0");
   opacity: 0.05;
 }
-
-.editorial-gradient {
-  background: radial-gradient(circle at top right, rgba(204, 151, 255, 0.15), transparent 40%), 
-              radial-gradient(circle at bottom left, rgba(58, 223, 250, 0.1), transparent 40%);
-}
