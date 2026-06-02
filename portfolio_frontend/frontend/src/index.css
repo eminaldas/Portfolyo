@@ -169,6 +169,11 @@ html {
   scroll-padding-top: 72px;
 }
 
+/* ReactBits TargetCursor — köşe braketleri ve nokta krem palette */
+.target-cursor-corner {
+  border-color: rgba(220, 216, 192, 0.72) !important;
+}
+
 /* Hide default cursor on desktop, keep on touch devices */
 @media (pointer: fine) {
   * { cursor: none !important; }

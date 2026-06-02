@@ -74,6 +74,7 @@ const SkillsSection = () => {
           {SKILLS.map((s, i) => (
             <motion.span
               key={i}
+              className="cursor-target"
               initial={INIT[s.dir]}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
