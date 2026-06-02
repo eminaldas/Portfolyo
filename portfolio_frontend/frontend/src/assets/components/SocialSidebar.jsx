@@ -25,7 +25,7 @@ const SocialSidebar = () => (
           target="_blank"
           rel="noreferrer"
           aria-label={label}
-          className="group flex items-center justify-center w-10 h-10 text-on-surface/40 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
+          className="cursor-target group flex items-center justify-center w-10 h-10 text-on-surface/40 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
         >
           <FontAwesomeIcon
             icon={icon}

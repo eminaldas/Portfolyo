@@ -36,7 +36,7 @@ const Navbar = () => {
             <a
               key={link.num}
               href={link.href}
-              className="flex items-center gap-1.5 px-5 py-2 font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/50 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
+              className="cursor-target flex items-center gap-1.5 px-5 py-2 font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/50 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
             >
               <span className="text-on-surface/25">{link.num}/</span>
               {link.label}
@@ -55,7 +55,7 @@ const Navbar = () => {
             href="/images/resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="px-4 py-2 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
+            className="cursor-target px-4 py-2 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
           >
             {t.nav.resume} ↗
           </a>

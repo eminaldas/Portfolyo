@@ -1,148 +1,134 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { useLanguage } from '../../context/LanguageContext';
+
+const CONTACTS = [
+  {
+    num: '01',
+    label: 'E-posta',
+    value: 'eminaldas575@gmail.com',
+    href: 'mailto:eminaldas575@gmail.com',
+    icon: null,
+    mono: true,
+  },
+  {
+    num: '02',
+    label: 'GitHub',
+    value: 'github.com/eminaldas',
+    href: 'https://github.com/eminaldas',
+    faIcon: faGithub,
+  },
+  {
+    num: '03',
+    label: 'LinkedIn',
+    value: '/muhammedeminaldas',
+    href: 'https://linkedin.com/in/muhammedeminaldas',
+    faIcon: faLinkedinIn,
+  },
+  {
+    num: '04',
+    label: 'Konum',
+    value: 'İstanbul, Türkiye',
+    href: null,
+  },
+];
 
 const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
     <section id="contact" className="py-32 relative w-full border-t border-outline-variant/10">
-      <div className="max-w-7xl mx-auto px-8 mb-20 md:mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-8"
-          >
-            <span className="font-label text-secondary tracking-[0.2em] text-xs font-semibold mb-6 block uppercase">{t.contact.label}</span>
-            <h2 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-on-background leading-[0.95]">
-              {t.contact.title1} <span className="text-primary italic">{t.contact.title2}</span>
-            </h2>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-4 pb-4"
-          >
-            <p className="text-on-surface-variant text-lg leading-relaxed font-light max-w-sm">
-              {t.contact.desc}
-            </p>
-          </motion.div>
+      <div className="max-w-7xl mx-auto px-8">
+
+        {/* Başlık */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/40 mb-6 block">
+            {t.contact.label}
+          </span>
+          <h2 className="font-headline font-black tracking-[-3px] leading-[0.92] text-on-surface"
+            style={{ fontSize: 'clamp(48px, 8vw, 108px)' }}>
+            {t.contact.title1}
+            <span
+              style={{ fontFamily: "'Cormorant', Georgia, serif", fontStyle: 'italic', fontWeight: 200, color: 'rgba(220,216,192,0.55)' }}
+            >
+              {' '}{t.contact.title2}
+            </span>
+          </h2>
+          <p className="font-body text-on-surface-variant mt-6 max-w-lg leading-relaxed text-lg">
+            {t.contact.desc}
+          </p>
+        </motion.div>
+
+        {/* İletişim grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[2px]">
+          {CONTACTS.map((c, i) => {
+            const Inner = (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                className="cursor-target group border border-on-surface/10 p-8 flex flex-col justify-between gap-6 hover:border-on-surface/30 hover:bg-on-surface/[0.03] transition-all duration-300 min-h-[180px]"
+              >
+                {/* Numara + ikon */}
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/30">
+                    {c.num}
+                  </span>
+                  {c.faIcon && (
+                    <FontAwesomeIcon
+                      icon={c.faIcon}
+                      className="w-4 h-4 text-on-surface/25 group-hover:text-on-surface/60 transition-colors"
+                    />
+                  )}
+                </div>
+
+                {/* İçerik */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-mono text-[10px] tracking-[.2em] uppercase text-on-surface-variant/40">
+                    {c.label}
+                  </span>
+                  <span
+                    className="font-headline font-bold text-on-surface group-hover:text-on-surface transition-colors leading-tight"
+                    style={{ fontSize: 'clamp(14px, 1.8vw, 20px)' }}
+                  >
+                    {c.value}
+                  </span>
+                </div>
+
+                {/* Link oku */}
+                {c.href && (
+                  <span className="font-mono text-[9px] tracking-[.15em] uppercase text-on-surface-variant/25 group-hover:text-on-surface/50 transition-colors self-end">
+                    ↗
+                  </span>
+                )}
+              </motion.div>
+            );
+
+            return c.href ? (
+              <a
+                key={c.num}
+                href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
+              >
+                {Inner}
+              </a>
+            ) : (
+              <div key={c.num}>{Inner}</div>
+            );
+          })}
         </div>
+
       </div>
-
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-12"
-        >
-          <form action="#" className="space-y-8">
-            <div className="group relative">
-              <label className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" htmlFor="name">{t.contact.formName}</label>
-              <input className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-0 text-xl font-body placeholder:text-outline-variant focus:ring-0 focus:border-primary transition-all outline-none" id="name" name="name" placeholder={t.contact.formPlaceholderName} type="text" />
-            </div>
-            <div className="group relative">
-              <label className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" htmlFor="email">{t.contact.formEmail}</label>
-              <input className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-0 text-xl font-body placeholder:text-outline-variant focus:ring-0 focus:border-primary transition-all outline-none" id="email" name="email" placeholder="john@example.com" type="email" />
-            </div>
-            <div className="group relative">
-              <label className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" htmlFor="message">{t.contact.formMessage}</label>
-              <textarea className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-0 text-xl font-body placeholder:text-outline-variant focus:ring-0 focus:border-primary transition-all outline-none resize-none" id="message" name="message" placeholder={t.contact.formPlaceholderMsg} rows="4"></textarea>
-            </div>
-            <button className="group relative inline-flex items-center gap-4 bg-primary text-on-primary px-10 py-5  font-headline font-bold text-lg overflow-hidden transition-all hover:scale-[1.02] active:scale-95" type="submit">
-              <span className="relative z-10">{t.contact.sendBtn}</span>
-              <span className="material-symbols-outlined relative z-10 transition-transform group-hover:translate-x-2" data-icon="arrow_forward">arrow_forward</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dim opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
-          </form>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-16"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="space-y-4">
-              <h3 className="font-headline text-xl font-bold">{t.contact.getInTouch}</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a className="group flex items-center gap-3 text-on-surface-variant hover:text-on-background transition-colors" href="mailto:eminaldas575@gmail.com">
-                    <span className="material-symbols-outlined text-primary p-2 bg-surface-container-high  group-hover:bg-primary group-hover:text-on-primary transition-all" data-icon="alternate_email">alternate_email</span>
-                    <span className="font-body text-sm">eminaldas575@gmail.com</span>
-                  </a>
-                </li>
-                <li>
-                  <div className="group flex items-center gap-3 text-on-surface-variant hover:text-on-background transition-colors">
-                    <span className="material-symbols-outlined text-primary p-2 bg-surface-container-high  group-hover:bg-primary group-hover:text-on-primary transition-all" data-icon="distance">distance</span>
-                    <span className="font-body text-sm">{t.hero.location}</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-headline text-xl font-bold">{t.contact.aroundWeb}</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a className="group flex items-center gap-3 text-on-surface-variant hover:text-on-background transition-colors" href="https://linkedin.com/in/muhammedeminaldas" target="_blank" rel="noreferrer">
-                    <span className="material-symbols-outlined text-secondary p-2 bg-surface-container-high  group-hover:bg-secondary group-hover:text-on-secondary transition-all" data-icon="work">work</span>
-                    <span className="font-body text-sm">LinkedIn</span>
-                  </a>
-                </li>
-                <li>
-                  <a className="group flex items-center gap-3 text-on-surface-variant hover:text-on-background transition-colors" href="https://github.com/eminaldas" target="_blank" rel="noreferrer">
-                    <span className="material-symbols-outlined text-secondary p-2 bg-surface-container-high  group-hover:bg-secondary group-hover:text-on-secondary transition-all" data-icon="code">code</span>
-                    <span className="font-body text-sm">GitHub</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Availability + info card */}
-          <div className="border border-on-surface/15 p-8 flex flex-col gap-8 bg-surface-container">
-            {/* Status */}
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-on-surface animate-pulse" />
-              <span className="font-mono text-[11px] tracking-[.2em] uppercase text-on-surface/60">
-                {t.contact.availability}
-              </span>
-            </div>
-
-            {/* Big stat */}
-            <div className="border-t border-on-surface/10 pt-8">
-              <p className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40 mb-4">
-                Aras Kargo
-              </p>
-              <p className="font-headline font-black text-4xl tracking-[-1px] leading-tight text-on-surface">
-                2+ yıl<br />kurumsal<br />deneyim
-              </p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {['Python', 'React', 'FastAPI', 'PostgreSQL', 'Docker'].map(tag => (
-                <span
-                  key={tag}
-                  className="font-mono text-[9px] tracking-[.12em] uppercase border border-on-surface/15 px-2.5 py-1 text-on-surface/50"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
     </section>
   );
 };
