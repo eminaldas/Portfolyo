@@ -157,14 +157,21 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+/* Hide default cursor on desktop, keep on touch devices */
+@media (pointer: fine) {
+  * { cursor: none !important; }
 }
 
 body {
   background-color: var(--color-background);
   background-image:
-    linear-gradient(rgba(220,216,192,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(220,216,192,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(220,216,192,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220,216,192,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
+  background-attachment: fixed;
 }
 
 ::-webkit-scrollbar {

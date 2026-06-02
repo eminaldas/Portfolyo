@@ -50,19 +50,6 @@ const AboutSection = () => {
             <p>{t.about.desc1}</p>
             <p>{t.about.desc2}</p>
           </div>
-          <div className="mt-12">
-            <span className="font-mono text-[10px] uppercase tracking-[.25em] text-on-surface-variant/40 mb-6 block">{t.about.technicalArsenal}</span>
-            <div className="flex flex-wrap gap-2">
-              {['Python', 'FastAPI', 'Flask', 'React', 'Angular', 'PostgreSQL', 'MongoDB', 'Docker', 'Git', 'C/C++'].map(skill => (
-                <div
-                  key={skill}
-                  className="px-4 py-2 border border-outline-variant/20 bg-surface-container-low/50 text-on-surface font-mono text-sm hover:border-outline/40 hover:text-on-surface transition-colors cursor-default"
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>
