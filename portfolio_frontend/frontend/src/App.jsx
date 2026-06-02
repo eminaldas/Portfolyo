@@ -5,7 +5,7 @@ import LandingPage from './pages/LandingPage';
 import SocialSidebar from './assets/components/SocialSidebar';
 import Preloader from './assets/components/Preloader';
 import GridCanvas from './assets/components/GridCanvas';
-import CustomCursor from './assets/components/CustomCursor';
+import TargetCursor from './assets/components/TargetCursor';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { BuildProvider } from './context/BuildContext';
@@ -33,7 +33,7 @@ function App() {
             <Preloader onComplete={handleComplete} />
           )}
           <GridCanvas />
-          <CustomCursor />
+          <TargetCursor />
           <div className="bg-background text-on-background font-body selection:bg-primary/20 selection:text-on-primary">
             <Navbar />
             <SocialSidebar />

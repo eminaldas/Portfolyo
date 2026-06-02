@@ -1,191 +1,170 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
 const PROJECTS = [
   {
-    num: '001',
-    titleKey: 'p1Title',
-    descKey: 'p1Desc',
+    num: '001', year: '2026',
+    titleKey: 'p1Title', descKey: 'p1Desc',
     tags: ['Python', 'FastAPI', 'BERTurk', 'Docker', 'Celery', 'Redis', 'pgvector'],
-    year: '2026',
-    live: 'nehaber.dev',
-    liveHref: 'https://nehaber.dev',
+    live: 'nehaber.dev', liveHref: 'https://nehaber.dev',
     github: 'https://github.com/eminaldas/Fake-News-Detection-System',
     badge: false,
-    collapsible: true,
-    extraDetails: [
-      { label: 'Mimari', value: 'FastAPI + Celery + Redis async pipeline' },
-      { label: 'NLP', value: 'BERTurk + TF-IDF hibrit ensemble model' },
-      { label: 'Veritabanı', value: 'PostgreSQL + pgvector semantic search' },
-      { label: 'Deploy', value: 'Docker Compose, production\'da canlı' },
-    ],
   },
   {
-    num: '002',
-    titleKey: 'p2Title',
-    descKey: 'p2Desc',
+    num: '002', year: '2025',
+    titleKey: 'p2Title', descKey: 'p2Desc',
     tags: ['Angular', 'TypeScript', 'REST API'],
-    year: '2025',
-    live: null,
-    liveHref: null,
+    live: null, liveHref: null,
     github: 'https://github.com/ErdemKoray/Beavask',
     badge: true,
-    collapsible: false,
-    extraDetails: [],
   },
 ];
 
-const FeaturedWork = () => {
-  const { t } = useLanguage();
-  const [expanded, setExpanded] = useState(null);
+// Arka plan scatter kelimeleri
+const BG_WORDS = [
+  { text: 'Full-Stack',   x: '5%',  y: '12%', size: 11, mono: true  },
+  { text: 'Production',   x: '72%', y: '9%',  size: 11, serif: true },
+  { text: 'NLP',          x: '4%',  y: '60%', size: 12, mono: true  },
+  { text: 'React',        x: '78%', y: '58%', size: 11, serif: true },
+  { text: 'Docker',       x: '28%', y: '80%', size: 11, mono: true  },
+  { text: 'BERT',         x: '60%', y: '82%', size: 11, serif: true },
+  { text: 'FastAPI',      x: '44%', y: '20%', size: 11, mono: true  },
+  { text: 'Angular',      x: '16%', y: '35%', size: 11, serif: true },
+];
 
-  const toggle = (i, isCollapsible) => {
-    if (!isCollapsible) return;
-    setExpanded(prev => (prev === i ? null : i));
-  };
+const BgWord = ({ w, scrollP }) => {
+  const op = useTransform(scrollP, [0, 0.08, 0.30, 0.42], [0, 0.28, 0.28, 0]);
+  return (
+    <motion.div
+      className="absolute select-none pointer-events-none whitespace-nowrap"
+      style={{
+        left: w.x, top: w.y, opacity: op,
+        fontFamily: w.mono ? "'IBM Plex Mono', monospace" : "'Cormorant', Georgia, serif",
+        fontSize: w.size, fontStyle: w.serif ? 'italic' : 'normal',
+        fontWeight: w.mono ? 400 : 300,
+        letterSpacing: w.mono ? '0.12em' : '0.02em',
+        textTransform: w.mono ? 'uppercase' : 'none',
+        color: '#dcd8c0',
+      }}
+    >
+      {w.text}
+    </motion.div>
+  );
+};
+
+const ProjectCard = ({ proj, scrollP, idx, t }) => {
+  const s0 = idx === 0 ? 0.38 : 0.72;
+  const s1 = idx === 0 ? 0.52 : 0.82;
+  const s2 = idx === 0 ? 0.68 : 1.02;
+  const s3 = idx === 0 ? 0.78 : 1.10;
+  const dir = idx === 0 ? -120 : 120;
+
+  const op = useTransform(scrollP, [s0, s1, s2, s3], [0, 1, 1, 0]);
+  const x  = useTransform(scrollP, [s0, s1, s2, s3], [dir, 0, 0, -dir]);
+
+  const bgNumOp = useTransform(scrollP, [s0, s1, s2, s3], [0, 0.07, 0.07, 0]);
 
   return (
-    <section id="works" className="py-24 bg-surface-container-low border-b border-outline-variant/10">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/35 mb-3 block">
-              {t.works.label}
-            </span>
-            <h2
-              className="font-headline font-black uppercase tracking-[-2px]"
-              style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
-            >
-              {t.works.title}
-            </h2>
-          </div>
-          <p className="sm:max-w-[180px] text-on-surface-variant text-sm sm:text-right leading-relaxed">
-            {t.works.desc}
-          </p>
+    <motion.div
+      className="absolute inset-0 flex items-center max-w-7xl mx-auto px-8 w-full"
+      style={{ opacity: op, x }}
+    >
+      {/* Büyük arka plan numarası */}
+      <motion.span
+        className="absolute select-none pointer-events-none font-headline font-black"
+        style={{
+          fontSize: 'clamp(140px, 25vw, 260px)',
+          right: idx === 0 ? '5%' : 'auto', left: idx === 1 ? '5%' : 'auto',
+          top: '50%', transform: 'translateY(-50%)',
+          opacity: bgNumOp, color: '#dcd8c0', letterSpacing: '-8px',
+        }}
+      >
+        {proj.num}
+      </motion.span>
+
+      {/* İçerik */}
+      <div className={`relative z-10 max-w-2xl ${idx === 1 ? 'ml-auto' : ''}`}>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/35">{proj.num}</span>
+          <div className="w-8 h-[1px] bg-on-surface/20" />
+          <span className="font-mono text-[10px] tracking-[.1em] text-on-surface-variant/35">{proj.year}</span>
         </div>
 
-        <div className="flex flex-col gap-[2px]">
-          {PROJECTS.map((proj, i) => (
-            <motion.div
-              key={proj.num}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="border border-outline-variant/10 hover:border-outline/25 transition-colors duration-300 relative overflow-hidden"
-              onClick={() => toggle(i, proj.collapsible)}
-              style={{ cursor: proj.collapsible ? 'pointer' : 'default' }}
-            >
-              <div className="absolute left-0 top-0 w-[3px] h-0 hover:h-full bg-primary transition-all duration-500 ease-out" />
+        <h3
+          className="font-headline font-black uppercase tracking-[-2px] text-on-surface mb-5"
+          style={{ fontSize: 'clamp(28px, 4.5vw, 58px)' }}
+        >
+          {t.works[proj.titleKey]}
+        </h3>
 
-              <div className="flex items-stretch">
-                <div className="font-mono text-[11px] text-on-surface-variant/25 px-5 py-7 border-r border-outline-variant/10 flex items-start min-w-[56px] sm:min-w-[60px]">
-                  {proj.num}
-                </div>
-
-                <div className="flex-1 px-5 sm:px-8 py-7 min-w-0">
-                  <div className="flex flex-wrap items-start justify-between mb-3 gap-3">
-                    <h3 className="font-headline font-black text-lg sm:text-xl uppercase tracking-tight">
-                      {t.works[proj.titleKey]}
-                    </h3>
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                      {proj.live && (
-                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-[.15em] uppercase text-on-surface">
-                          <span className="w-1.5 h-1.5 rounded-full bg-on-surface animate-pulse" />
-                          {proj.live}
-                        </span>
-                      )}
-                      {proj.badge && (
-                        <span className="font-mono text-[9px] tracking-[.15em] uppercase border border-outline/30 px-2 py-0.5 text-on-surface-variant/60">
-                          {t.works.award}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {proj.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="font-mono text-[9px] tracking-[.12em] uppercase border border-outline-variant/15 px-2 py-1 text-on-surface-variant/45"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{t.works[proj.descKey]}</p>
-                </div>
-
-                <div className="px-4 sm:px-5 py-7 border-l border-outline-variant/10 flex flex-col items-end justify-between min-w-[56px] sm:min-w-[70px]">
-                  <span className="font-mono text-[11px] text-on-surface-variant/25">{proj.year}</span>
-                  {proj.collapsible ? (
-                    <span
-                      className="text-on-surface-variant/40 text-lg transition-transform duration-300"
-                      style={{ transform: expanded === i ? 'rotate(45deg)' : 'rotate(0deg)' }}
-                    >
-                      +
-                    </span>
-                  ) : (
-                    <a
-                      href={proj.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={e => e.stopPropagation()}
-                      className="text-on-surface-variant/25 hover:text-on-surface hover:translate-x-1 hover:-translate-y-1 transition-all duration-300 text-lg"
-                    >
-                      ↗
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Collapsible expanded panel */}
-              <AnimatePresence>
-                {proj.collapsible && expanded === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="border-t border-outline-variant/10 px-5 sm:px-8 py-6 bg-surface-container/50">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                        {proj.extraDetails.map(d => (
-                          <div key={d.label} className="flex flex-col gap-1">
-                            <span className="font-mono text-[9px] tracking-[.2em] uppercase text-on-surface-variant/40">{d.label}</span>
-                            <span className="font-mono text-[11px] text-on-surface/70">{d.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex flex-wrap gap-3">
-                        <a
-                          href={proj.liveHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={e => e.stopPropagation()}
-                          className="flex items-center gap-2 px-5 py-2 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
-                          Canlı Görüntüle ↗
-                        </a>
-                        <a
-                          href={proj.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={e => e.stopPropagation()}
-                          className="px-5 py-2 border border-on-surface/25 text-on-surface font-mono text-[10px] tracking-[.12em] uppercase hover:bg-on-surface/5 transition-colors"
-                        >
-                          GitHub ↗
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {proj.tags.map(tag => (
+            <span key={tag} className="font-mono text-[9px] tracking-[.12em] uppercase border border-on-surface/18 px-2 py-1 text-on-surface-variant/45">
+              {tag}
+            </span>
           ))}
         </div>
+
+        <p className="text-on-surface-variant leading-relaxed mb-6" style={{ fontSize: 'clamp(14px, 1.6vw, 17px)' }}>
+          {t.works[proj.descKey]}
+        </p>
+
+        <div className="flex flex-wrap gap-3">
+          {proj.live && (
+            <a href={proj.liveHref} target="_blank" rel="noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-75 transition-opacity">
+              <span className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
+              {proj.live} ↗
+            </a>
+          )}
+          {proj.badge && (
+            <span className="flex items-center px-4 py-2.5 border border-on-surface/20 font-mono text-[10px] tracking-[.12em] uppercase text-on-surface-variant/60">
+              {t.works.award}
+            </span>
+          )}
+          <a href={proj.github} target="_blank" rel="noreferrer"
+            className="px-5 py-2.5 border border-on-surface/25 text-on-surface font-mono text-[10px] tracking-[.12em] uppercase hover:bg-on-surface/5 transition-colors">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const FeaturedWork = () => {
+  const { t } = useLanguage();
+  const ref  = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+
+  const labelOp = useTransform(scrollYProgress, [0, 0.06, 0.32, 0.42], [0, 1, 1, 0]);
+
+  return (
+    <section ref={ref} id="works" style={{ height: '280vh' }} className="relative">
+      <div className="sticky top-0 h-screen overflow-hidden bg-surface-container-low border-y border-on-surface/[0.07]">
+
+        {/* Scatter arka plan kelimeleri */}
+        {BG_WORDS.map((w, i) => <BgWord key={i} w={w} scrollP={scrollYProgress} />)}
+
+        {/* Başlık etiketi */}
+        <motion.div
+          className="absolute top-10 left-8 z-10"
+          style={{ opacity: labelOp }}
+        >
+          <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/40 mr-3">{t.works.label}</span>
+          <span
+            className="font-headline font-black uppercase tracking-[-2px] text-on-surface"
+            style={{ fontSize: 'clamp(18px, 3vw, 32px)' }}
+          >
+            {t.works.title}
+          </span>
+        </motion.div>
+
+        {/* Proje kartları */}
+        {PROJECTS.map((proj, i) => (
+          <ProjectCard key={proj.num} proj={proj} scrollP={scrollYProgress} idx={i} t={t} />
+        ))}
       </div>
     </section>
   );
