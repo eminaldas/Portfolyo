@@ -58,8 +58,8 @@ const INIT = {
 
 const SkillsSection = () => (
   <section id="skills" className="pt-20 pb-0 border-b border-outline-variant/10 overflow-hidden">
-    <div className="max-w-7xl mx-auto px-8 pb-14">
-      <div className="flex flex-wrap items-baseline gap-x-7 gap-y-0">
+    <div className="w-full px-10 pb-14">
+      <div className="flex flex-wrap items-baseline gap-x-8 gap-y-0">
         {ITEMS.map((s, i) => (
           <motion.span
             key={i}
