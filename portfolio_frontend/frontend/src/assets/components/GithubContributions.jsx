@@ -64,25 +64,48 @@ const GithubContributions = ({ username }) => {
 
   return (
     <div className="w-full" ref={containerRef}>
-      {/* Başlık */}
-      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-        <span className="font-mono text-[10px] tracking-[.2em] uppercase text-on-surface-variant/40">Son 1 Yıl</span>
-        <div className="flex items-center gap-4">
-          {streak !== null && streak > 0 && (
-            <span className="flex items-center gap-2">
-              <span
-                style={{ fontFamily: "'Cormorant', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 22, color: '#dcd8c0', lineHeight: 1 }}
-              >
-                {streak}
+
+      {/* Üst alan — Streak büyük + total */}
+      <div className="flex items-end justify-between mb-6 gap-4">
+        {/* Büyük streak */}
+        {streak !== null && streak > 0 ? (
+          <div className="flex items-baseline gap-3">
+            <span
+              style={{
+                fontFamily: "'Cormorant', Georgia, serif",
+                fontStyle: 'italic',
+                fontWeight: 200,
+                fontSize: 'clamp(52px, 7vw, 80px)',
+                color: '#dcd8c0',
+                lineHeight: 0.9,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              {streak}
+            </span>
+            <div className="flex flex-col gap-0.5">
+              <span className="font-mono text-[9px] tracking-[.2em] uppercase text-on-surface/70 font-bold">
+                günlük
               </span>
-              <span className="font-mono text-[9px] tracking-[.18em] uppercase text-on-surface-variant/40">günlük seri</span>
-            </span>
-          )}
+              <span className="font-mono text-[9px] tracking-[.2em] uppercase text-on-surface-variant/40">
+                seri
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div /> /* boş alan */
+        )}
+
+        {/* Sağ: toplam + etiket */}
+        <div className="flex flex-col items-end gap-1">
           {total !== null && (
-            <span className="font-mono text-[10px] text-on-surface/50">
-              <span className="font-bold text-on-surface">{total}</span> katkı
+            <span className="font-headline font-black text-2xl tracking-tight text-on-surface">
+              {total}
             </span>
           )}
+          <span className="font-mono text-[9px] tracking-[.2em] uppercase text-on-surface-variant/40">
+            son 1 yıl katkı
+          </span>
         </div>
       </div>
 
