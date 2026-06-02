@@ -131,6 +131,15 @@
   --radius-full: 0.75rem;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
 @keyframes scanline {
   from { transform: translateX(-100%); }
   to   { transform: translateX(300%); }

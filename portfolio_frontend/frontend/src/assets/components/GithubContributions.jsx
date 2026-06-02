@@ -9,10 +9,26 @@ const LEVELS = [
   'rgba(220,216,192,0.97)',
 ];
 
+const calcStreak = (days) => {
+  const sorted = [...days].sort((a, b) => b.date.localeCompare(a.date));
+  const today  = new Date().toISOString().split('T')[0];
+  let streak   = 0;
+  let started  = false;
+  for (const d of sorted) {
+    if (d.date > today) continue;
+    if (!started && d.date === today && d.count === 0) continue; // today no commits yet, check yesterday
+    if (d.count > 0) { streak++; started = true; }
+    else if (started) break;
+    else break;
+  }
+  return streak;
+};
+
 const GithubContributions = ({ username }) => {
-  const [weeks, setWeeks] = useState([]);
-  const [total, setTotal] = useState(null);
-  const [error, setError] = useState(false);
+  const [weeks,  setWeeks]  = useState([]);
+  const [total,  setTotal]  = useState(null);
+  const [streak, setStreak] = useState(null);
+  const [error,  setError]  = useState(false);
   const [cell,  setCell]  = useState(10);
   const containerRef = useRef(null);
 
@@ -39,6 +55,7 @@ const GithubContributions = ({ username }) => {
         const cols = [];
         for (let i = 0; i < days.length; i += 7) cols.push(days.slice(i, i + 7));
         setWeeks(cols);
+        setStreak(calcStreak(days));
         const yr = new Date().getFullYear();
         setTotal(data.total[yr] ?? data.total[yr - 1] ?? '—');
       })
@@ -48,13 +65,25 @@ const GithubContributions = ({ username }) => {
   return (
     <div className="w-full" ref={containerRef}>
       {/* Başlık */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <span className="font-mono text-[10px] tracking-[.2em] uppercase text-on-surface-variant/40">Son 1 Yıl</span>
-        {total !== null && (
-          <span className="font-mono text-[10px] text-on-surface/50">
-            <span className="font-bold text-on-surface">{total}</span> katkı
-          </span>
-        )}
+        <div className="flex items-center gap-4">
+          {streak !== null && streak > 0 && (
+            <span className="flex items-center gap-2">
+              <span
+                style={{ fontFamily: "'Cormorant', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 22, color: '#dcd8c0', lineHeight: 1 }}
+              >
+                {streak}
+              </span>
+              <span className="font-mono text-[9px] tracking-[.18em] uppercase text-on-surface-variant/40">günlük seri</span>
+            </span>
+          )}
+          {total !== null && (
+            <span className="font-mono text-[10px] text-on-surface/50">
+              <span className="font-bold text-on-surface">{total}</span> katkı
+            </span>
+          )}
+        </div>
       </div>
 
       {error ? (
