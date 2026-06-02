@@ -30,7 +30,7 @@ const BentoStats = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-[2px] h-auto md:h-[450px]"
+          className="grid grid-cols-1 md:grid-cols-4 gap-[2px]"
         >
           <motion.div
             variants={itemVariants} custom={0}
@@ -71,7 +71,7 @@ const BentoStats = () => {
 
           <motion.div
             variants={itemVariants} custom={3}
-            className="md:col-span-2 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
+            className="md:col-span-4 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { useBuild } from '../../context/BuildContext';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+  const { ready } = useBuild();
 
   const links = [
     { num: '001', label: t.nav.works,   href: '#works'   },
@@ -16,8 +18,8 @@ const Navbar = () => {
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+      animate={ready ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
       {/* Desktop */}
