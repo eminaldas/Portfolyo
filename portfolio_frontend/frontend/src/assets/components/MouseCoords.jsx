@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
 const MouseCoords = () => {
-  const ref = useRef(null);
+  const xRef = useRef(null);
+  const yRef = useRef(null);
 
   useEffect(() => {
     const onMove = e => {
-      if (ref.current) {
-        ref.current.textContent = `${e.clientX} × ${e.clientY}`;
-      }
+      if (xRef.current) xRef.current.textContent = e.clientX;
+      if (yRef.current) yRef.current.textContent = e.clientY;
     };
     window.addEventListener('mousemove', onMove);
     return () => window.removeEventListener('mousemove', onMove);
@@ -15,21 +15,23 @@ const MouseCoords = () => {
 
   return (
     <div
-      className="fixed bottom-8 right-8 z-[9990] hidden md:block pointer-events-none select-none"
+      className="fixed bottom-7 right-8 z-[9990] hidden md:flex items-center gap-1 pointer-events-none select-none"
+      style={{
+        fontFamily: "'Cormorant', Georgia, serif",
+        fontStyle: 'italic',
+        fontWeight: 300,
+        fontSize: 16,
+        color: 'rgba(220,216,192,0.55)',
+        letterSpacing: '0.04em',
+      }}
     >
-      <span
-        ref={ref}
-        style={{
-          fontFamily: "'Cormorant', Georgia, serif",
-          fontStyle: 'italic',
-          fontWeight: 300,
-          fontSize: 13,
-          letterSpacing: '0.05em',
-          color: 'rgba(220,216,192,0.28)',
-        }}
-      >
-        0 × 0
-      </span>
+      <span>X</span>
+      <span style={{ color: 'rgba(220,216,192,0.30)', margin: '0 2px' }}>:</span>
+      <span ref={xRef}>0</span>
+      <span style={{ color: 'rgba(220,216,192,0.30)', margin: '0 6px' }}>·</span>
+      <span>Y</span>
+      <span style={{ color: 'rgba(220,216,192,0.30)', margin: '0 2px' }}>:</span>
+      <span ref={yRef}>0</span>
     </div>
   );
 };
