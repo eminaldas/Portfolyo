@@ -2,12 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
+// Satırlar sırayla soldan/sağdan geliyor
 const lineVariant = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: i => ({ opacity: 0, x: i % 2 === 0 ? -80 : 80 }),
   visible: i => ({
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, delay: i * 0.14, ease: [0.16, 1, 0.3, 1] },
+    x: 0,
+    transition: { duration: 1.1, delay: i * 0.16, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
@@ -35,7 +36,7 @@ const ManifestoSection = () => {
               variants={lineVariant}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.25 }}
             >
               <span
                 className={[

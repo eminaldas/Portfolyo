@@ -69,9 +69,9 @@ const FeaturedWork = () => {
           {PROJECTS.map((proj, i) => (
             <motion.div
               key={proj.num}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="border border-outline-variant/10 hover:border-outline/25 transition-colors duration-300 relative overflow-hidden"
               onClick={() => toggle(i, proj.collapsible)}

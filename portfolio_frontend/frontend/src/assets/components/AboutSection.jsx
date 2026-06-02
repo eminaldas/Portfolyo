@@ -9,10 +9,10 @@ const AboutSection = () => {
     <section id="about" className="py-40 relative">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative order-2 lg:order-1"
         >
           <div className="bg-surface-container-highest p-8 font-mono text-sm leading-relaxed text-on-surface shadow-2xl overflow-hidden border border-outline-variant/20">
@@ -37,10 +37,10 @@ const AboutSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           className="order-1 lg:order-2"
         >
           <h2 className="font-headline font-bold text-5xl mb-8 tracking-tight">

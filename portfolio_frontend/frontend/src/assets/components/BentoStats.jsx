@@ -8,11 +8,18 @@ const BentoStats = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.18 } },
   };
+  // Her kart sırasıyla farklı yönden gelir
+  const dirs = [
+    { x: -80, y: 0  },  // 1. kart: soldan
+    { x:  60, y: 0  },  // 2. kart: sağdan
+    { x:  0,  y: -50 }, // 3. kart: yukarıdan
+    { x:  80, y: 0  },  // 4. kart: sağdan
+  ];
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    hidden: (i) => ({ opacity: 0, ...dirs[i % dirs.length] }),
+    visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
@@ -22,11 +29,11 @@ const BentoStats = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-[2px] h-auto md:h-[450px]"
         >
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants} custom={0}
             className="md:col-span-2 md:row-span-2 bg-surface-container p-10 flex flex-col justify-between border border-outline-variant/10 group hover:border-outline/25 transition-colors"
           >
             <div>
@@ -41,7 +48,7 @@ const BentoStats = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants} custom={1}
             className="bg-surface-container-high p-8 flex flex-col justify-center border border-outline-variant/10"
           >
             <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.workLabel}</span>
@@ -52,7 +59,7 @@ const BentoStats = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants} custom={2}
             className="bg-primary p-8 flex flex-col justify-between"
           >
             <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-primary/60 font-bold">{t.bento.interestLabel}</span>
@@ -63,7 +70,7 @@ const BentoStats = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants} custom={3}
             className="md:col-span-2 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
           >
             <div className="flex items-center justify-between mb-4">

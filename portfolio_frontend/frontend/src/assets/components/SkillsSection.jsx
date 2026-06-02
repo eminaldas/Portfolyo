@@ -52,10 +52,10 @@ const SkillsSection = () => {
           {SKILLS.map((row, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
               className="group relative flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 border border-outline-variant/10 px-7 py-5 overflow-hidden transition-colors duration-300 hover:border-outline/25"
             >
               <div className="absolute inset-0 w-0 group-hover:w-full bg-on-surface/[0.025] transition-all duration-500 ease-out pointer-events-none" />
