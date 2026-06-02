@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import GithubContributions from './GithubContributions';
 
 const BentoStats = () => {
   const { t } = useLanguage();
@@ -67,7 +68,7 @@ const BentoStats = () => {
           >
             <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">
-                GitHub Katkı Grafiği
+                GitHub Katkıları
               </span>
               <a
                 href="https://github.com/eminaldas"
@@ -78,15 +79,7 @@ const BentoStats = () => {
                 @eminaldas ↗
               </a>
             </div>
-            {/* invert(1): beyaz→siyah (arkaplanla kaynaşır), commit kareler sepia/sıcak tona döner */}
-            <img
-              src="https://ghchart.rshah.org/dcd8c0/eminaldas"
-              alt="GitHub katkı grafiği"
-              className="w-full"
-              style={{
-                filter: 'invert(1) sepia(0.25) brightness(0.88) contrast(1.15)',
-              }}
-            />
+            <GithubContributions username="eminaldas" />
           </motion.div>
         </motion.div>
       </div>
