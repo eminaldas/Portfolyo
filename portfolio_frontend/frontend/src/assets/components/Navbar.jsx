@@ -28,7 +28,7 @@ const Navbar = () => {
           href="#home"
           className="font-headline font-black text-lg tracking-tight text-on-surface hover:opacity-60 transition-opacity whitespace-nowrap"
         >
-          Emin Aldaş
+          Muhammed Emin Aldaş
         </a>
 
         <div className="flex items-center border border-on-surface/20 divide-x divide-on-surface/20">
@@ -65,7 +65,7 @@ const Navbar = () => {
       {/* Mobile */}
       <nav className="flex sm:hidden items-center justify-between px-6 py-4">
         <a href="#home" className="font-headline font-black text-base text-on-surface">
-          Emin Aldaş
+          Muhammed Emin Aldaş
         </a>
         <div className="flex items-center gap-3">
           <button
