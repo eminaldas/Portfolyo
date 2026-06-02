@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const links = [
     { num: '001', label: t.nav.works,   href: '#works'   },
@@ -28,44 +21,39 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50"
     >
       {/* Desktop */}
-      <nav
-        className={`hidden sm:flex items-center justify-between px-10 py-4 transition-all duration-300 ${
-          scrolled ? 'bg-background/90 backdrop-blur-xl border-b border-outline/10' : ''
-        }`}
-      >
+      <nav className="hidden sm:flex items-center justify-between px-10 py-5 bg-background/80 backdrop-blur-xl border-b border-on-surface/10 transition-all duration-300">
         <a
           href="#home"
-          className="font-headline font-black text-lg tracking-tight text-on-surface hover:opacity-70 transition-opacity"
+          className="font-headline font-black text-lg tracking-tight text-on-surface hover:opacity-60 transition-opacity whitespace-nowrap"
         >
           Emin Aldaş
         </a>
 
-        <div className="flex items-center gap-7 border border-outline/25 px-6 py-2 backdrop-blur-sm bg-background/10">
+        <div className="flex items-center border border-on-surface/20 divide-x divide-on-surface/20">
           {links.map(link => (
             <a
               key={link.num}
               href={link.href}
-              className="font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/60 hover:text-on-surface transition-colors"
+              className="flex items-center gap-1.5 px-5 py-2 font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/50 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
             >
-              <span className="text-on-surface/30 mr-[3px]">{link.num}/</span>
+              <span className="text-on-surface/25">{link.num}/</span>
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-3 border border-outline/25 px-4 py-2 backdrop-blur-sm bg-background/10">
+        <div className="flex items-center border border-on-surface/20 divide-x divide-on-surface/20">
           <button
             onClick={toggleLanguage}
-            className="font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/55 hover:text-on-surface transition-colors"
+            className="px-4 py-2 font-mono text-[11px] tracking-[.14em] uppercase text-on-surface/50 hover:text-on-surface hover:bg-on-surface/5 transition-all duration-200"
           >
             {language === 'en' ? 'TR' : 'EN'}
           </button>
-          <div className="w-[1px] h-4 bg-on-surface/20" />
           <a
             href="/images/resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="bg-primary text-on-primary px-4 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
+            className="px-4 py-2 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
           >
             {t.nav.resume} ↗
           </a>
