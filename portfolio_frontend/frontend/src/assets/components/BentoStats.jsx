@@ -63,14 +63,30 @@ const BentoStats = () => {
 
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 bg-surface-container p-6 flex flex-col justify-between border border-outline-variant/10 overflow-hidden"
+            className="md:col-span-2 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
           >
-            <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40 mb-3">GitHub Streak</span>
+            <div className="flex items-center justify-between mb-4">
+              <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">
+                GitHub Katkı Grafiği
+              </span>
+              <a
+                href="https://github.com/eminaldas"
+                target="_blank"
+                rel="noreferrer"
+                className="font-mono text-[9px] tracking-[.15em] uppercase text-on-surface-variant/35 hover:text-on-surface transition-colors"
+              >
+                @eminaldas ↗
+              </a>
+            </div>
+            {/* ghchart.rshah.org — renk: b8a870 (sıcak yeşil-bej tonu, paletimizle uyumlu) */}
             <img
-              src="https://streak-stats.demolab.com/?user=eminaldas&theme=transparent&hide_border=true&ring=dcd8c0&fire=dcd8c0&currStreakLabel=dcd8c0&sideLabels=9a9880&dates=9a9880&sideNums=dcd8c0&stroke=dcd8c020&background=00000000"
-              alt="GitHub Streak"
-              className="w-full object-contain"
-              style={{ filter: 'contrast(0.9) brightness(1.05)' }}
+              src="https://ghchart.rshah.org/b8a870/eminaldas"
+              alt="GitHub katkı grafiği"
+              className="w-full"
+              style={{
+                filter: 'brightness(1.1) contrast(0.85)',
+                imageRendering: 'pixelated',
+              }}
             />
           </motion.div>
         </motion.div>
