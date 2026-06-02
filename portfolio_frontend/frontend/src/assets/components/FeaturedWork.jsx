@@ -39,7 +39,7 @@ const FeaturedWork = () => {
             <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/35 mb-3 block">
               {t.works.label}
             </span>
-            <h2 className="cursor-target font-headline font-black uppercase tracking-[-2px]"
+            <h2 className="font-headline font-black uppercase tracking-[-2px]"
               style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
               {t.works.title}
             </h2>
@@ -75,10 +75,17 @@ const FeaturedWork = () => {
                     </h3>
                     <div className="flex items-center gap-2 flex-shrink-0">
                       {proj.live && (
-                        <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-[.15em] uppercase" style={{ color: '#dcd8c0' }}>
-                          <span className="w-1.5 h-1.5 rounded-full bg-on-surface animate-pulse" />
-                          {proj.live}
-                        </span>
+                        <a
+                          href={proj.liveHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          className="cursor-target flex items-center gap-1.5 font-mono text-[10px] tracking-[.15em] uppercase hover:opacity-75 transition-opacity"
+                          style={{ color: '#dcd8c0' }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#dcd8c0' }} />
+                          {proj.live} ↗
+                        </a>
                       )}
                       {proj.badge && (
                         <span className="font-mono text-[9px] tracking-[.15em] uppercase border border-outline/30 px-2 py-0.5 text-on-surface-variant/60">

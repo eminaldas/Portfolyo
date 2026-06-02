@@ -83,7 +83,7 @@ const translations = {
     contact: {
       label: "Let's Connect",
       title1: "Let's build ",
-      title2: "together.",
+      title2: "something great.",
       desc: "I am currently open for full-time junior tech roles, part-time jobs, and freelance web-development opportunities.",
       formName: "Full Name",
       formEmail: "Email Address",
@@ -180,8 +180,8 @@ const translations = {
     },
     contact: {
       label: "Bağlantı Kuralım",
-      title1: "Gel beraber ",
-      title2: "çalışalım.",
+      title1: "Birlikte yeni bir şey ",
+      title2: "inşa edelim.",
       desc: "Şu anda tam zamanlı junior pozisyonlar, yarı zamanlı roller ve bağımsız geliştirici (freelance) seçeneklerine açığım.",
       formName: "Ad Soyad",
       formEmail: "E-posta Adresi",

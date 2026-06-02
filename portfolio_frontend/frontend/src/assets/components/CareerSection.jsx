@@ -14,10 +14,10 @@ const CareerSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/40 mb-4 block">
+          <span className="cursor-target font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/40 mb-4 block inline-block">
             {t.career.label}
           </span>
-          <h2 className="cursor-target font-headline font-black text-5xl md:text-6xl tracking-[-2px]">
+          <h2 className="font-headline font-black text-5xl md:text-6xl tracking-[-2px]">
             {t.career.title1}
           </h2>
         </motion.div>

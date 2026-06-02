@@ -42,7 +42,7 @@ const Card = ({ c, i }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-    className="cursor-target group border border-on-surface/15 p-8 flex flex-col justify-between gap-8
+    className="cursor-target group border border-on-surface/15 p-8 flex flex-col justify-between items-center text-center gap-8
                hover:border-on-surface/40 hover:bg-on-surface/[0.03] transition-all duration-300"
     style={{ minHeight: 200 }}
   >

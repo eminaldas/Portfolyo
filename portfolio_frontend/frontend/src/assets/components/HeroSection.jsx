@@ -94,10 +94,9 @@ const HeroSection = () => {
           style={{ fontSize: 'clamp(60px, 9.5vw, 110px)' }}
           {...mk(hide(180, 0), vis ? show(0, 0) : hide(180, 0), 0.22)}
         >
-          {/* EMİN — stroke outline, Space Grotesk */}
+          {/* EMİN — MUHAMMED ile aynı stil, solid */}
           <span
-            className="font-headline font-black tracking-[-4px] uppercase"
-            style={{ WebkitTextStroke: '1.5px rgba(220,216,192,0.55)', color: 'transparent' }}
+            className="font-headline font-black tracking-[-4px] uppercase text-on-surface"
           >
             EM<span ref={iRef}>İ</span>N
           </span>
