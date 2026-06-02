@@ -27,9 +27,13 @@ const translations = {
       label: '— Vision',
       lines: [
         { text: 'IT Audit to AI —',          muted: false, serif: false },
-        { text: 'clean code,',               muted: true,  serif: false },
-        { text: 'production systems,',       muted: false, serif: true  },
-        { text: 'purposeful engineering.',   muted: false, serif: false },
+        { text: 'Crafted, Not Built.',       muted: true,  serif: true  },
+        { text: 'clean code,',              muted: false, serif: false },
+        { text: 'Build. Ship. Repeat.',     muted: true,  serif: true  },
+        { text: 'production systems,',      muted: false, serif: false },
+        { text: 'AI-Driven, Human-Coded.',  muted: true,  serif: true  },
+        { text: 'purposeful engineering.',  muted: false, serif: false },
+        { text: 'Systems That Scale.',      muted: true,  serif: true  },
       ],
     },
     bento: {
@@ -121,9 +125,13 @@ const translations = {
       label: '— Vizyon',
       lines: [
         { text: 'IT Denetiminden Yapay Zekaya —', muted: false, serif: false },
-        { text: 'temiz kod,',                     muted: true,  serif: false },
-        { text: 'üretimde çalışan sistemler,',    muted: false, serif: true  },
+        { text: 'Crafted, Not Built.',            muted: true,  serif: true  },
+        { text: 'temiz kod,',                     muted: false, serif: false },
+        { text: 'Build. Ship. Repeat.',           muted: true,  serif: true  },
+        { text: 'üretimde çalışan sistemler,',    muted: false, serif: false },
+        { text: 'AI-Driven, Human-Coded.',        muted: true,  serif: true  },
         { text: 'amaçlı mühendislik.',            muted: false, serif: false },
+        { text: 'Systems That Scale.',            muted: true,  serif: true  },
       ],
     },
     bento: {
