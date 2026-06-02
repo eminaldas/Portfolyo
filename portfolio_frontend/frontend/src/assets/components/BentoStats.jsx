@@ -78,14 +78,13 @@ const BentoStats = () => {
                 @eminaldas ↗
               </a>
             </div>
-            {/* ghchart.rshah.org — renk: b8a870 (sıcak yeşil-bej tonu, paletimizle uyumlu) */}
+            {/* invert(1): beyaz→siyah (arkaplanla kaynaşır), commit kareler sepia/sıcak tona döner */}
             <img
-              src="https://ghchart.rshah.org/b8a870/eminaldas"
+              src="https://ghchart.rshah.org/dcd8c0/eminaldas"
               alt="GitHub katkı grafiği"
               className="w-full"
               style={{
-                filter: 'brightness(1.1) contrast(0.85)',
-                imageRendering: 'pixelated',
+                filter: 'invert(1) sepia(0.25) brightness(0.88) contrast(1.15)',
               }}
             />
           </motion.div>
