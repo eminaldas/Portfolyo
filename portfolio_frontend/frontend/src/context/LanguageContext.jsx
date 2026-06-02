@@ -7,13 +7,14 @@ const translations = {
       tech: "Tech",
       about: "About",
       contact: "Contact",
-      resume: "Resume"
+      resume: "Resume",
+      skills: "Skills",
     },
     hero: {
       location: "Istanbul, Turkey",
       titleTop: "MUHAMMED",
       titleBottom: "EMİN ALDAŞ",
-      description: "A passionate Full-Stack Developer building scalable and modern web applications.",
+      description: "A Full-Stack Engineer building AI-powered systems in production and scalable web applications.",
       github: "View GitHub",
       connect: "Let's Connect",
       codeProfile: {
@@ -21,6 +22,15 @@ const translations = {
         status: "Open to Work",
         comment: "Let's build something exceptional"
       }
+    },
+    manifesto: {
+      label: '— Vision',
+      lines: [
+        { text: 'IT Audit to AI —',          muted: false, serif: false },
+        { text: 'clean code,',               muted: true,  serif: false },
+        { text: 'production systems,',       muted: false, serif: true  },
+        { text: 'purposeful engineering.',   muted: false, serif: false },
+      ],
     },
     bento: {
       eduLabel: "Education",
@@ -51,13 +61,20 @@ const translations = {
       role2: "IT Assistant",
       desc2: "Worked on the Tracky Project, participating in Backend development (Flask) for a web platform tracking branch inventory and request management. Developed RESTful APIs and optimized MongoDB database schemas.",
     },
+    skills: {
+      title: 'Skills',
+      label: 'Technologies I work with',
+    },
     works: {
       label: "My Work",
       title: "SELECTED PROJECTS",
       desc: "A selection of my recent personal and academic projects.",
       view: "VIEW",
-      p1Desc: "Fake news detection using Python, FastAPI, Docker, and BERTurk/TF-IDF models.",
-      p2Desc: "Responsive frontend utilizing Angular and robust API integrations.",
+      p1Title: "NeHaber — Fake News Detection",
+      p1Desc:  "Fake news detection with BERTurk + TF-IDF hybrid model, Celery/Redis async NLP pipeline, pgvector semantic search. Live at nehaber.dev.",
+      p2Title: "Beavask — Task Manager",
+      p2Desc:  "Angular frontend architecture for a task & workflow management system. Nominated for award at the university engineering exhibition.",
+      award:   "Award Nominee",
     },
     contact: {
       label: "Let's Connect",
@@ -84,13 +101,14 @@ const translations = {
       tech: "Yetenekler",
       about: "Hakkımda",
       contact: "İletişim",
-      resume: "Özgeçmiş"
+      resume: "Özgeçmiş",
+      skills: "Yetenekler",
     },
     hero: {
       location: "İstanbul, Türkiye",
       titleTop: "MUHAMMED",
       titleBottom: "EMİN ALDAŞ",
-      description: "Ölçeklenebilir ve modern web uygulamaları geliştiren bir Full-Stack Geliştiricisi.",
+      description: "Üretimde çalışan yapay zeka sistemleri ve ölçeklenebilir web uygulamaları geliştiren Full-Stack Mühendis.",
       github: "GitHub'ı İncele",
       connect: "İletişime Geç",
       codeProfile: {
@@ -98,6 +116,15 @@ const translations = {
         status: "Yeni Fırsatlara Açık",
         comment: "Birlikte harika işler çıkaralım"
       }
+    },
+    manifesto: {
+      label: '— Vizyon',
+      lines: [
+        { text: 'IT Denetiminden Yapay Zekaya —', muted: false, serif: false },
+        { text: 'temiz kod,',                     muted: true,  serif: false },
+        { text: 'üretimde çalışan sistemler,',    muted: false, serif: true  },
+        { text: 'amaçlı mühendislik.',            muted: false, serif: false },
+      ],
     },
     bento: {
       eduLabel: "Eğitim",
@@ -128,13 +155,20 @@ const translations = {
       role2: "BT Asistanı",
       desc2: "Tracky projesi çatısı altında şube envanterini ve personel taleplerini takip eden platformun arka yüzünde (Flask) görev aldım. RESTful mimarisinde servisler yazdım ve MongoDB üzerinden yapılandırmalar sağladım.",
     },
+    skills: {
+      title: 'Yetenekler',
+      label: 'Kullandığım teknolojiler',
+    },
     works: {
       label: "Çalışmalarım",
       title: "SEÇKİN PROJELER",
       desc: "Yakın zamandaki kişisel ve akademik projelerimden bir seçki.",
       view: "İNCELE",
-      p1Desc: "Python, FastAPI, Docker ve BERTurk/TF-IDF modelleri entegre edilerek geliştirilen sahte haber tespit sistemi.",
-      p2Desc: "Angular tabanlı duyarlı arayüz tasarımı (UI/UX) ve güçlü servis entegrasyonlarına sahip bir görev dağılım projesi.",
+      p1Title: "NeHaber — Sahte Haber Tespiti",
+      p1Desc:  "BERTurk + TF-IDF hibrit modeli, Celery/Redis async NLP pipeline ve pgvector semantik arama. nehaber.dev'de canlı.",
+      p2Title: "Beavask — Görev Yöneticisi",
+      p2Desc:  "Angular ile task yönetim sistemi frontend mimarisi. Üniversite mühendislik sergisinde ödüle aday gösterildi.",
+      award:   "Ödül Adayı",
     },
     contact: {
       label: "Bağlantı Kuralım",
