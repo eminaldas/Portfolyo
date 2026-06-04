@@ -1,172 +1,172 @@
-import React, { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 
-export default function ProjectModal({ project, onClose }) {
+const ProjectModal = ({ project, onClose }) => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    if (project) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const onKey = e => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = "auto";
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
     };
-  }, [project]);
-
-  // Close on Escape key
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
   if (!project) return null;
 
   return (
     <AnimatePresence>
-      {project && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 sm:px-6">
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-md"
-          />
+      <motion.div
+        className="fixed inset-0 z-[9950] flex items-end sm:items-center justify-center p-0 sm:p-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+      >
+        {/* Backdrop */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ background: 'rgba(17,17,9,0.88)', backdropFilter: 'blur(12px)' }}
+          onClick={onClose}
+        />
 
-          {/* Modal Container */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-white/20 dark:border-white/10 flex flex-col"
-          >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition backdrop-blur-sm"
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
+        {/* Panel */}
+        <motion.div
+          className="relative w-full sm:max-w-3xl max-h-[92vh] overflow-y-auto border border-outline-variant/20 bg-surface-container"
+          initial={{ y: 60, opacity: 0, scale: 0.97 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 40, opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Görsel */}
+          {project.image && (
+            <div className="relative w-full overflow-hidden" style={{ height: 260 }}>
+              <img
+                src={project.image}
+                alt={t.works[project.titleKey]}
+                className="w-full h-full object-cover object-top"
+                style={{ filter: 'grayscale(15%)', opacity: 0.85 }}
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(26,26,20,1) 100%)' }}
+              />
+              {/* Proje numarası overlay */}
+              <span
+                className="absolute top-5 left-6"
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: 11,
+                  letterSpacing: '0.2em',
+                  color: 'rgba(220,216,192,0.35)',
+                }}
+              >
+                {project.num}
+              </span>
+            </div>
+          )}
 
-            {/* Scrollable Content */}
-            <div className="overflow-y-auto custom-scrollbar">
-              {/* Header Image */}
-              <div className="relative h-64 sm:h-80 w-full">
-                <img
-                  src={project.images[0]}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 sm:p-8">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white shadow-sm">
-                    {project.title}
-                  </h2>
-                </div>
-              </div>
-
-              {/* Body Content */}
-              <div className="p-6 sm:p-8 grid gap-8 md:grid-cols-[2fr_1fr]">
-                {/* Left Panel: Description */}
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                      Overview
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                      {project.longDescription}
-                    </p>
-                  </div>
-                  
-                  {project.challenges && (
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                        Challenge & Solution
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        {project.challenges}
-                      </p>
-                    </div>
-                  )}
-
-                   {project.features && (
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                        Key Features
-                      </h3>
-                      <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
-                        {project.features.map((feature, idx) => (
-                           <li key={idx}>{feature}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-
-                {/* Right Panel: Metadata (Tech Stack & Links) */}
-                <div className="space-y-8">
-                  {/* Tech Stack */}
-                  <div>
-                    <h3 className="text-sm uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 mb-4">
-                      Tech Stack
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                       {project.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 text-sm font-medium rounded-full bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200 border border-gray-200 dark:border-white/5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Links */}
-                  {(project.links?.github || project.links?.live) && (
-                    <div>
-                      <h3 className="text-sm uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 mb-4">
-                        Links
-                      </h3>
-                      <div className="flex flex-col gap-3">
-                        {project.links.github && (
-                          <a
-                            href={project.links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-900 text-white hover:bg-gray-800 transition dark:bg-white dark:text-black dark:hover:bg-gray-200"
-                          >
-                            <FontAwesomeIcon icon={faGithub} className="text-lg" />
-                            <span className="font-semibold">View Source</span>
-                          </a>
-                        )}
-                        {project.links.live && (
-                          <a
-                            href={project.links.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition shadow-lg shadow-blue-500/30"
-                          >
-                            <FontAwesomeIcon icon={faExternalLinkAlt} className="text-lg" />
-                            <span className="font-semibold">Live Demo</span>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
+          {/* İçerik */}
+          <div className="px-8 py-8">
+            {/* Başlık + badge'ler */}
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <h2
+                className="font-headline font-black uppercase tracking-[-1px]"
+                style={{ fontSize: 'clamp(22px, 3.5vw, 36px)' }}
+              >
+                {t.works[project.titleKey]}
+              </h2>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {project.live && (
+                  <a
+                    href={project.liveHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cursor-target flex items-center gap-1.5 font-mono text-[10px] tracking-[.15em] uppercase hover:opacity-75 transition-opacity"
+                    style={{ color: '#dcd8c0' }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#dcd8c0' }} />
+                    {project.live} ↗
+                  </a>
+                )}
+                {project.badge && (
+                  <span className="font-mono text-[9px] tracking-[.15em] uppercase border border-outline/30 px-2 py-0.5 text-on-surface-variant/60">
+                    {t.works.award}
+                  </span>
+                )}
               </div>
             </div>
-          </motion.div>
-        </div>
-      )}
+
+            {/* Tag'ler */}
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {project.tags.map(tag => (
+                <span key={tag} className="font-mono text-[9px] tracking-[.12em] uppercase border border-outline-variant/15 px-2 py-1 text-on-surface-variant/45">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Açıklama */}
+            <p className="text-base leading-relaxed mb-8" style={{ color: 'rgba(220,216,192,0.70)' }}>
+              {t.works[project.descKey]}
+            </p>
+
+            {/* Teknik detaylar */}
+            {project.extraDetails?.length > 0 && (
+              <div className="border-t border-outline-variant/10 pt-6 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {project.extraDetails.map(d => (
+                    <div key={d.label} className="flex flex-col gap-1">
+                      <span className="font-mono text-[9px] tracking-[.2em] uppercase text-on-surface-variant/35">
+                        {d.label}
+                      </span>
+                      <span className="font-mono text-[11px] text-on-surface/75">{d.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Butonlar */}
+            <div className="flex flex-wrap gap-3">
+              {project.liveHref && (
+                <a
+                  href={project.liveHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-target flex items-center gap-2 px-6 py-2.5 bg-primary text-on-primary font-mono text-[10px] font-bold tracking-[.12em] uppercase hover:opacity-80 transition-opacity"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
+                  Live ↗
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-target px-6 py-2.5 border border-on-surface/25 text-on-surface font-mono text-[10px] tracking-[.12em] uppercase hover:bg-on-surface/5 transition-colors"
+                >
+                  GitHub ↗
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Kapat butonu */}
+          <button
+            onClick={onClose}
+            className="cursor-target absolute top-4 right-4 w-9 h-9 flex items-center justify-center border border-outline-variant/20 text-on-surface-variant/50 hover:text-on-surface hover:border-outline/40 transition-all font-mono text-lg"
+          >
+            ×
+          </button>
+        </motion.div>
+      </motion.div>
     </AnimatePresence>
   );
-}
+};
+
+export default ProjectModal;

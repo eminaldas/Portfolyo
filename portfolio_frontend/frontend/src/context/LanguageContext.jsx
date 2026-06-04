@@ -23,6 +23,15 @@ const translations = {
         comment: "Let's build something exceptional"
       }
     },
+    now: {
+      label: 'Currently',
+      buildingLabel: 'Building',
+      buildingValue: 'NeHaber Mobile — React Native (iOS & Android)',
+      learningLabel: 'Learning',
+      learningValue: 'React Native, mobile UX & performance',
+      seekingLabel: 'Seeking',
+      seekingValue: 'Junior Full-Stack / AI Engineering role',
+    },
     manifesto: {
       label: '— Vision',
       lines: [
@@ -39,7 +48,7 @@ const translations = {
     bento: {
       eduLabel: "Education",
       eduTitle: "Software Engineering",
-      eduDesc: "Studying Software Engineering at Beykoz University (GPA: 3.08/4.00), building analytical thinking and problem-solving skills.",
+      eduDesc: "Studying Software Engineering at Beykoz University, building analytical thinking and problem-solving skills.",
       workLabel: "Work Experience",
       workRole: "IT AUDIT ASSISTANT",
       interestLabel: "Current interests",
@@ -64,6 +73,9 @@ const translations = {
       desc1: "Contributed to AuditFlow & LawChatBot projects, digitizing internal audit findings and legal processes using a React and FastAPI-based full-stack architecture. Worked on a rule-based legal assistant chatbot and implemented responsive interfaces for teams.",
       role2: "IT Assistant",
       desc2: "Worked on the Tracky Project, participating in Backend development (Flask) for a web platform tracking branch inventory and request management. Developed RESTful APIs and optimized MongoDB database schemas.",
+      role3: "Core Team — Social Media & Design Lead",
+      org3: "GDG Beykoz (formerly GDSC)",
+      desc3: "Led the Social Media & Design team at Google Developer Student Clubs Beykoz University. Produced event visuals and content for Instagram, X, and LinkedIn. Handled video editing, presentation design, and event organization. Participated in DevFest '23 and DevFest '24.",
     },
     skills: {
       title: 'Skills',
@@ -84,7 +96,7 @@ const translations = {
       label: "Let's Connect",
       title1: "Let's build ",
       title2: "something great.",
-      desc: "Currently open for full-time junior tech roles and freelance opportunities.",
+      desc: "Currently open for full-time roles and freelance opportunities.",
       formName: "Full Name",
       formEmail: "Email Address",
       formMessage: "Message",
@@ -121,6 +133,15 @@ const translations = {
         comment: "Birlikte harika işler çıkaralım"
       }
     },
+    now: {
+      label: 'Şu An',
+      buildingLabel: 'Yapıyor',
+      buildingValue: 'NeHaber Mobil — React Native (iOS & Android)',
+      learningLabel: 'Öğreniyor',
+      learningValue: 'React Native, mobil UX ve performans',
+      seekingLabel: 'Arıyor',
+      seekingValue: 'Junior Full-Stack / YZ Mühendisliği pozisyonu',
+    },
     manifesto: {
       label: '— Vizyon',
       lines: [
@@ -137,7 +158,7 @@ const translations = {
     bento: {
       eduLabel: "Eğitim",
       eduTitle: "Yazılım Mühendisliği",
-      eduDesc: "Beykoz Üniversitesi'nde Yazılım Mühendisliği okuyor (Ort. 3.08/4.00), analitik yaklaşım ve problem çözme becerilerimi geliştiriyorum.",
+      eduDesc: "Beykoz Üniversitesi'nde Yazılım Mühendisliği okuyor, analitik yaklaşım ve problem çözme becerilerimi geliştiriyorum.",
       workLabel: "İş Deneyimi",
       workRole: "BT DENETİM ASİSTANI",
       interestLabel: "Güncel İlgi Alanları",
@@ -162,6 +183,9 @@ const translations = {
       desc1: "İç denetim bulgularını ve yasal süreçleri React / FastAPI mimarisiyle dijitalleştiren AuditFlow & LawChatBot projelerinde aktif rol aldım. Kural tabanlı bir asistan sohbet botu kodladım ve ilgili kullanıcılara akıcı arayüzler tasarladım.",
       role2: "BT Asistanı",
       desc2: "Tracky projesi çatısı altında şube envanterini ve personel taleplerini takip eden platformun arka yüzünde (Flask) görev aldım. RESTful mimarisinde servisler yazdım ve MongoDB üzerinden yapılandırmalar sağladım.",
+      role3: "Core Team — Sosyal Medya & Tasarım Lideri",
+      org3: "GDG Beykoz (önceki adıyla GDSC)",
+      desc3: "Google Developer Student Clubs Beykoz Üniversitesi'nde Sosyal Medya ve Tasarım Ekibini yönettim. Instagram, X ve LinkedIn için etkinlik görselleri ve içerikler ürettim. Video düzenleme, sunum tasarımı ve etkinlik organizasyonunda aktif rol aldım. DevFest '23 ve DevFest '24'e katıldım.",
     },
     skills: {
       title: 'Yetenekler',
@@ -182,7 +206,7 @@ const translations = {
       label: "Bağlantı Kuralım",
       title1: "Birlikte yeni bir şey ",
       title2: "inşa edelim.",
-      desc: "Tam zamanlı junior pozisyonlar ve freelance fırsatlarına açığım.",
+      desc: "Tam zamanlı pozisyonlar ve freelance fırsatlarına açığım.",
       formName: "Ad Soyad",
       formEmail: "E-posta Adresi",
       formMessage: "Mesajınız",
@@ -202,7 +226,7 @@ const translations = {
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('tr'); // Default TR as portfolio is mostly requested in TR by the user, but we can set EN
+  const [language, setLanguage] = useState('en');
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'tr' : 'en');

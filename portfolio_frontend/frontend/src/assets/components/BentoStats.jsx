@@ -30,16 +30,17 @@ const BentoStats = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-[2px]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-[2px]"
         >
+          {/* Eğitim — sol, geniş */}
           <motion.div
             variants={itemVariants} custom={0}
-            className="md:col-span-2 md:row-span-2 bg-surface-container p-10 flex flex-col justify-between border border-outline-variant/10 group hover:border-outline/25 transition-colors"
+            className="md:col-span-2 bg-surface-container p-10 flex flex-col justify-between border border-outline-variant/10 hover:border-outline/25 transition-colors"
           >
             <div>
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.eduLabel}</span>
               <h3 className="font-headline font-bold text-3xl md:text-4xl mt-4 leading-tight tracking-[-1px]">{t.bento.eduTitle}</h3>
-              <p className="font-body text-on-surface-variant mt-4 text-lg max-w-xs">{t.bento.eduDesc}</p>
+              <p className="font-body text-on-surface-variant mt-4 text-lg max-w-sm">{t.bento.eduDesc}</p>
             </div>
             <div className="flex gap-2 mt-8">
               <span className="px-4 py-1.5 bg-surface-container-high font-mono text-[10px] tracking-[.1em] uppercase">2022 – 2026</span>
@@ -47,31 +48,34 @@ const BentoStats = () => {
             </div>
           </motion.div>
 
+          {/* İş deneyimi — sağ */}
           <motion.div
             variants={itemVariants} custom={1}
-            className="bg-surface-container-high p-8 flex flex-col justify-center border border-outline-variant/10"
+            className="bg-surface-container-high p-8 flex flex-col justify-between border border-outline-variant/10"
           >
-            <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.workLabel}</span>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="font-headline font-bold text-4xl">Aras Kargo</span>
+            <div>
+              <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.workLabel}</span>
+              <div className="mt-4">
+                <span className="font-headline font-bold text-3xl">Aras Kargo</span>
+              </div>
+              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-on-surface-variant/60 mt-2">{t.bento.workRole}</p>
             </div>
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-on-surface-variant mt-2">{t.bento.workRole}</p>
+            <div className="mt-6 pt-6 border-t border-outline-variant/10">
+              <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40 block mb-2">{t.bento.techLabel}</span>
+              <div className="flex flex-wrap gap-1.5">
+                {['Python', 'React', 'FastAPI', 'PostgreSQL'].map(tech => (
+                  <span key={tech} className="font-mono text-[9px] tracking-[.1em] uppercase border border-outline-variant/20 px-2 py-1 text-on-surface-variant/60">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
+          {/* GitHub — tam genişlik */}
           <motion.div
             variants={itemVariants} custom={2}
-            className="bg-primary p-8 flex flex-col justify-between"
-          >
-            <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-primary/60 font-bold">{t.bento.interestLabel}</span>
-            <h4 className="font-headline font-bold text-2xl text-on-primary">AI &amp; NLP</h4>
-            <div className="flex justify-end">
-              <span className="material-symbols-outlined text-on-primary text-4xl">memory</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants} custom={3}
-            className="md:col-span-4 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
+            className="md:col-span-3 bg-surface-container p-6 flex flex-col border border-outline-variant/10 overflow-hidden"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">
@@ -81,7 +85,7 @@ const BentoStats = () => {
                 href="https://github.com/eminaldas"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-[9px] tracking-[.15em] uppercase text-on-surface-variant/35 hover:text-on-surface transition-colors"
+                className="font-mono text-[9px] tracking-[.15em] uppercase text-on-surface-variant/45 hover:text-on-surface transition-colors"
               >
                 @eminaldas ↗
               </a>

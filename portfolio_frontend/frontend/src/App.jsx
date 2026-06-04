@@ -7,6 +7,7 @@ import GridCanvas from './assets/components/GridCanvas';
 import TargetCursor from './components/reactBits/TargetCursor';
 import MouseCoords from './assets/components/MouseCoords';
 import LiveClock from './assets/components/LiveClock';
+import ScrollProgress from './assets/components/ScrollProgress';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { BuildProvider } from './context/BuildContext';
@@ -34,6 +35,7 @@ function App() {
             <Preloader onComplete={handleComplete} />
           )}
           <GridCanvas />
+          <ScrollProgress />
           <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
           <MouseCoords />
           <LiveClock />

@@ -24,8 +24,9 @@ const CareerSection = () => {
 
         <div className="relative border-l border-outline-variant/30 ml-4 md:ml-8 space-y-16 py-8">
           {[
-            { role: t.career.role1, desc: t.career.desc1, date: '17/03/2025 – 17/09/2025', delay: 0    },
-            { role: t.career.role2, desc: t.career.desc2, date: '12/02/2024 – 01/08/2024', delay: 0.15 },
+            { role: t.career.role1, org: 'Aras Kargo', desc: t.career.desc1, date: '03/2025 – 09/2025', delay: 0    },
+            { role: t.career.role2, org: 'Aras Kargo', desc: t.career.desc2, date: '02/2024 – 08/2024', delay: 0.15 },
+            { role: t.career.role3, org: t.career.org3, desc: t.career.desc3, date: '08/2023 – 07/2025', delay: 0.30 },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -38,11 +39,11 @@ const CareerSection = () => {
               <div className="absolute -left-3 top-2 w-6 h-6 border-2 border-on-surface bg-surface-container-high flex items-center justify-center">
                 <div className="w-2 h-2 bg-on-surface" />
               </div>
-              <span className="font-mono text-[11px] uppercase tracking-[.15em] text-on-surface-variant/50">
+              <span className="font-mono text-[11px] uppercase tracking-[.15em] text-on-surface-variant/70">
                 {item.date}
               </span>
               <h3 className="font-headline font-bold text-3xl mt-2 text-on-surface">{item.role}</h3>
-              <h4 className="font-body text-xl text-on-surface-variant mt-1">Aras Kargo</h4>
+              <h4 className="font-body text-xl text-on-surface-variant mt-1">{item.org}</h4>
               <p className="font-body mt-4 max-w-2xl leading-relaxed" style={{ color: 'rgba(220,216,192,0.65)' }}>
                 {item.desc}
               </p>

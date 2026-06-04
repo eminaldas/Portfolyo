@@ -19,7 +19,7 @@ const LiveClock = () => {
 
   return (
     <div
-      className="fixed bottom-7 left-8 z-[9990] hidden md:block pointer-events-none select-none"
+      className="fixed bottom-7 left-1/2 -translate-x-1/2 z-[9990] hidden md:block pointer-events-none select-none"
       style={{
         fontFamily: "'Cormorant', Georgia, serif",
         fontStyle: 'italic',
