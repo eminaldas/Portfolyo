@@ -23,8 +23,8 @@ const BentoStats = () => {
   };
 
   return (
-    <section id="tech" className="py-32 bg-surface-container-low">
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="tech" className="py-20 md:py-32 bg-surface-container-low">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -35,7 +35,7 @@ const BentoStats = () => {
           {/* Eğitim — sol, geniş */}
           <motion.div
             variants={itemVariants} custom={0}
-            className="md:col-span-2 bg-surface-container p-10 flex flex-col justify-between border border-outline-variant/10 hover:border-outline/25 transition-colors"
+            className="md:col-span-2 bg-surface-container p-6 md:p-10 flex flex-col justify-between border border-outline-variant/10 hover:border-outline/25 transition-colors"
           >
             <div>
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.eduLabel}</span>
@@ -51,7 +51,7 @@ const BentoStats = () => {
           {/* İş deneyimi — sağ */}
           <motion.div
             variants={itemVariants} custom={1}
-            className="bg-surface-container-high p-8 flex flex-col justify-between border border-outline-variant/10"
+            className="bg-surface-container-high p-6 md:p-8 flex flex-col justify-between border border-outline-variant/10"
           >
             <div>
               <span className="font-mono text-[10px] tracking-[.25em] uppercase text-on-surface-variant/40">{t.bento.workLabel}</span>

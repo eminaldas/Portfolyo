@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import ProjectModal from './ProjectModal';
 
@@ -36,9 +36,11 @@ const FeaturedWork = () => {
 
   return (
     <>
-    {modalProject && <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />}
-    <section id="works" className="py-24 bg-surface-container-low border-b border-outline-variant/10">
-      <div className="max-w-7xl mx-auto px-8">
+    <AnimatePresence>
+      {modalProject && <ProjectModal key={modalProject.num} project={modalProject} onClose={() => setModalProject(null)} />}
+    </AnimatePresence>
+    <section id="works" className="py-16 sm:py-24 bg-surface-container-low border-b border-outline-variant/10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <div>
             <span className="font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/55 mb-3 block">

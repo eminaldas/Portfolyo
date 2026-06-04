@@ -67,7 +67,7 @@ const HeroSection = () => {
 
       <div className="absolute inset-0 grain-texture pointer-events-none z-[1]" />
 
-      <div className="relative z-[2] max-w-7xl mx-auto px-8 w-full py-32">
+      <div className="relative z-[2] max-w-7xl mx-auto px-5 sm:px-8 w-full py-24 sm:py-32">
 
         {/* ① Konum — blur, delay 0.05 */}
         <motion.span
@@ -81,8 +81,8 @@ const HeroSection = () => {
 
         {/* ② İsim 1 — soldan, delay 0.1 */}
         <motion.h1
-          className="font-headline font-black leading-none tracking-[-4px] uppercase text-on-surface"
-          style={{ fontSize: 'clamp(60px, 9.5vw, 110px)' }}
+          className="font-headline font-black leading-none tracking-[-1px] sm:tracking-[-4px] uppercase text-on-surface"
+          style={{ fontSize: 'clamp(36px, 9.5vw, 110px)' }}
           {...mk(hide(-180, 0), vis ? show(0, 0) : hide(-180, 0), 0.1)}
         >
           <span ref={mRef}>M</span>UHAMMED
@@ -91,12 +91,12 @@ const HeroSection = () => {
         {/* ② İsim 2 — sağdan, delay 0.22 */}
         <motion.h1
           className="leading-none mb-10 flex flex-wrap items-baseline gap-x-4"
-          style={{ fontSize: 'clamp(60px, 9.5vw, 110px)' }}
+          style={{ fontSize: 'clamp(36px, 9.5vw, 110px)' }}
           {...mk(hide(180, 0), vis ? show(0, 0) : hide(180, 0), 0.22)}
         >
           {/* EMİN — MUHAMMED ile aynı stil, solid */}
           <span
-            className="font-headline font-black tracking-[-4px] uppercase text-on-surface"
+            className="font-headline font-black tracking-[-1px] sm:tracking-[-4px] uppercase text-on-surface"
           >
             EM<span ref={iRef}>İ</span>N
           </span>
@@ -150,7 +150,7 @@ const HeroSection = () => {
 
         {/* ⑥ Stats — aşağıdan, delay 1.55 */}
         <motion.div
-          className="flex items-end gap-10 mt-16 pt-8 border-t border-on-surface/[0.08]"
+          className="flex items-end gap-8 sm:gap-10 mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-on-surface/[0.08]"
           {...mk(hide(0, 30), vis ? show(0, 0) : hide(0, 30), 1.55, 0.75)}
         >
           {[
@@ -176,7 +176,7 @@ const HeroSection = () => {
 
       {/* Scroll göstergesi */}
       <motion.div
-        className="absolute bottom-8 left-8 z-[2] flex items-center gap-3"
+        className="absolute bottom-8 left-5 sm:left-8 z-[2] flex items-center gap-3"
         {...mk(hide(0, 20), vis ? show(0, 0) : hide(0, 20), 1.7, 0.6)}
       >
         <div className="w-10 h-[1px] relative overflow-hidden" style={{ background: 'rgba(220,216,192,0.12)' }}>

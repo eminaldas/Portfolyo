@@ -17,9 +17,9 @@ const Card = ({ c, i }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-    className="cursor-target group border border-on-surface/15 p-8 flex flex-col items-center justify-between text-center gap-6
+    className="cursor-target group border border-on-surface/15 p-6 sm:p-8 flex flex-col items-center justify-between text-center gap-6
                hover:border-on-surface/40 hover:bg-on-surface/[0.03] transition-all duration-300"
-    style={{ minHeight: 200 }}
+    style={{ minHeight: 180 }}
   >
     {/* İkon — büyük, belirgin */}
     <div className="flex items-center justify-center w-12 h-12">
@@ -68,8 +68,8 @@ const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-32 relative w-full border-t border-outline-variant/10">
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="contact" className="py-20 sm:py-32 relative w-full border-t border-outline-variant/10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
         {/* Başlık */}
         <motion.div
@@ -77,7 +77,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-12 sm:mb-20"
         >
           <span
             style={{

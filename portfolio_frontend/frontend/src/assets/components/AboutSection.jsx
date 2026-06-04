@@ -65,7 +65,7 @@ const CodeBlock = ({ t }) => {
   const done = typed >= total;
 
   return (
-    <div ref={ref} className="bg-surface-container-highest p-8 font-mono text-sm leading-relaxed shadow-2xl border border-outline-variant/20 min-h-[340px]">
+    <div ref={ref} className="bg-surface-container-highest p-5 sm:p-8 font-mono text-sm leading-relaxed shadow-2xl border border-outline-variant/20 min-h-[300px] sm:min-h-[340px]">
       <div className="flex gap-2 mb-6">
         <div className="w-3 h-3 rounded-full bg-error-dim" />
         <div className="w-3 h-3 rounded-full bg-secondary" />
@@ -132,8 +132,8 @@ const AboutSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-40 relative bg-surface-container-low">
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <section id="about" className="py-20 lg:py-40 relative bg-surface-container-low">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         {/* Sol — kod bloğu (yavaş yüklenir, typewriter) */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
@@ -148,7 +148,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 1.1 }}
-            className="absolute -top-10 -right-6 bg-primary text-on-primary px-6 py-4 font-headline font-black text-xl shadow-xl"
+            className="hidden sm:block absolute -top-10 -right-6 bg-primary text-on-primary px-6 py-4 font-headline font-black text-xl shadow-xl"
           >
             {t.about.developerRole}
           </motion.div>

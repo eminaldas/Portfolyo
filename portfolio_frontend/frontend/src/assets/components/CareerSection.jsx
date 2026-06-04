@@ -6,8 +6,8 @@ const CareerSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="career" className="py-32 relative bg-surface-container">
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="career" className="py-20 md:py-32 relative bg-surface-container">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +17,7 @@ const CareerSection = () => {
           <span className="cursor-target font-mono text-[10px] tracking-[.3em] uppercase text-on-surface-variant/40 mb-4 block inline-block">
             {t.career.label}
           </span>
-          <h2 className="font-headline font-black text-5xl md:text-6xl tracking-[-2px]">
+          <h2 className="font-headline font-black text-4xl md:text-5xl lg:text-6xl tracking-[-1px] sm:tracking-[-2px]">
             {t.career.title1}
           </h2>
         </motion.div>
@@ -42,7 +42,7 @@ const CareerSection = () => {
               <span className="font-mono text-[11px] uppercase tracking-[.15em] text-on-surface-variant/70">
                 {item.date}
               </span>
-              <h3 className="font-headline font-bold text-3xl mt-2 text-on-surface">{item.role}</h3>
+              <h3 className="font-headline font-bold text-2xl sm:text-3xl mt-2 text-on-surface">{item.role}</h3>
               <h4 className="font-body text-xl text-on-surface-variant mt-1">{item.org}</h4>
               <p className="font-body mt-4 max-w-2xl leading-relaxed" style={{ color: 'rgba(220,216,192,0.65)' }}>
                 {item.desc}

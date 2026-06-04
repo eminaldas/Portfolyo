@@ -55,7 +55,7 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile */}
-      <nav className="flex sm:hidden items-center justify-between px-6 py-4">
+      <nav className="flex sm:hidden items-center justify-between px-6 py-4 bg-background/90 backdrop-blur-xl border-b border-on-surface/10">
         <a href="#home" className="font-headline font-black text-base text-on-surface">
           Muhammed Emin Aldaş
         </a>

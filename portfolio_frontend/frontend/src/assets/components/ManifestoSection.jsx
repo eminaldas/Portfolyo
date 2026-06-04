@@ -13,7 +13,7 @@ const ManifestoSection = () => {
 
   return (
     <section className="py-24 bg-surface-container-low border-y border-on-surface/[0.08]">
-      <div className="w-full px-10">
+      <div className="w-full px-5 sm:px-10">
 
         {/* Label — cursor-target */}
         <motion.p
@@ -50,8 +50,8 @@ const ManifestoSection = () => {
                       ? "'Cormorant', Georgia, serif"
                       : "'Space Grotesk', sans-serif",
                     fontSize: line.serif
-                      ? 'clamp(26px, 3.8vw, 56px)'
-                      : 'clamp(34px, 5.8vw, 76px)',
+                      ? 'clamp(20px, 3.8vw, 56px)'
+                      : 'clamp(26px, 5.8vw, 76px)',
                     fontWeight: line.serif ? 300 : 900,
                     fontStyle: line.serif ? 'italic' : 'normal',
                     textTransform: line.serif ? 'none' : 'uppercase',

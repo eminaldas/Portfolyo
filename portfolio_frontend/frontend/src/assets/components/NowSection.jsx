@@ -12,7 +12,7 @@ const NowSection = () => {
 
   return (
     <section className="relative border-b border-outline-variant/10">
-      <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant/10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 sm:py-10 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant/10">
         {items.map(({ labelKey, valueKey, index }) => (
           <motion.div
             key={labelKey}
@@ -52,7 +52,7 @@ const NowSection = () => {
 
       {/* Sol üst köşe etiketi */}
       <div
-        className="absolute top-0 left-8 -translate-y-1/2 px-3 py-1 bg-background"
+        className="absolute top-0 left-5 sm:left-8 -translate-y-1/2 px-3 py-1 bg-background"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",
           fontSize: 9,

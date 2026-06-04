@@ -72,23 +72,23 @@ const Preloader = ({ onComplete }) => {
       {/* Köşe dekorasyon — sol üst */}
       <div
         ref={cornerTLRef}
-        className="absolute top-8 left-8 flex flex-col gap-1 opacity-0"
+        className="absolute top-5 sm:top-8 left-5 sm:left-8 flex flex-col gap-1 opacity-0"
       >
-        <div className="w-8 h-[1px]" style={{ background: 'rgba(220,216,192,0.2)' }} />
-        <div className="w-[1px] h-8 ml-0" style={{ background: 'rgba(220,216,192,0.2)' }} />
+        <div className="w-6 sm:w-8 h-[1px]" style={{ background: 'rgba(220,216,192,0.2)' }} />
+        <div className="w-[1px] h-6 sm:h-8 ml-0" style={{ background: 'rgba(220,216,192,0.2)' }} />
       </div>
 
       {/* Köşe dekorasyon — sağ alt */}
       <div
         ref={cornerBRRef}
-        className="absolute bottom-8 right-8 flex flex-col items-end gap-1 opacity-0"
+        className="absolute bottom-5 sm:bottom-8 right-5 sm:right-8 flex flex-col items-end gap-1 opacity-0"
       >
-        <div className="w-[1px] h-8" style={{ background: 'rgba(220,216,192,0.2)' }} />
-        <div className="w-8 h-[1px]" style={{ background: 'rgba(220,216,192,0.2)' }} />
+        <div className="w-[1px] h-6 sm:h-8" style={{ background: 'rgba(220,216,192,0.2)' }} />
+        <div className="w-6 sm:w-8 h-[1px]" style={{ background: 'rgba(220,216,192,0.2)' }} />
       </div>
 
       {/* Merkez içerik */}
-      <div className="flex flex-col items-center select-none">
+      <div className="flex flex-col items-center select-none px-8">
         {/* Büyük sayı — Cormorant italic thin */}
         <span
           ref={counterRef}
@@ -96,7 +96,7 @@ const Preloader = ({ onComplete }) => {
             fontFamily: "'Cormorant', Georgia, serif",
             fontStyle: 'italic',
             fontWeight: 200,
-            fontSize: 'clamp(110px, 18vw, 192px)',
+            fontSize: 'clamp(72px, 20vw, 192px)',
             color: '#dcd8c0',
             lineHeight: 0.9,
             letterSpacing: '-0.04em',
@@ -111,11 +111,11 @@ const Preloader = ({ onComplete }) => {
           className="opacity-0"
           style={{
             fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: 11,
+            fontSize: 10,
             letterSpacing: '0.28em',
             color: 'rgba(220,216,192,0.35)',
             textTransform: 'uppercase',
-            marginTop: 16,
+            marginTop: 14,
           }}
         >
           yükleniyor
@@ -140,7 +140,7 @@ const Preloader = ({ onComplete }) => {
 
       {/* Sol taraf — site adı dikey */}
       <div
-        className="absolute left-8 bottom-12 hidden sm:block"
+        className="absolute left-5 sm:left-8 bottom-10 sm:bottom-12 hidden sm:block"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",
           fontSize: 9,
