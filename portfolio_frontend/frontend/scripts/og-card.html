@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,300&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    width: 1200px;
+    height: 630px;
+    background-color: #111109;
+    background-image:
+      linear-gradient(rgba(220,216,192,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220,216,192,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    color: #dcd8c0;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  /* köşe L işaretleri */
+  .corner { position: absolute; width: 40px; height: 40px; border-color: rgba(220,216,192,0.5); }
+  .tl { top: 48px; left: 48px; border-top: 2px solid; border-left: 2px solid; }
+  .br { bottom: 48px; right: 48px; border-bottom: 2px solid; border-right: 2px solid; }
+  .wrap { position: absolute; inset: 0; padding: 96px; display: flex; flex-direction: column; justify-content: center; }
+  .loc {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(220,216,192,0.45); margin-bottom: 28px;
+  }
+  .name1 {
+    font-weight: 900; font-size: 108px; line-height: 0.92;
+    letter-spacing: -4px; text-transform: uppercase; color: #dcd8c0;
+  }
+  .name2 { display: flex; align-items: baseline; gap: 22px; line-height: 0.92; }
+  .name2 .em {
+    font-weight: 900; font-size: 108px; letter-spacing: -4px;
+    text-transform: uppercase; color: #dcd8c0;
+  }
+  .name2 .aldas {
+    font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 300;
+    font-size: 100px; color: #dcd8c0; letter-spacing: -1px;
+  }
+  .role {
+    display: flex; align-items: center; gap: 16px; margin-top: 40px;
+  }
+  .role .dash { width: 36px; height: 2px; background: rgba(220,216,192,0.3); }
+  .role .txt {
+    font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 300;
+    font-size: 34px; color: rgba(220,216,192,0.62); letter-spacing: 0.01em;
+  }
+  .footer {
+    position: absolute; bottom: 96px; left: 96px; right: 96px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(220,216,192,0.12); padding-top: 28px;
+  }
+  .footer .tags { display: flex; gap: 12px; }
+  .footer .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(220,216,192,0.5); border: 1px solid rgba(220,216,192,0.18);
+    padding: 7px 16px;
+  }
+  .footer .live {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 500;
+    letter-spacing: 0.1em; color: #dcd8c0;
+  }
+  .footer .live .dot { width: 9px; height: 9px; border-radius: 50%; background: #dcd8c0; }
+  .glow {
+    position: absolute; width: 700px; height: 500px; right: -100px; top: 40%;
+    background: radial-gradient(ellipse at center, rgba(220,216,192,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="corner tl"></div>
+  <div class="corner br"></div>
+  <div class="wrap">
+    <div class="loc">İstanbul, Türkiye</div>
+    <div class="name1">MUHAMMED</div>
+    <div class="name2">
+      <span class="em">EMİN</span>
+      <span class="aldas">Aldaş</span>
+    </div>
+    <div class="role">
+      <span class="dash"></span>
+      <span class="txt">Full-Stack Engineer · AI-Powered Systems</span>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">React</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">NLP</span>
+    </div>
+    <div class="live"><span class="dot"></span>nehaber.dev ↗</div>
+  </div>
+</body>
+</html>
