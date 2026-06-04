@@ -6,7 +6,7 @@ import { faGithub, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-sv
 const LINKS = [
   { icon: faGithub,     href: 'https://github.com/eminaldas',                  label: 'GitHub'    },
   { icon: faLinkedinIn, href: 'https://linkedin.com/in/muhammedeminaldas',       label: 'LinkedIn'  },
-  { icon: faInstagram,  href: 'https://instagram.com/',                          label: 'Instagram' },
+  { icon: faInstagram,  href: 'https://www.instagram.com/eminalds/',              label: 'Instagram' },
 ];
 
 const SocialSidebar = () => (
