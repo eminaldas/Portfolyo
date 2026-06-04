@@ -10,9 +10,6 @@ const useCodeSegments = (t) => [
   { txt: '  name: ',  cls: 'text-on-surface' },
   { txt: "'Muhammed Emin Aldaş'", cls: 'text-secondary' },
   { txt: ',\n',     cls: 'text-on-surface-variant' },
-  { txt: '  mission: ', cls: 'text-on-surface' },
-  { txt: `'${t.about.mission}'`, cls: 'text-secondary' },
-  { txt: ',\n',     cls: 'text-on-surface-variant' },
   { txt: '  stack: [', cls: 'text-on-surface' },
   { txt: "'Python/FastAPI'", cls: 'text-secondary' },
   { txt: ', ',      cls: 'text-on-surface-variant' },
@@ -22,8 +19,7 @@ const useCodeSegments = (t) => [
   { txt: '],\n',    cls: 'text-on-surface-variant' },
   { txt: '  vibe: ',  cls: 'text-on-surface' },
   { txt: `'${t.about.vibe}'`, cls: 'text-secondary' },
-  { txt: '\n};\n\n', cls: 'text-on-surface-variant' },
-  { txt: `// ${t.about.learning}`, cls: 'text-on-surface-variant/70 italic' },
+  { txt: '\n};',    cls: 'text-on-surface-variant' },
 ];
 
 const CodeBlock = ({ t }) => {
@@ -85,92 +81,21 @@ const CodeBlock = ({ t }) => {
   );
 };
 
-/* ---- Başlık — kelime kelime giriş + Cormorant italic vurgu ---- */
-const AnimatedTitle = ({ title1, title2 }) => {
-  const words = title1.trim().split(' ');
-  const container = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-  };
-  const word = {
-    hidden: { opacity: 0, y: 24, filter: 'blur(6px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-  };
-
-  return (
-    <motion.h2
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-      className="font-headline font-bold tracking-[-1.5px] leading-[1.05] mb-8"
-      style={{ fontSize: 'clamp(36px, 5vw, 60px)' }}
-    >
-      {words.map((w, i) => (
-        <motion.span key={i} variants={word} className="inline-block mr-[0.28em] text-on-surface">
-          {w}
-        </motion.span>
-      ))}
-      <motion.span
-        variants={word}
-        className="inline-block"
-        style={{
-          fontFamily: "'Cormorant', Georgia, serif",
-          fontStyle: 'italic',
-          fontWeight: 300,
-          color: 'rgba(220,216,192,0.62)',
-          letterSpacing: '0',
-        }}
-      >
-        {title2}
-      </motion.span>
-    </motion.h2>
-  );
-};
 
 const AboutSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-20 lg:py-40 relative bg-surface-container-low">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-        {/* Sol — kod bloğu (yavaş yüklenir, typewriter) */}
+    <section id="about" className="py-20 lg:py-32 relative bg-surface-container-low">
+      <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="relative order-2 lg:order-1"
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
           <CodeBlock t={t} />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 1.1 }}
-            className="hidden sm:block absolute -top-10 -right-6 bg-primary text-on-primary px-6 py-4 font-headline font-black text-xl shadow-xl"
-          >
-            {t.about.developerRole}
-          </motion.div>
         </motion.div>
-
-        {/* Sağ — başlık + açıklama */}
-        <div className="order-1 lg:order-2">
-          <AnimatedTitle title1={t.about.title1} title2={t.about.title2} />
-          <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed">
-            {[t.about.desc1, t.about.desc2].map((d, i) => (
-              <motion.p
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 + i * 0.15 }}
-              >
-                {d}
-              </motion.p>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -58,7 +58,7 @@ const translations = {
     about: {
       developerRole: "DEVELOPER",
       mission: "Writing clean, efficient code",
-      vibe: "Curious & Problem-Solver",
+      vibe: "curious · solution-focused",
       learning: "Currently learning and building side projects",
       title1: "Passionate about software and ",
       title2: "solving problems.",
@@ -146,13 +146,13 @@ const translations = {
       label: '— Vizyon',
       lines: [
         { text: 'IT Denetiminden Yapay Zekaya —', muted: false, serif: false },
-        { text: 'İnşa Değil, Zanaatkarlık.',     muted: true,  serif: true  },
+        { text: 'Ustalıkla Yazılmış.',            muted: true,  serif: true  },
         { text: 'temiz kod,',                     muted: false, serif: false },
         { text: 'Yap. Gönder. Tekrarla.',         muted: true,  serif: true  },
         { text: 'üretimde çalışan sistemler,',    muted: false, serif: false },
         { text: 'YZ Destekli, İnsan Kodlaması.',  muted: true,  serif: true  },
-        { text: 'amaçlı mühendislik.',            muted: false, serif: false },
-        { text: 'Büyüyen Sistemler.',             muted: true,  serif: true  },
+        { text: 'her kod bir karar.',              muted: false, serif: false },
+        { text: 'Ölçeklenen Sistemler.',           muted: true,  serif: true  },
       ],
     },
     bento: {
@@ -168,7 +168,7 @@ const translations = {
     about: {
       developerRole: "GELİŞTİRİCİ",
       mission: "Temiz ve verimli kod yazmak",
-      vibe: "Meraklı & Problem Çözücü",
+      vibe: "meraklı · çözüm odaklı",
       learning: "Sürekli öğreniyor ve yeni projeler geliştiriyorum",
       title1: "Yazılım geliştirmeye ve ",
       title2: "problem çözmeye tutkuluyum.",
