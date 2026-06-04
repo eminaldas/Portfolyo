@@ -338,8 +338,7 @@ const TargetCursor = ({
       <div
         ref={dotRef}
         className="absolute top-1/2 left-1/2 w-1 h-1 rounded-full -translate-x-1/2 -translate-y-1/2"
-        style={{ background: 'rgba(220,216,192,0.8)' }}
-        style={{ willChange: 'transform' }}
+        style={{ background: 'rgba(220,216,192,0.8)', willChange: 'transform' }}
       />
       <div
         className="target-cursor-corner absolute top-1/2 left-1/2 w-3 h-3 border-[3px] border-white -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0"

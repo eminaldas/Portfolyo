@@ -56,8 +56,7 @@ const GithubContributions = ({ username }) => {
         for (let i = 0; i < days.length; i += 7) cols.push(days.slice(i, i + 7));
         setWeeks(cols);
         setStreak(calcStreak(days));
-        const yr = new Date().getFullYear();
-        setTotal(data.total[yr] ?? data.total[yr - 1] ?? '—');
+        setTotal(days.reduce((s, d) => s + d.count, 0));
       })
       .catch(() => setError(true));
   }, [username]);
