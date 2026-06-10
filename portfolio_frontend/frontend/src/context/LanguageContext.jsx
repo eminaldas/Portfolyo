@@ -10,6 +10,8 @@ const translations = {
       resume: "Resume",
       skills: "Skills",
     },
+
+    
     hero: {
       location: "Istanbul, Turkey",
       titleTop: "MUHAMMED",
