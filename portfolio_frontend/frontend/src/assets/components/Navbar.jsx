@@ -11,7 +11,7 @@ const Navbar = () => {
   const links = [
     { num: '001', label: t.nav.works,   href: '#works'   },
     { num: '002', label: t.nav.skills,  href: '#skills'  },
-    { num: '003', label: t.nav.about,   href: '#about'   },
+    { num: '003', label: t.nav.career,  href: '#career'  },
     { num: '004', label: t.nav.contact, href: '#contact' },
   ];
 

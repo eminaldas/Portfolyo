@@ -5,19 +5,25 @@ import ProjectModal from './ProjectModal';
 
 const PROJECTS = [
   {
-    num: '001', year: '2026',
+    num: '000', year: '2026',
     titleKey: 'p1Title', descKey: 'p1Desc',
     tags: ['Python', 'FastAPI', 'BERTurk', 'Docker', 'Celery', 'Redis', 'pgvector'],
     live: 'nehaber.dev', liveHref: 'https://nehaber.dev',
     github: 'https://github.com/eminaldas/Fake-News-Detection-System',
+    paperKey: 'p1Paper', paperHref: '/images/nehaber_dev_v3.pdf',
+    achievementKey: 'p1Achievement',
+    detailsKey: 'p1Details',
     image: '/images/nehaber.png',
-    badge: false, collapsible: true,
-    extraDetails: [
-      { label: 'Mimari',   value: 'FastAPI + Celery + Redis async pipeline'    },
-      { label: 'NLP',      value: 'BERTurk + TF-IDF hibrit ensemble model'     },
-      { label: 'Veritabanı', value: 'PostgreSQL + pgvector semantic search'    },
-      { label: 'Deploy',   value: "Docker Compose, production'da canlı"        },
-    ],
+    badge: false,
+  },
+  {
+    num: '001', year: '2026',
+    titleKey: 'p0Title', descKey: 'p0Desc',
+    tags: ['Python', 'FastAPI', 'Neo4j', 'Qdrant', 'Gemini API', 'RAG'],
+    live: null, liveHref: null,
+    github: 'https://github.com/eminaldas/semantic-retrieval-engine',
+    image: null,
+    badge: false,
   },
   {
     num: '002', year: '2025',
@@ -26,7 +32,7 @@ const PROJECTS = [
     live: null, liveHref: null,
     github: 'https://github.com/ErdemKoray/Beavask',
     image: '/images/beavask.png',
-    badge: true, collapsible: false, extraDetails: [],
+    badge: true,
   },
 ];
 
@@ -75,6 +81,12 @@ const FeaturedWork = () => {
                 </div>
 
                 <div className="flex-1 px-5 sm:px-8 py-7 min-w-0">
+                  {proj.achievementKey && (
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.18em] uppercase px-2.5 py-1 mb-3 bg-primary/10 border border-primary/40 text-primary">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      {t.works[proj.achievementKey]}
+                    </span>
+                  )}
                   <div className="flex flex-wrap items-start justify-between mb-3 gap-3">
                     <h3 className="font-headline font-black text-lg sm:text-xl uppercase tracking-tight">
                       {t.works[proj.titleKey]}
@@ -91,6 +103,17 @@ const FeaturedWork = () => {
                         >
                           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#dcd8c0' }} />
                           {proj.live} ↗
+                        </a>
+                      )}
+                      {proj.paperHref && (
+                        <a
+                          href={proj.paperHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          className="cursor-target flex items-center gap-1.5 font-mono text-[10px] tracking-[.15em] uppercase text-on-surface-variant/55 hover:text-on-surface transition-colors"
+                        >
+                          {t.works[proj.paperKey]} ↗
                         </a>
                       )}
                       {proj.badge && (

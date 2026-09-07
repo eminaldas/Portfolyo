@@ -79,6 +79,22 @@ const ProjectModal = ({ project, onClose }) => {
             {t.works[project.descKey]}
           </p>
 
+          {/* Detaylar */}
+          {project.detailsKey && t.works[project.detailsKey]?.length > 0 && (
+            <div className="flex flex-col gap-2.5 mb-5 pt-4 border-t border-outline-variant/10">
+              {t.works[project.detailsKey].map(d => (
+                <div key={d.label} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
+                  <span className="font-mono text-[9px] tracking-[.15em] uppercase text-on-surface-variant/40 sm:min-w-[100px] flex-shrink-0">
+                    {d.label}
+                  </span>
+                  <span className="text-sm leading-relaxed" style={{ color: 'rgba(220,216,192,0.75)' }}>
+                    {d.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Butonlar */}
           <div className="flex gap-2 pt-4 border-t border-outline-variant/10">
             {project.liveHref && (
@@ -100,6 +116,16 @@ const ProjectModal = ({ project, onClose }) => {
                 className="px-5 py-2 border border-on-surface/20 text-on-surface font-mono text-[10px] tracking-[.12em] uppercase hover:bg-on-surface/5 transition-colors"
               >
                 GitHub ↗
+              </a>
+            )}
+            {project.paperHref && (
+              <a
+                href={project.paperHref}
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2 border border-on-surface/20 text-on-surface font-mono text-[10px] tracking-[.12em] uppercase hover:bg-on-surface/5 transition-colors"
+              >
+                {t.works[project.paperKey]} ↗
               </a>
             )}
           </div>
