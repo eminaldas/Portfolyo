@@ -11,10 +11,12 @@ import Stack from './components/Stack';
 import Now from './components/Now';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { useMagnets } from './components/ui/magnet';
 
 export default function App() {
   const [ready, setReady] = useState(false);
   const onDone = useCallback(() => setReady(true), []);
+  useMagnets();
 
   return (
     <div className="grain has-target-cursor relative min-h-screen">

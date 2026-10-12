@@ -35,6 +35,7 @@ Shared primitives are in `src/components/ui/`:
 - `SectionHeading`
 - `BrandIcon`: renders `simple-icons` entries.
 - `hooks.js`: `prefersReducedMotion`, `isFinePointer`, `useInView`, `useClock`.
+- `magnet.js`: `useMagnets()` (called once in `App`) makes every `data-magnetic` element lean toward the cursor and exposes the pull point that `NeuralBackground` draws links to.
 
 ### Content (TR/EN)
 All user-facing copy lives in `src/i18n/content.js`, in `tr` and `en` objects with the same shape. External URLs are in the `LINKS` export. Components read text via `const { t, lang, toggle } = useLanguage()` (`src/i18n/LanguageContext.jsx`). The language is stored in `localStorage('lang')` and falls back to the browser language. When adding or changing visible text, edit both branches.
@@ -46,7 +47,7 @@ Turkish casing: CSS `uppercase` under `lang="tr"` turns `i` into `İ`. For Engli
 ### Styling
 Tailwind v4 via `@tailwindcss/vite`. There is no `tailwind.config.js`; tokens are in the `@theme` block of `src/index.css`:
 - Colors (used as `bg-bg`, `text-fg`, `text-muted`, `border-line`, `text-acc` and so on): `bg`, `bg-2`, `panel`, `line`, `line-2`, `fg`, `muted`, `dim`, `acc` (neon lime), `warn`, `info`.
-- Fonts: `font-display` (Unbounded), `font-sans` (Geist), `font-mono` (Geist Mono), via Fontsource.
+- Fonts: `font-display` (Unbounded) for headings; body text is Geist Mono (`font-sans` and `font-mono` both point to it), via Fontsource.
 
 Change colors there, not as hex values in components.
 

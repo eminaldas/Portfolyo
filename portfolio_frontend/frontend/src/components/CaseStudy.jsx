@@ -52,7 +52,7 @@ export default function CaseStudy({ id, project: p, stack, labels, closeLabel, o
           <h2 data-reveal className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl">
             {p.name}
           </h2>
-          <p data-reveal className="mt-4 text-lg leading-relaxed text-muted">
+          <p data-reveal className="mt-4 text-base leading-relaxed text-muted sm:text-[17px]">
             {p.summary}
           </p>
 

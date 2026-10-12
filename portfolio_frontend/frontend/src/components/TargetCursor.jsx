@@ -128,6 +128,18 @@ const TargetCursor = ({
       }
       const strength = activeStrengthRef.current;
       if (strength === 0) return;
+      // Magnetic targets move while hovered, so follow their live rect.
+      if (activeTarget) {
+        const r = activeTarget.getBoundingClientRect();
+        const { borderWidth, cornerSize } = constants;
+        const { x: ox, y: oy } = getOffset();
+        targetCornerPositionsRef.current = [
+          { x: r.left - borderWidth - ox, y: r.top - borderWidth - oy },
+          { x: r.right + borderWidth - cornerSize - ox, y: r.top - borderWidth - oy },
+          { x: r.right + borderWidth - cornerSize - ox, y: r.bottom + borderWidth - cornerSize - oy },
+          { x: r.left - borderWidth - ox, y: r.bottom + borderWidth - cornerSize - oy },
+        ];
+      }
       const cursorX = gsap.getProperty(cursorRef.current, 'x');
       const cursorY = gsap.getProperty(cursorRef.current, 'y');
       const corners = Array.from(cornersRef.current);

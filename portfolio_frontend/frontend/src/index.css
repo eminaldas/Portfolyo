@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource/unbounded/500.css";
 @import "@fontsource/unbounded/700.css";
-@import "@fontsource-variable/geist";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 @import "@fontsource/geist-mono/700.css";
@@ -22,7 +21,7 @@
   --color-info: #5ee1ff;
 
   --font-display: "Unbounded", system-ui, sans-serif;
-  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-sans: "Geist Mono", ui-monospace, monospace;
   --font-mono: "Geist Mono", ui-monospace, monospace;
 
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
@@ -68,6 +67,41 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
+/* Scrollbar in the terminal palette */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-2) var(--color-bg);
+  }
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 1px solid var(--color-line);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-2);
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-acc);
+}
+
+/* Scan line that sweeps down the hero log while it is being cleared */
+.log-wipe {
+  background: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--color-acc) 35%, transparent) 70%, var(--color-acc));
+  height: 2px;
+  box-shadow: 0 0 12px var(--color-acc);
+  animation: log-wipe var(--wipe-ms, 900ms) linear forwards;
+}
+@keyframes log-wipe {
+  from { top: 0; opacity: 1; }
+  to { top: 100%; opacity: 0.2; }
+}
+
 ::selection {
   background: var(--color-acc);
   color: var(--color-bg);

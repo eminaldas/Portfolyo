@@ -55,10 +55,10 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
-          <button onClick={toggle} className="cursor-target text-muted hover:text-fg" aria-label="Change language">
+          <button onClick={toggle} data-magnetic className="cursor-target text-muted hover:text-fg" aria-label="Change language">
             <span className={lang === 'tr' ? 'text-acc' : ''}>TR</span>/<span className={lang === 'en' ? 'text-acc' : ''}>EN</span>
           </button>
-          <a href={LINKS.cv} target="_blank" rel="noreferrer" className="cursor-target hidden text-acc sm:inline">
+          <a href={LINKS.cv} target="_blank" rel="noreferrer" data-magnetic className="cursor-target hidden text-acc sm:inline-block">
             cv.pdf ↓
           </a>
           <button className="cursor-target text-fg lg:hidden" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-label="Menu">

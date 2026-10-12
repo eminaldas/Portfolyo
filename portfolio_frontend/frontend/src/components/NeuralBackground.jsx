@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { prefersReducedMotion } from './ui/hooks';
+import { magnet } from './ui/magnet';
 
 const ACC = [197, 248, 42];
 const LINK_DIST = 150;
 const MOUSE_DIST = 220;
+const MAGNET_DIST = 320;
 
 // Full-screen canvas: drifting nodes form a soft neural graph, signals travel along
 // the edges, and nodes near the cursor link up to it.
@@ -59,10 +61,19 @@ export default function NeuralBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
+      const pull = magnet.pull;
       for (const n of nodes) {
         if (!reduced) {
           n.x += n.vx;
           n.y += n.vy;
+          // nodes drift toward a button the cursor is approaching
+          if (pull > 0) {
+            const d = Math.hypot(magnet.x - n.x, magnet.y - n.y);
+            if (d < MAGNET_DIST && d > 24) {
+              n.x += ((magnet.x - n.x) / d) * pull * 0.9;
+              n.y += ((magnet.y - n.y) / d) * pull * 0.9;
+            }
+          }
           if (n.x < -20) n.x = w + 20;
           if (n.x > w + 20) n.x = -20;
           if (n.y < -20) n.y = h + 20;
@@ -98,6 +109,21 @@ export default function NeuralBackground() {
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
+        }
+      }
+
+      // links to the button the network is being pulled toward
+      if (pull > 0) {
+        for (const n of nodes) {
+          const d = Math.hypot(magnet.x - n.x, magnet.y - n.y);
+          if (d < MAGNET_DIST) {
+            ctx.strokeStyle = `rgba(${ACC.join(',')},${(1 - d / MAGNET_DIST) * 0.7 * pull})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(magnet.x, magnet.y);
+            ctx.stroke();
+          }
         }
       }
 
@@ -172,7 +198,7 @@ export default function NeuralBackground() {
           maskImage: 'radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)',
         }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,var(--color-bg)_80%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_45%,color-mix(in_oklab,var(--color-bg)_70%,transparent)_100%)]" />
     </div>
   );
 }

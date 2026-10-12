@@ -14,7 +14,7 @@ export default function Now() {
             <span className="text-xs uppercase tracking-widest text-muted">
               <span className="text-acc">›</span> {k}
             </span>
-            <span className="font-sans text-lg text-fg sm:text-2xl">{v}</span>
+            <span className="text-base text-fg sm:text-xl">{v}</span>
             <span className="text-xs text-acc">
               <span className="mr-2 inline-block h-2 w-2 animate-pulse-dot rounded-full bg-acc align-middle" style={{ animationDelay: `${i * 0.4}s` }} />
               running
