@@ -11,6 +11,7 @@ import Stack from './components/Stack';
 import Now from './components/Now';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollRail from './components/ScrollRail';
 import { useMagnets } from './components/ui/magnet';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       <NeuralBackground booting={!ready} />
       <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
       <Navbar />
+      <ScrollRail />
       <main>
         <Hero ready={ready} />
         <SkillMarquee />

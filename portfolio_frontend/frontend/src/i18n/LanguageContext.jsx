@@ -3,14 +3,17 @@ import { content } from './content';
 
 const LanguageContext = createContext(null);
 
+// Only an explicit TR/EN click is remembered; everyone else starts in English.
+const STORAGE_KEY = 'site-lang';
+
 const initialLang = () => {
   try {
-    const saved = localStorage.getItem('lang');
+    const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'tr' || saved === 'en') return saved;
   } catch {
-    // storage blocked: fall through to the browser language
+    // storage blocked: use the default
   }
-  return navigator.language?.toLowerCase().startsWith('tr') ? 'tr' : 'en';
+  return 'en';
 };
 
 export function LanguageProvider({ children }) {
@@ -18,14 +21,21 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    try {
-      localStorage.setItem('lang', lang);
-    } catch {
-      // ignore
-    }
   }, [lang]);
 
-  const toggle = useCallback(() => setLang((l) => (l === 'tr' ? 'en' : 'tr')), []);
+  const toggle = useCallback(
+    () =>
+      setLang((l) => {
+        const next = l === 'tr' ? 'en' : 'tr';
+        try {
+          localStorage.setItem(STORAGE_KEY, next);
+        } catch {
+          // ignore
+        }
+        return next;
+      }),
+    [],
+  );
   const value = useMemo(() => ({ lang, t: content[lang], toggle }), [lang, toggle]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

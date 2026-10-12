@@ -40,7 +40,7 @@ Shared primitives are in `src/components/ui/`:
 - `magnet.js`: `useMagnets()` (called once in `App`) makes every `data-magnetic` element lean toward the cursor and exposes the pull point that `NeuralBackground` draws links to.
 
 ### Content (TR/EN)
-All user-facing copy lives in `src/i18n/content.js`, in `tr` and `en` objects with the same shape. External URLs are in the `LINKS` export. Components read text via `const { t, lang, toggle } = useLanguage()` (`src/i18n/LanguageContext.jsx`). The language is stored in `localStorage('lang')` and falls back to the browser language. When adding or changing visible text, edit both branches.
+All user-facing copy lives in `src/i18n/content.js`, in `tr` and `en` objects with the same shape. External URLs are in the `LINKS` export. Components read text via `const { t, lang, toggle } = useLanguage()` (`src/i18n/LanguageContext.jsx`). The default is English; only an explicit TR/EN click is remembered, in `localStorage('site-lang')`. When adding or changing visible text, edit both branches.
 
 Skill and stack icons, with brand colors, are in `src/data/stack.js`.
 

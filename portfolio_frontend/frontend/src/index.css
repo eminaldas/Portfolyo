@@ -67,19 +67,17 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
-/* Scrollbar in the terminal palette: neon thumb on a dark track */
+/* Scrollbars in the terminal palette (inherited by every scrolling panel) */
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--color-acc) var(--color-bg-2);
 }
-::-webkit-scrollbar {
-  width: 8px;
+/* On desktop the page scrollbar is replaced by <ScrollRail /> */
+html.has-scroll-rail {
+  scrollbar-width: none;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-bg-2);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-acc);
+html.has-scroll-rail::-webkit-scrollbar {
+  display: none;
 }
 
 /* Scan line that sweeps down the hero log while it is being cleared */
