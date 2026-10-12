@@ -24,19 +24,35 @@ There is no test setup. `no-unused-vars` is an error, but identifiers matching `
 
 ## Architecture
 
-### Single-page composition
-`main.jsx` → `App.jsx` → `pages/LandingPage.jsx`, which renders six section components from `src/assets/components/` in order: `HeroSection`, `BentoStats`, `AboutSection`, `CareerSection`, `FeaturedWork`, `ContactSection`. `Navbar`, `SocialSidebar`, and `Footer` wrap the page in `App.jsx`.
+The site was rebuilt from scratch in a dark-only "terminal / neon" direction. There is no router and no theme toggle.
 
-Note: `src/pages/` also contains `About.jsx`, `Contact.jsx`, `Experiences.jsx`, `Projects.jsx`, `Skills.jsx`, but **only `LandingPage` is wired in** — there is no router. Treat the others as unused/legacy unless you intentionally add routing.
+### Composition
+`main.jsx` wraps `App.jsx` in `LanguageProvider`. `App.jsx` renders, in order: `Preloader` (000→100 counter; calls `onDone`, which sets `ready`), `NeuralBackground` (fixed canvas network behind everything), `TargetCursor` (aims at any element with class `cursor-target`), `Navbar`, then the sections `Hero` (`ready` starts its animations), `SkillMarquee`, `Work` (opens `CaseStudy` as a slide-in dialog), `Experience`, `Stack`, `Now`, `Contact`, and finally `Footer`. All of these live in `src/components/`.
 
-### Two global contexts (both wrap the app in `App.jsx`)
-- **`context/LanguageContext.jsx`** — bilingual EN/TR. *All* user-facing copy lives in the single `translations` object here, keyed by section (`nav`, `hero`, `about`, `career`, `works`, `contact`, …). Components read text via `const { t } = useLanguage()` then `t.section.key`. Default language is `'tr'`. When adding or changing visible text, edit both `en` and `tr` branches here rather than hardcoding strings in components.
-- **`context/ThemeContext.jsx`** — dark/light. Defaults to dark; reads/writes `localStorage('theme')` and falls back to `prefers-color-scheme`. Toggling adds/removes the `.dark` class on `document.documentElement`. Use `useTheme()` for `{ isDark, toggleTheme }`.
+Shared primitives are in `src/components/ui/`:
+- `ScrambleText`: decodes text from glyphs.
+- `InteractiveCard`: spotlight, tilt, beam border and corner brackets.
+- `SectionHeading`
+- `BrandIcon`: renders `simple-icons` entries.
+- `hooks.js`: `prefersReducedMotion`, `isFinePointer`, `useInView`, `useClock`.
 
-### Theming via Material Design 3 tokens (Tailwind v4)
-`src/index.css` defines a full Material 3 color token set as CSS variables in `:root` (light) and `.dark` (dark) — e.g. `--primary`, `--on-surface`, `--surface-container`, `--background`. A Tailwind v4 `@theme` block then maps each to a `--color-*` token, which makes them available as utility classes: `bg-background`, `text-on-surface`, `border-outline-variant`, etc. Dark mode is driven by `@custom-variant dark (&:where(.dark, .dark *))`, matching the `.dark` class toggled by ThemeContext.
+### Content (TR/EN)
+All user-facing copy lives in `src/i18n/content.js`, in `tr` and `en` objects with the same shape. External URLs are in the `LINKS` export. Components read text via `const { t, lang, toggle } = useLanguage()` (`src/i18n/LanguageContext.jsx`). The language is stored in `localStorage('lang')` and falls back to the browser language. When adding or changing visible text, edit both branches.
 
-Practical implication: **change colors by editing the CSS variables in `index.css`, not by hardcoding hex values in components.** Use the semantic token utility classes (`bg-surface`, `text-on-background`, …) so light/dark both work automatically.
+Skill and stack icons, with brand colors, are in `src/data/stack.js`.
 
-### Styling stack
-Tailwind v4 via the `@tailwindcss/vite` plugin (no `tailwind.config.js` — config lives in `index.css`). Animation libraries in use: `framer-motion`, `gsap`, `@react-spring/parallax`. Icons via FontAwesome (`@fortawesome/*`). Reusable animated text primitives live under `src/assets/components/ReactBits/`.
+Turkish casing: CSS `uppercase` under `lang="tr"` turns `i` into `İ`. For English labels that are uppercased, put `lang="en"` on the element or write the text in caps.
+
+### Styling
+Tailwind v4 via `@tailwindcss/vite`. There is no `tailwind.config.js`; tokens are in the `@theme` block of `src/index.css`:
+- Colors (used as `bg-bg`, `text-fg`, `text-muted`, `border-line`, `text-acc` and so on): `bg`, `bg-2`, `panel`, `line`, `line-2`, `fg`, `muted`, `dim`, `acc` (neon lime), `warn`, `info`.
+- Fonts: `font-display` (Unbounded), `font-sans` (Geist), `font-mono` (Geist Mono), via Fontsource.
+
+Change colors there, not as hex values in components.
+
+`index.css` also holds the effect classes (`.beam-border`, `.spotlight`, `.grain`, `.skill-logo`, marquee keyframes) and a `prefers-reduced-motion` block. Every animation should respect reduced motion.
+
+Animation is done with GSAP (+ ScrollTrigger), CSS and canvas. There is no framer-motion.
+
+### Assets
+`public/cv.pdf`, `public/images/` (project screenshots, the ICAIRA certificate, and `nehaber_dev_v3.pdf`, the ICAIRA paper that the 87.27% accuracy figure comes from).
