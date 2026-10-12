@@ -1,55 +1,41 @@
-import React, { useState, useCallback } from 'react';
-import Navbar from './assets/components/Navbar';
-import LandingPage from './pages/LandingPage';
-import SocialSidebar from './assets/components/SocialSidebar';
-import Preloader from './assets/components/Preloader';
-import GridCanvas from './assets/components/GridCanvas';
-import TargetCursor from './components/reactBits/TargetCursor';
-import MouseCoords from './assets/components/MouseCoords';
-import LiveClock from './assets/components/LiveClock';
-import ScrollProgress from './assets/components/ScrollProgress';
-import { LanguageProvider } from './context/LanguageContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { BuildProvider } from './context/BuildContext';
-import './App.css';
+import { useCallback, useState } from 'react';
+import Preloader from './components/Preloader';
+import NeuralBackground from './components/NeuralBackground';
+import TargetCursor from './components/TargetCursor';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import SkillMarquee from './components/SkillMarquee';
+import Work from './components/Work';
+import Experience from './components/Experience';
+import Stack from './components/Stack';
+import Now from './components/Now';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import ScrollRail from './components/ScrollRail';
+import { useMagnets } from './components/ui/magnet';
 
-function App() {
-  const noPreloader = !!sessionStorage.getItem('preloader-seen');
-  const [showPreloader] = useState(() => !noPreloader);
-  // preloaderDone: preloader yoksa (noPreloader) hemen true, varsa false → preloader bitince true
-  const [preloaderDone, setPreloaderDone] = useState(noPreloader);
-
-  const handleComplete = useCallback(() => {
-    sessionStorage.setItem('preloader-seen', '1');
-    setPreloaderDone(true);
-  }, []);
-
-  // ready = preloader bitti veya hiç gösterilmedi
-  const ready = preloaderDone;
+export default function App() {
+  const [ready, setReady] = useState(false);
+  const onDone = useCallback(() => setReady(true), []);
+  useMagnets();
 
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <BuildProvider ready={ready}>
-          {showPreloader && !preloaderDone && (
-            <Preloader onComplete={handleComplete} />
-          )}
-          <GridCanvas />
-          <ScrollProgress />
-          <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
-          <MouseCoords />
-          <LiveClock />
-          <div className="bg-background text-on-background font-body selection:bg-primary/20 selection:text-on-primary">
-            <Navbar />
-            <SocialSidebar />
-            <main className="relative">
-              <LandingPage />
-            </main>
-          </div>
-        </BuildProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+    <div className="grain has-target-cursor relative min-h-screen">
+      <Preloader onDone={onDone} />
+      <NeuralBackground booting={!ready} />
+      <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
+      <Navbar />
+      <ScrollRail />
+      <main>
+        <Hero ready={ready} />
+        <SkillMarquee />
+        <Work />
+        <Experience />
+        <Stack />
+        <Now />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 }
-
-export default App;
