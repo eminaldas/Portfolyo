@@ -35,6 +35,8 @@ Shared primitives are in `src/components/ui/`:
 - `SectionHeading`
 - `BrandIcon`: renders `simple-icons` entries.
 - `hooks.js`: `prefersReducedMotion`, `isFinePointer`, `useInView`, `useClock`.
+- `boot.js`: progress shared by `Preloader` and `NeuralBackground`; the network grows from the centre as the counter fills (the canvas sits between the preloader panels and its text while booting).
+- `Socials.jsx`: GitHub, LinkedIn and Instagram icon links (navbar, contact, footer).
 - `magnet.js`: `useMagnets()` (called once in `App`) makes every `data-magnetic` element lean toward the cursor and exposes the pull point that `NeuralBackground` draws links to.
 
 ### Content (TR/EN)
@@ -47,7 +49,7 @@ Turkish casing: CSS `uppercase` under `lang="tr"` turns `i` into `İ`. For Engli
 ### Styling
 Tailwind v4 via `@tailwindcss/vite`. There is no `tailwind.config.js`; tokens are in the `@theme` block of `src/index.css`:
 - Colors (used as `bg-bg`, `text-fg`, `text-muted`, `border-line`, `text-acc` and so on): `bg`, `bg-2`, `panel`, `line`, `line-2`, `fg`, `muted`, `dim`, `acc` (neon lime), `warn`, `info`.
-- Fonts: `font-display` (Unbounded) for headings; body text is Geist Mono (`font-sans` and `font-mono` both point to it), via Fontsource.
+- Fonts, via Fontsource: `font-display` (Unbounded) is only for the three giant headlines (hero, section headings, contact). Everything else, cards included, is Geist Mono; `font-sans` and `font-mono` both point to it.
 
 Change colors there, not as hex values in components.
 

@@ -55,7 +55,7 @@ export default function Experience() {
                   </div>
                   <div className="mt-3 grid gap-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-10">
                     <div>
-                      <h3 className="font-display text-2xl font-bold tracking-tight transition-colors group-hover:text-acc sm:text-3xl">{it.role}</h3>
+                      <h3 className="font-mono text-2xl font-bold tracking-[-0.04em] transition-colors group-hover:text-acc sm:text-3xl">{it.role}</h3>
                       <p className="mt-1 font-mono text-sm text-acc">@ {it.org}</p>
                     </div>
                     <p className="leading-relaxed text-muted">{it.desc}</p>
@@ -76,7 +76,7 @@ export default function Experience() {
                 </div>
                 <div className="mt-2 grid gap-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-10">
                   <div>
-                    <h3 className="font-display text-lg font-bold tracking-tight text-fg/85 transition-colors group-hover:text-acc sm:text-xl">{it.role}</h3>
+                    <h3 className="font-mono text-lg font-bold tracking-[-0.04em] text-fg/85 transition-colors group-hover:text-acc sm:text-xl">{it.role}</h3>
                     <p className="mt-1 font-mono text-sm text-muted">@ {it.org}</p>
                   </div>
                   <p className="text-sm leading-relaxed text-muted">{it.desc}</p>

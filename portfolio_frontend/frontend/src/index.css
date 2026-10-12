@@ -67,26 +67,18 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
-/* Scrollbar in the terminal palette */
-@supports not selector(::-webkit-scrollbar) {
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-line-2) var(--color-bg);
-  }
+/* Scrollbar in the terminal palette: neon thumb on a dark track */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-acc) var(--color-bg-2);
 }
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
-  border-left: 1px solid var(--color-line);
+  background: var(--color-bg-2);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-line-2);
-  border: 2px solid var(--color-bg);
-}
-::-webkit-scrollbar-thumb:hover {
   background: var(--color-acc);
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
+import Socials from './ui/Socials';
 import { LINKS } from '../i18n/content';
 
 export default function Navbar() {
@@ -55,6 +56,7 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
+          <Socials size={14} className="hidden gap-2 border-r border-line pr-4 xl:flex" />
           <button onClick={toggle} data-magnetic className="cursor-target text-muted hover:text-fg" aria-label="Change language">
             <span className={lang === 'tr' ? 'text-acc' : ''}>TR</span>/<span className={lang === 'en' ? 'text-acc' : ''}>EN</span>
           </button>
@@ -81,6 +83,9 @@ export default function Navbar() {
             <a href={LINKS.cv} target="_blank" rel="noreferrer" className="block px-5 py-4 text-acc">
               cv.pdf ↓
             </a>
+          </li>
+          <li className="border-t border-line px-4 py-3">
+            <Socials size={16} />
           </li>
         </ul>
       )}

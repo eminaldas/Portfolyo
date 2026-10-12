@@ -49,7 +49,7 @@ export default function CaseStudy({ id, project: p, stack, labels, closeLabel, o
           <p data-reveal className="font-mono text-xs text-muted">
             {p.tag} · <span className="text-acc">{p.status}</span>
           </p>
-          <h2 data-reveal className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl">
+          <h2 data-reveal className="mt-3 font-mono text-4xl font-bold tracking-[-0.04em] sm:text-6xl">
             {p.name}
           </h2>
           <p data-reveal className="mt-4 text-base leading-relaxed text-muted sm:text-[17px]">
@@ -66,7 +66,7 @@ export default function CaseStudy({ id, project: p, stack, labels, closeLabel, o
             <div data-reveal className="mt-8 grid grid-cols-3 border border-line">
               {p.metrics.map(([v, k]) => (
                 <div key={k} className="border-r border-line p-4 last:border-r-0">
-                  <div className="font-display text-2xl font-bold text-acc sm:text-3xl">{v}</div>
+                  <div className="font-mono text-2xl font-bold text-acc sm:text-3xl">{v}</div>
                   <div className="mt-1 font-mono text-[11px] uppercase tracking-widest text-muted">{k}</div>
                 </div>
               ))}
@@ -121,7 +121,7 @@ function Block({ label, n, children }) {
   return (
     <section data-reveal className="mt-10 grid gap-3 border-t border-line pt-6 sm:grid-cols-[150px_1fr]">
       <h3 className="font-mono text-xs uppercase tracking-widest text-acc">
-        {n} — {label}
+        {n} / {label}
       </h3>
       <div className="leading-relaxed text-fg/90">{children}</div>
     </section>

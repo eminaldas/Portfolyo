@@ -14,7 +14,7 @@ export default function Stack() {
         {s.groups.map((g, gi) => (
           <InteractiveCard key={g.name} tilt={6} className="relative rounded-sm border border-line bg-panel/90 p-6 backdrop-blur-sm">
             <p className="font-mono text-xs text-muted">module_{String(gi + 1).padStart(2, '0')}</p>
-            <h3 className="mt-2 font-display text-xl font-bold">{g.name}</h3>
+            <h3 className="mt-2 font-mono text-xl font-bold">{g.name}</h3>
             <p className="mt-1 font-mono text-xs text-dim">{g.note}</p>
             <ul className="mt-6 space-y-3">
               {STACK[gi].map((item) => (

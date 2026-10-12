@@ -21,7 +21,7 @@ export default function App() {
   return (
     <div className="grain has-target-cursor relative min-h-screen">
       <Preloader onDone={onDone} />
-      <NeuralBackground />
+      <NeuralBackground booting={!ready} />
       <TargetCursor spinDuration={3} hideDefaultCursor parallaxOn hoverDuration={0.18} />
       <Navbar />
       <main>

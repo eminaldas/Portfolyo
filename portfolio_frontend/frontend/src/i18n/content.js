@@ -4,6 +4,7 @@ export const LINKS = {
   email: 'eminaldas575@gmail.com',
   github: 'https://github.com/eminaldas',
   linkedin: 'https://linkedin.com/in/muhammedeminaldas',
+  instagram: 'https://www.instagram.com/eminalds/',
   cv: '/cv.pdf',
   paper: '/images/nehaber_dev_v3.pdf',
   certificate: '/images/icaira-certificate.png',
@@ -71,7 +72,7 @@ const tr = {
     scroll: 'kaydır',
   },
   work: {
-    kicker: '01 — seçili işler',
+    kicker: '01 / seçili işler',
     title: 'Çalışan sistemler',
     note: '4 proje · 1 yayın · 1 canlı',
     open: 'vaka çalışması',
@@ -143,18 +144,18 @@ const tr = {
     },
   },
   experience: {
-    kicker: '02 — deneyim',
+    kicker: '02 / deneyim',
     title: 'GIT LOG --CAREER',
     items: [
       { date: '09.2026', role: 'Bildiri sunumu', org: 'ICAIRA 2026 · İstinye Üniversitesi', desc: 'nehaber.dev bildirisini Dr. Öğr. Üyesi İlhan Garip ile birlikte sundum.', tag: 'yayın' },
-      { date: '07.2026', role: 'Yazılım Mühendisliği', org: 'Beykoz Üniversitesi', desc: '2022 – 2026 · GPA 3,11 / 4,00', tag: 'eğitim' },
-      { date: '03.2025 – 09.2025', role: 'BT Denetim Asistanı', org: 'Aras Kargo', main: true, desc: 'Hukuk ve denetim ekipleri için React + FastAPI ile iç araçlar geliştirdim; süreçleri analiz edip dijitalleşme kapsamını belirledim.', tag: 'iş' },
-      { date: '08.2023 – 07.2025', role: 'Sosyal Medya ve Tasarım Lideri', org: 'GDG Beykoz', desc: 'Topluluğun sosyal medya tasarımlarını yaptım; etkinlik yönetimi ve katılımında aktif rol aldım.', tag: 'topluluk' },
-      { date: '02.2024 – 08.2024', role: 'BT Asistanı', org: 'Aras Kargo', main: true, desc: "Tracky'nin Flask backend mimarisi ve MongoDB entegrasyonu.", tag: 'iş' },
+      { date: '07.2026', role: 'Yazılım Mühendisliği', org: 'Beykoz Üniversitesi', desc: '2022 - 2026 · GPA 3,11 / 4,00', tag: 'eğitim' },
+      { date: '03.2025 - 09.2025', role: 'BT Denetim Asistanı', org: 'Aras Kargo', main: true, desc: 'Hukuk ve denetim ekipleri için React + FastAPI ile iç araçlar geliştirdim; süreçleri analiz edip dijitalleşme kapsamını belirledim.', tag: 'iş' },
+      { date: '08.2023 - 07.2025', role: 'Sosyal Medya ve Tasarım Lideri', org: 'GDG Beykoz', desc: 'Topluluğun sosyal medya tasarımlarını yaptım; etkinlik yönetimi ve katılımında aktif rol aldım.', tag: 'topluluk' },
+      { date: '02.2024 - 08.2024', role: 'BT Asistanı', org: 'Aras Kargo', main: true, desc: "Tracky'nin Flask backend mimarisi ve MongoDB entegrasyonu.", tag: 'iş' },
     ],
   },
   stack: {
-    kicker: '03 — stack',
+    kicker: '03 / stack',
     title: 'Kullandığım araçlar',
     groups: [
       { name: 'AI / NLP', note: 'modeller, arama, değerlendirme' },
@@ -164,17 +165,17 @@ const tr = {
     ],
   },
   now: {
-    kicker: '04 — şu an',
+    kicker: '04 / şu an',
     title: 'Şu an',
     rows: [
-      ['yapıyor', 'Semantic Retrieval Engine — hibrit vektör + graf RAG'],
+      ['yapıyor', 'Semantic Retrieval Engine: hibrit vektör + graf RAG'],
       ['öğreniyor', 'React Native, mobil UX ve performans'],
       ['arıyor', 'Junior Full-Stack / AI Mühendisliği pozisyonu'],
     ],
     updated: 'son güncelleme · 10.2026',
   },
   contact: {
-    kicker: '05 — iletişim',
+    kicker: '05 / iletişim',
     title1: 'Birlikte',
     title2: 'üretime',
     title3: 'taşıyalım.',
@@ -183,7 +184,7 @@ const tr = {
     copied: 'kopyalandı ✓',
     cv: 'cv.pdf indir',
   },
-  footer: { built: 'React · Vite · GSAP ile sıfırdan yazıldı', rights: 'Muhammed Emin Aldaş' },
+  footer: { rights: 'Muhammed Emin Aldaş' },
 };
 
 const en = {
@@ -243,7 +244,7 @@ const en = {
     scroll: 'scroll',
   },
   work: {
-    kicker: '01 — selected work',
+    kicker: '01 / selected work',
     title: 'Systems that ship',
     note: '4 projects · 1 paper · 1 live',
     open: 'case study',
@@ -315,18 +316,18 @@ const en = {
     },
   },
   experience: {
-    kicker: '02 — experience',
+    kicker: '02 / experience',
     title: 'GIT LOG --CAREER',
     items: [
       { date: '09.2026', role: 'Paper presentation', org: 'ICAIRA 2026 · İstinye University', desc: 'Presented the nehaber.dev paper with my advisor Dr. İlhan Garip.', tag: 'paper' },
-      { date: '07.2026', role: 'B.Sc. Software Engineering', org: 'Beykoz University', desc: '2022 – 2026 · GPA 3.11 / 4.00', tag: 'education' },
-      { date: '03.2025 – 09.2025', role: 'IT Audit Assistant', org: 'Aras Kargo', main: true, desc: 'Built internal tools for legal and audit teams with React + FastAPI; scoped what to digitize with the audit team.', tag: 'work' },
-      { date: '08.2023 – 07.2025', role: 'Social Media & Design Lead', org: 'GDG Beykoz', desc: "Designed the community's social media; took an active part in managing and attending its events.", tag: 'community' },
-      { date: '02.2024 – 08.2024', role: 'IT Assistant', org: 'Aras Kargo', main: true, desc: 'Flask backend architecture and MongoDB integration for Tracky.', tag: 'work' },
+      { date: '07.2026', role: 'B.Sc. Software Engineering', org: 'Beykoz University', desc: '2022 - 2026 · GPA 3.11 / 4.00', tag: 'education' },
+      { date: '03.2025 - 09.2025', role: 'IT Audit Assistant', org: 'Aras Kargo', main: true, desc: 'Built internal tools for legal and audit teams with React + FastAPI; scoped what to digitize with the audit team.', tag: 'work' },
+      { date: '08.2023 - 07.2025', role: 'Social Media & Design Lead', org: 'GDG Beykoz', desc: "Designed the community's social media; took an active part in managing and attending its events.", tag: 'community' },
+      { date: '02.2024 - 08.2024', role: 'IT Assistant', org: 'Aras Kargo', main: true, desc: 'Flask backend architecture and MongoDB integration for Tracky.', tag: 'work' },
     ],
   },
   stack: {
-    kicker: '03 — stack',
+    kicker: '03 / stack',
     title: 'Tools I build with',
     groups: [
       { name: 'AI / NLP', note: 'models, search, evaluation' },
@@ -336,17 +337,17 @@ const en = {
     ],
   },
   now: {
-    kicker: '04 — now',
+    kicker: '04 / now',
     title: 'Now',
     rows: [
-      ['building', 'Semantic Retrieval Engine — hybrid vector + graph RAG'],
+      ['building', 'Semantic Retrieval Engine: hybrid vector + graph RAG'],
       ['learning', 'React Native, mobile UX and performance'],
       ['looking for', 'Junior Full-Stack / AI Engineering role'],
     ],
     updated: 'last updated · 10.2026',
   },
   contact: {
-    kicker: '05 — contact',
+    kicker: '05 / contact',
     title1: "Let's take",
     title2: 'it live',
     title3: 'together.',
@@ -355,7 +356,7 @@ const en = {
     copied: 'copied ✓',
     cv: 'download cv.pdf',
   },
-  footer: { built: 'Built from scratch with React · Vite · GSAP', rights: 'Muhammed Emin Aldaş' },
+  footer: { rights: 'Muhammed Emin Aldaş' },
 };
 
 export const content = { tr, en };

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { LINKS } from '../i18n/content';
 import ScrambleText from './ui/ScrambleText';
+import Socials from './ui/Socials';
 import { useInView } from './ui/hooks';
 
 // Keeps hyphenated words like "e-posta" on one line.
@@ -55,9 +56,8 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-6 font-mono text-sm">
-          <a href={LINKS.github} target="_blank" rel="noreferrer" className="cursor-target text-muted hover:text-acc">github.com/eminaldas ↗</a>
-          <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="cursor-target text-muted hover:text-acc">linkedin ↗</a>
+        <div className="mt-6 flex flex-wrap items-center gap-6 font-mono text-sm">
+          <Socials size={16} withHandle className="flex-wrap gap-x-6 gap-y-2" />
           <a href={LINKS.nehaber} target="_blank" rel="noreferrer" className="cursor-target text-muted hover:text-acc">nehaber.dev ↗</a>
         </div>
       </div>

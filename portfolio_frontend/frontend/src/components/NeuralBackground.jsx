@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { prefersReducedMotion } from './ui/hooks';
 import { magnet } from './ui/magnet';
+import { boot } from './ui/boot';
 
 const ACC = [197, 248, 42];
 const LINK_DIST = 150;
@@ -9,7 +10,7 @@ const MAGNET_DIST = 320;
 
 // Full-screen canvas: drifting nodes form a soft neural graph, signals travel along
 // the edges, and nodes near the cursor link up to it.
-export default function NeuralBackground() {
+export default function NeuralBackground({ booting = false }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function NeuralBackground() {
     let pulses = [];
     let raf = 0;
     const mouse = { x: -9999, y: -9999 };
+    let gain = 1;
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -33,13 +35,20 @@ export default function NeuralBackground() {
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.round(Math.min(110, Math.max(40, (w * h) / 16000)));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.4 + 0.6,
-      }));
+      const maxD = Math.hypot(w / 2, h / 2);
+      nodes = Array.from({ length: count }, () => {
+        const x = Math.random() * w;
+        const y = Math.random() * h;
+        return {
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          r: Math.random() * 1.4 + 0.6,
+          // boot progress at which this node appears: the graph grows out from the centre
+          birth: Math.min(0.92, (Math.hypot(x - w / 2, y - h / 2) / maxD) * 0.8 + Math.random() * 0.12),
+        };
+      });
       pulses = [];
     };
 
@@ -55,11 +64,16 @@ export default function NeuralBackground() {
           best = b;
         }
       }
-      if (best) pulses.push({ a, b: best, t: 0, speed: 0.012 + Math.random() * 0.012 });
+      if (best && seen(a) && seen(best)) pulses.push({ a, b: best, t: 0, speed: 0.012 + Math.random() * 0.012 });
     };
+
+    // 0 → 1 visibility of a node for the current boot progress
+    const seen = (n) => Math.min(1, Math.max(0, (boot.p - n.birth) / 0.08));
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
+      // brighter while the boot screen is up, so the growing graph reads clearly
+      gain += ((boot.active ? 2.4 : 1) - gain) * 0.04;
 
       const pull = magnet.pull;
       for (const n of nodes) {
@@ -84,13 +98,17 @@ export default function NeuralBackground() {
       // edges
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
+        const sa = seen(a);
+        if (!sa) continue;
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j];
+          const sb = seen(b);
+          if (!sb) continue;
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < LINK_DIST * LINK_DIST) {
-            const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.16;
+            const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.16 * gain * Math.min(sa, sb);
             ctx.strokeStyle = `rgba(233,237,230,${alpha})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
@@ -116,7 +134,7 @@ export default function NeuralBackground() {
       if (pull > 0) {
         for (const n of nodes) {
           const d = Math.hypot(magnet.x - n.x, magnet.y - n.y);
-          if (d < MAGNET_DIST) {
+          if (d < MAGNET_DIST && seen(n)) {
             ctx.strokeStyle = `rgba(${ACC.join(',')},${(1 - d / MAGNET_DIST) * 0.7 * pull})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -129,12 +147,16 @@ export default function NeuralBackground() {
 
       // nodes
       for (const n of nodes) {
+        const sn = seen(n);
+        if (!sn) continue;
+        ctx.globalAlpha = sn;
         const near = Math.hypot(n.x - mouse.x, n.y - mouse.y) < MOUSE_DIST;
         ctx.fillStyle = near ? `rgba(${ACC.join(',')},0.9)` : 'rgba(233,237,230,0.35)';
         ctx.beginPath();
         ctx.arc(n.x, n.y, near ? n.r + 0.8 : n.r, 0, Math.PI * 2);
         ctx.fill();
       }
+      ctx.globalAlpha = 1;
 
       // signals travelling along edges
       if (!reduced) {
@@ -186,7 +208,7 @@ export default function NeuralBackground() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+    <div aria-hidden="true" className={`pointer-events-none fixed inset-0 ${booting ? 'z-[99]' : '-z-10'}`}>
       <canvas ref={ref} className="absolute inset-0" />
       {/* faint grid + vignette */}
       <div

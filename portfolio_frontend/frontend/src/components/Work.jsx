@@ -69,7 +69,7 @@ function NeHaberCard({ p, open, label }) {
           {p.status}
         </span>
       </div>
-      <h3 className="mt-5 font-display text-4xl font-bold tracking-tight sm:text-6xl">{p.name}</h3>
+      <h3 className="mt-5 font-mono text-4xl font-bold tracking-[-0.04em] sm:text-6xl">{p.name}</h3>
       <p className="mt-3 max-w-2xl leading-relaxed text-muted">{p.summary}</p>
 
       <div className="relative mt-6 aspect-[16/8] overflow-hidden border border-line">
@@ -85,7 +85,7 @@ function NeHaberCard({ p, open, label }) {
       <div className="mt-5 grid grid-cols-3 border border-line">
         {p.metrics.map(([v, k]) => (
           <div key={k} className="border-r border-line p-4 last:border-r-0">
-            <div className="font-display text-xl font-bold sm:text-3xl">{v}</div>
+            <div className="font-mono text-xl font-bold sm:text-3xl">{v}</div>
             <div className="mt-1 font-mono text-[11px] uppercase tracking-widest text-muted">{k}</div>
           </div>
         ))}
@@ -147,7 +147,7 @@ function SmallCard({ idx, p, open, label, visual, warn }) {
           <span>[{idx}] {p.tag}</span>
           <span className={warn ? 'text-warn' : ''}>{p.status}</span>
         </div>
-        <h3 className="mt-3 font-display text-2xl font-bold tracking-tight">{p.name}</h3>
+        <h3 className="mt-3 font-mono text-2xl font-bold tracking-[-0.04em]">{p.name}</h3>
         <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.summary}</p>
         <span className="mt-auto pt-4 font-mono text-[13px] text-acc transition-transform group-hover:translate-x-1">{label} →</span>
       </div>

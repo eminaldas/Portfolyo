@@ -151,7 +151,7 @@ function StatusPanel({ ready }) {
 
       <div className="border-b border-line px-5 py-6">
         <div className="flex items-start justify-between gap-3">
-          <div className="font-display text-6xl font-bold leading-none tracking-tight">
+          <div className="font-mono text-6xl font-bold leading-none tracking-[-0.05em]">
             {t.meta.lang === 'tr' && <span className="text-3xl text-muted">%</span>}
             <span ref={numRef}>0</span>
             {t.meta.lang === 'en' && <span className="text-3xl text-muted">%</span>}
