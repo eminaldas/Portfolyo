@@ -8,6 +8,7 @@ export const LINKS = {
   cv: '/cv.pdf',
   paper: '/images/nehaber_dev_v3.pdf',
   certificate: '/images/icaira-certificate.png',
+  ieee: 'https://doi.org/10.1109/ICAIRA72375.2026.11768499',
   nehaber: 'https://nehaber.dev',
   nehaberRepo: 'https://github.com/eminaldas/Fake-News-Detection-System',
   sreRepo: 'https://github.com/eminaldas/semantic-retrieval-engine',
@@ -36,7 +37,7 @@ const tr = {
     lead: [
       { t: "İstanbul'da " },
       { t: 'full-stack ve AI mühendisi', b: true },
-      { t: ". Bildirisi ICAIRA 2026'da sunulan, canlıda çalışan " },
+      { t: ". ICAIRA 2026'da sunulup IEEE Xplore'da yayımlanan, canlıda çalışan " },
       { t: 'nehaber.dev', b: true, href: LINKS.nehaber },
       { t: "'in geliştiricisi." },
     ],
@@ -55,7 +56,7 @@ const tr = {
       metricLink: 'nehaber.dev ↗',
       // [level, message]; typed in a loop, six lines per round
       log: [
-        ['ok', 'icaira 2026 · bildiri sunuldu'],
+        ['ok', 'ieee xplore · bildiri yayımlandı'],
         ['info', 'nehaber · istek kuyruğa alındı'],
         ['info', 'sbert · embedding 768d hazır'],
         ['ok', 'pgvector · 12 benzer kayıt'],
@@ -90,11 +91,11 @@ const tr = {
           'Benzer kayıt yoksa embedding 8 el yapımı NLP sinyaliyle birleşir (776 boyut) ve Logistic Regression ile sınıflanır.',
           'Gemini 2.5 Flash, sonucu kanıta dayalı olarak asenkron şekilde yeniden inceler.',
         ],
-        result: "3.764 haberlik veri setinde 5-fold stratified CV ile %87,27 doğruluk ve 0,8724 Macro-F1. Bildiri ICAIRA 2026'da (İstinye Üniversitesi) sunuldu.",
+        result: "3.764 haberlik veri setinde 5-fold stratified CV ile %87,27 doğruluk ve 0,8724 Macro-F1. Bildiri ICAIRA 2026'da sunuldu ve IEEE Xplore'da yayımlandı.",
         learned: 'Bir modeli canlıya almak, onu eğitmekten daha çok mühendislik istiyor: kuyruklar, önbellek, izleme.',
         metrics: [['%87,27', 'doğruluk'], ['0,8724', 'macro-f1'], ['3.764', 'haber']],
         term: ['nehaber check "Bakanlık tüm okulları tatil etti"', '→ embedding 768d … tamam', '→ pgvector benzer kayıt: 12', '✕ muhtemelen sahte  güven=0.91'],
-        links: [['nehaber.dev ↗', 'nehaber'], ['bildiri (pdf) ↗', 'paper'], ['sertifika ↗', 'certificate'], ['github ↗', 'nehaberRepo']],
+        links: [['nehaber.dev ↗', 'nehaber'], ['ieee xplore ↗', 'ieee'], ['bildiri (pdf) ↗', 'paper'], ['sertifika ↗', 'certificate'], ['github ↗', 'nehaberRepo']],
       },
       sre: {
         tag: 'rag / graph',
@@ -147,6 +148,7 @@ const tr = {
     kicker: '02 / deneyim',
     title: 'GIT LOG --CAREER',
     items: [
+      { date: '11.2026', role: 'IEEE Xplore yayını', org: 'ICAIRA 2026 Proceedings · IEEE', desc: 'nehaber.dev bildirisi IEEE Xplore\'da yayımlandı. DOI: 10.1109/ICAIRA72375.2026.11768499', tag: 'yayın', href: LINKS.ieee },
       { date: '09.2026', role: 'Bildiri sunumu', org: 'ICAIRA 2026 · İstinye Üniversitesi', desc: 'nehaber.dev bildirisini Dr. Öğr. Üyesi İlhan Garip ile birlikte sundum.', tag: 'yayın' },
       { date: '07.2026', role: 'Yazılım Mühendisliği', org: 'Beykoz Üniversitesi', desc: '2022 - 2026 · GPA 3,11 / 4,00', tag: 'eğitim' },
       { date: '03.2025 - 09.2025', role: 'BT Denetim Asistanı', org: 'Aras Kargo', main: true, desc: 'Hukuk ve denetim ekipleri için React + FastAPI ile iç araçlar geliştirdim; süreçleri analiz edip dijitalleşme kapsamını belirledim.', tag: 'iş' },
@@ -211,7 +213,7 @@ const en = {
       { t: 'full-stack & AI engineer', b: true },
       { t: '. Builder of ' },
       { t: 'nehaber.dev', b: true, href: LINKS.nehaber },
-      { t: ', a live system presented at ICAIRA 2026.' },
+      { t: ', a live system presented at ICAIRA 2026 and published in IEEE Xplore.' },
     ],
     ctaWork: './see-work',
     ctaMail: 'email me',
@@ -227,7 +229,7 @@ const en = {
       metricLabel: 'nehaber · accuracy · 5-fold CV',
       metricLink: 'nehaber.dev ↗',
       log: [
-        ['ok', 'icaira 2026 · paper presented'],
+        ['ok', 'ieee xplore · paper published'],
         ['info', 'nehaber · request queued'],
         ['info', 'sbert · embedding 768d ready'],
         ['ok', 'pgvector · 12 similar records'],
@@ -262,11 +264,11 @@ const en = {
           'With no close match, the embedding is joined with 8 handcrafted NLP signals (776 dims) and classified with Logistic Regression.',
           'Gemini 2.5 Flash then runs an asynchronous, evidence-backed review of the verdict.',
         ],
-        result: '87.27% accuracy and 0.8724 Macro-F1 with 5-fold stratified CV on 3,764 articles. Paper presented at ICAIRA 2026 (İstinye University).',
+        result: '87.27% accuracy and 0.8724 Macro-F1 with 5-fold stratified CV on 3,764 articles. Paper presented at ICAIRA 2026 and published in IEEE Xplore.',
         learned: 'Shipping a model takes more engineering than training it: queues, caching, monitoring.',
         metrics: [['87.27%', 'accuracy'], ['0.8724', 'macro-f1'], ['3,764', 'articles']],
         term: ['nehaber check "Ministry closes all schools"', '→ embedding 768d … done', '→ pgvector similar records: 12', '✕ likely fake  confidence=0.91'],
-        links: [['nehaber.dev ↗', 'nehaber'], ['paper (pdf) ↗', 'paper'], ['certificate ↗', 'certificate'], ['github ↗', 'nehaberRepo']],
+        links: [['nehaber.dev ↗', 'nehaber'], ['ieee xplore ↗', 'ieee'], ['paper (pdf) ↗', 'paper'], ['certificate ↗', 'certificate'], ['github ↗', 'nehaberRepo']],
       },
       sre: {
         tag: 'rag / graph',
@@ -319,6 +321,7 @@ const en = {
     kicker: '02 / experience',
     title: 'GIT LOG --CAREER',
     items: [
+      { date: '11.2026', role: 'IEEE Xplore publication', org: 'ICAIRA 2026 Proceedings · IEEE', desc: 'The nehaber.dev paper was published in IEEE Xplore. DOI: 10.1109/ICAIRA72375.2026.11768499', tag: 'paper', href: LINKS.ieee },
       { date: '09.2026', role: 'Paper presentation', org: 'ICAIRA 2026 · İstinye University', desc: 'Presented the nehaber.dev paper with my advisor Dr. İlhan Garip.', tag: 'paper' },
       { date: '07.2026', role: 'B.Sc. Software Engineering', org: 'Beykoz University', desc: '2022 - 2026 · GPA 3.11 / 4.00', tag: 'education' },
       { date: '03.2025 - 09.2025', role: 'IT Audit Assistant', org: 'Aras Kargo', main: true, desc: 'Built internal tools for legal and audit teams with React + FastAPI; scoped what to digitize with the audit team.', tag: 'work' },
