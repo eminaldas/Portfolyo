@@ -44,6 +44,18 @@ export default function Hero({ ready }) {
             <p className="mt-10 max-w-2xl text-[15px] leading-[1.9] text-muted sm:text-base">
               {h.lead.map((p, i) => (p.b ? <Mark key={i} href={p.href}>{p.t}</Mark> : <span key={i}>{p.t}</span>))}
             </p>
+            {h.pub && (
+              <a
+                href={LINKS.ieee}
+                target="_blank"
+                rel="noreferrer"
+                className="cursor-target group mt-8 flex max-w-2xl flex-wrap items-center gap-x-3 gap-y-2 border border-acc/60 bg-acc/10 px-4 py-3 font-mono text-[13px] transition-colors hover:bg-acc hover:text-bg sm:text-sm"
+              >
+                <span className="bg-acc px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-bg group-hover:bg-bg group-hover:text-acc">IEEE</span>
+                <span className="font-bold text-fg group-hover:text-bg">{h.pub.text}</span>
+                <span className="text-acc group-hover:text-bg sm:ml-auto">{h.pub.cta}</span>
+              </a>
+            )}
             <div className="mt-9 flex flex-wrap gap-3 font-mono text-sm">
               <a href="#work" data-magnetic className="cursor-target bg-acc px-5 py-4 font-bold text-bg">
                 {h.ctaWork} ↓

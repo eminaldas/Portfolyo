@@ -72,6 +72,23 @@ function NeHaberCard({ p, open, label }) {
       <h3 className="mt-5 font-mono text-4xl font-bold tracking-[-0.04em] sm:text-6xl">{p.name}</h3>
       <p className="mt-3 max-w-2xl leading-relaxed text-muted">{p.summary}</p>
 
+      {p.pub && (
+        <a
+          href={LINKS.ieee}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="cursor-target group mt-5 block border border-acc/60 bg-acc/10 p-4 font-mono transition-colors hover:bg-acc hover:text-bg"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] uppercase tracking-widest">
+            <span className="font-bold text-acc group-hover:text-bg">{p.pub.label}</span>
+            <span className="text-acc group-hover:text-bg">{p.pub.cta}</span>
+          </div>
+          <div className="mt-2 text-sm font-bold leading-snug text-fg group-hover:text-bg">{p.pub.title}</div>
+          <div className="mt-1 text-xs text-muted group-hover:text-bg/80">{p.pub.doi}</div>
+        </a>
+      )}
+
       <div className="relative mt-6 aspect-[16/8] overflow-hidden border border-line">
         <img src="/images/nehaber.png" alt="nehaber.dev" loading="lazy" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 animate-scan bg-gradient-to-b from-transparent via-acc/15 to-transparent" />
