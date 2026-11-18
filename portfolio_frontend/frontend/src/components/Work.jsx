@@ -75,7 +75,7 @@ function NeHaberCard({ p, open, label }) {
       <div className="relative mt-6 aspect-[16/8] overflow-hidden border border-line">
         <img src="/images/nehaber.png" alt="nehaber.dev" loading="lazy" className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 animate-scan bg-gradient-to-b from-transparent via-acc/15 to-transparent" />
-        <div className="absolute bottom-3 right-3 bg-acc px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-bg">ICAIRA 2026</div>
+        <div className="absolute bottom-3 right-3 bg-acc px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-bg">ICAIRA 2026 · IEEE</div>
       </div>
 
       <div ref={ref} className="mt-5 border border-line bg-bg p-4 font-mono text-[13px] leading-7">

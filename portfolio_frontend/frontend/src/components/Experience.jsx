@@ -79,7 +79,14 @@ export default function Experience() {
                     <h3 className="font-mono text-lg font-bold tracking-[-0.04em] text-fg/85 transition-colors group-hover:text-acc sm:text-xl">{it.role}</h3>
                     <p className="mt-1 font-mono text-sm text-muted">@ {it.org}</p>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted">{it.desc}</p>
+                  <div>
+                    <p className="text-sm leading-relaxed text-muted">{it.desc}</p>
+                    {it.href && (
+                      <a href={it.href} target="_blank" rel="noreferrer" className="cursor-target mt-2 inline-block font-mono text-xs text-acc hover:underline">
+                        ieee xplore ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </li>
             ),
