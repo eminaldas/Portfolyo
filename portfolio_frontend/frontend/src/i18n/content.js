@@ -43,6 +43,7 @@ const tr = {
     ],
     ctaWork: './isleri-gor',
     ctaMail: 'mail at',
+    pub: { badge: 'yayın', text: "nehaber.dev makalem IEEE Xplore'da yayımlandı", cta: 'makaleyi oku ↗' },
     status: {
       title: 'system.status',
       rows: [
@@ -85,6 +86,7 @@ const tr = {
         status: 'canlı · nehaber.dev',
         name: 'NeHaber',
         summary: "Türkçe haberler için yapay zekâ destekli doğrulama platformu. BERT embedding'leri 8 dilbilimsel sinyalle birleşiyor; FastAPI, Celery ve Redis ile asenkron çalışıyor.",
+        pub: { label: 'IEEE Xplore · ICAIRA 2026', title: 'nehaber.dev: A BERT-Based Feature-Level Hybrid Platform for Turkish Fake News Detection', doi: 'DOI: 10.1109/ICAIRA72375.2026.11768499', cta: 'makaleyi oku ↗' },
         problem: 'Türkçe sahte haberleri ayırt etmek için hazır ve güvenilir bir araç yok; İngilizce modeller Türkçede zayıf kalıyor.',
         approach: [
           "Gelen metin 768 boyutlu Türkçe Sentence-BERT embedding'ine çevrilir, pgvector ile etiketli kayıtlarda aranır.",
@@ -217,6 +219,7 @@ const en = {
     ],
     ctaWork: './see-work',
     ctaMail: 'email me',
+    pub: { badge: 'paper', text: 'My nehaber.dev paper is published in IEEE Xplore', cta: 'read the paper ↗' },
     status: {
       title: 'system.status',
       rows: [
@@ -258,6 +261,7 @@ const en = {
         status: 'live · nehaber.dev',
         name: 'NeHaber',
         summary: 'AI-assisted fact-checking platform for Turkish news. BERT embeddings fused with 8 linguistic signals, running async on FastAPI, Celery and Redis.',
+        pub: { label: 'IEEE Xplore · ICAIRA 2026', title: 'nehaber.dev: A BERT-Based Feature-Level Hybrid Platform for Turkish Fake News Detection', doi: 'DOI: 10.1109/ICAIRA72375.2026.11768499', cta: 'read the paper ↗' },
         problem: 'There was no reliable, ready-made tool for spotting fake news in Turkish; English models fall short on Turkish text.',
         approach: [
           'Incoming text becomes a 768-dim Turkish Sentence-BERT embedding and is matched against labeled records via pgvector.',
